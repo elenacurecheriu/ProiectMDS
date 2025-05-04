@@ -8,7 +8,11 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_242vi"]
 size = Vector2(82, 67)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_8giqj"]
+radius = 67.0
+
 [node name="DebugCharacter" type="Node2D"]
+z_index = 2
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 script = ExtResource("1_8giqj")
@@ -31,3 +35,14 @@ offset_bottom = 27.0
 script = ExtResource("4_dy2fl")
 
 [connection signal="health_changed" from="CharacterBody2D/HealthComponent" to="CharacterBody2D/HealthComponent/ProgressBar" method="_on_health_changed"]
+[node name="Interaction Nodes" type="Node2D" parent="CharacterBody2D"]
+
+[node name="InteractionArea" type="Area2D" parent="CharacterBody2D/Interaction Nodes"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Interaction Nodes/InteractionArea"]
+shape = SubResource("CircleShape2D_8giqj")
+
+[connection signal="area_entered" from="CharacterBody2D/Interaction Nodes/InteractionArea" to="CharacterBody2D" method="_on_interaction_area_area_entered"]
+[connection signal="area_exited" from="CharacterBody2D/Interaction Nodes/InteractionArea" to="CharacterBody2D" method="_on_interaction_area_area_exited"]
