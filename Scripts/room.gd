@@ -1,9 +1,9 @@
 extends Node2D
-
+@onready var main = $".."
 var roomID = 0
+var test = 0 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	
 	pass # Replace with function body.
 
 func setRoomID(_roomID):
@@ -15,5 +15,8 @@ func _process(delta: float) -> void:
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	print("Entered room", roomID)
-	pass # Replace with function body.
+	if test > 0:
+		print("Entered room", roomID)
+		main.changeRoomOnMinimap(roomID)
+	else:
+		test +=1

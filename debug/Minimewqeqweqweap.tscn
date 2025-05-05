@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=3 uid="uid://ckyg55hqirbv2"]
+
+[ext_resource type="Script" uid="uid://dc007iuei3w01" path="res://Scripts/minimap.gd" id="1_djkkx"]
+[ext_resource type="PackedScene" uid="uid://bkfeuop2i45ay" path="res://Scenes/MinimapScenes/unvisited.tscn" id="2_wmxg7"]
+
+[node name="Minimap" type="Node2D"]
+position = Vector2(525, 212.5)
+script = ExtResource("1_djkkx")
+
+[node name="_Node2D_16" type="Node2D" parent="."]
+
+[node name="Unvisited" parent="_Node2D_16" instance=ExtResource("2_wmxg7")]
+position = Vector2(75, -37.5)
+scale = Vector2(0.5, 0.5)
+
+[node name="_Sprite2D_17" parent="_Node2D_16" instance=ExtResource("2_wmxg7")]
+position = Vector2(0, -37.5)
+scale = Vector2(0.5, 0.5)
+
+[node name="_Sprite2D_18" parent="_Node2D_16" instance=ExtResource("2_wmxg7")]
+position = Vector2(-75, -37.5)
+scale = Vector2(0.5, 0.5)
+
+[node name="_Sprite2D_19" parent="_Node2D_16" instance=ExtResource("2_wmxg7")]
+position = Vector2(75, 0)
+scale = Vector2(0.5, 0.5)
+
+[node name="_Sprite2D_20" parent="_Node2D_16" instance=ExtResource("2_wmxg7")]
+scale = Vector2(0.5, 0.5)
+
+[node name="_Sprite2D_21" parent="_Node2D_16" instance=ExtResource("2_wmxg7")]
+position = Vector2(-75, 0)
+scale = Vector2(0.5, 0.5)
+
+[node name="_Sprite2D_22" parent="_Node2D_16" instance=ExtResource("2_wmxg7")]
+position = Vector2(0, 37.5)
+scale = Vector2(0.5, 0.5)
