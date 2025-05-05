@@ -22,6 +22,8 @@ func get_input():
 func _physics_process(delta):
 	get_input()
 	move_and_slide()
+	if Input.is_action_just_pressed("Interact"):
+		handleInteractions()
 
 func take_damage(amount):
 	current_health -= amount
@@ -42,14 +44,10 @@ func heal(amount):
 func die():
 	print("Player died!")
 	
-	if Input.is_action_just_pressed("Interact"):
-		handleInteractions()
-
 
 func _on_interaction_area_area_entered(area: Area2D) -> void:
 	activeInteractions.insert(0, area)
 	print("Interaction Entered")
-
 
 func _on_interaction_area_area_exited(area: Area2D) -> void:
 	activeInteractions.erase(area)
@@ -59,4 +57,4 @@ func handleInteractions() -> void:
 	if !activeInteractions:
 		return
 		
-	activeInteractions[0].ActivateInteraction()
+	activeInteractions[0].ActivateInteraction(self)
