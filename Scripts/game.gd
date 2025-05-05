@@ -6,7 +6,7 @@ var CharacterScene = preload("res://Scenes/debug_character.tscn")
 var SpikesScene = preload("res://Scenes/spikes.tscn")
 var PauseScene = preload("res://Menus/pause_menu.tscn")
 var CanvasLayerScene  = preload("res://Scenes/canvas_layer.tscn")
-
+#test
 var canvas = CanvasLayerScene.instantiate()
 
 const M_SIZE = 5
