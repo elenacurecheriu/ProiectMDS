@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://1xh31yk5rusl"]
+
+[ext_resource type="Script" uid="uid://dc007iuei3w01" path="res://Scripts/minimap.gd" id="1_tkls4"]
+
+[node name="Minimap" type="Node2D"]
+script = ExtResource("1_tkls4")

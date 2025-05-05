@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bkfeuop2i45ay"]
+
+[ext_resource type="Texture2D" uid="uid://gjbi30vla5um" path="res://Textures/MinimapTextures/unvisited.png" id="1_jfqhl"]
+
+[node name="Unvisited" type="Sprite2D"]
+texture = ExtResource("1_jfqhl")
