@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://b0ar2bx510n77"]
+
+[ext_resource type="Texture2D" uid="uid://bhnq7ywabr1h1" path="res://Textures/InteractChar.png" id="1_crn8m"]
+[ext_resource type="PackedScene" uid="uid://dq04gbw6vi05c" path="res://Scenes/Interactable.tscn" id="2_uk2hm"]
+[ext_resource type="Script" uid="uid://bvpgpa6f8ju0k" path="res://Scripts/interactableCharacter.gd" id="3_07o5j"]
+[ext_resource type="Resource" uid="uid://c1tgr05d5h7ud" path="res://Dialogues/TestDialogue.dialogue" id="4_uk2hm"]
+
+[node name="Sprite2D" type="Sprite2D"]
+z_index = 1
+rotation = 3.14159
+scale = Vector2(0.24948, 0.24948)
+texture = ExtResource("1_crn8m")
+
+[node name="InteractionArea" parent="." instance=ExtResource("2_uk2hm")]
+scale = Vector2(7.745, 7.745)
+script = ExtResource("3_07o5j")
+heal_amount = 10
+dialogueScript = ExtResource("4_uk2hm")
