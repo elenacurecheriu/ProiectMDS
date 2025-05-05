@@ -1,11 +1,13 @@
 extends Node2D
-
-
 var RoomScene = preload("res://Scenes/Room.tscn")
 var DoorScene = preload("res://Scenes/door.tscn")
 var CameraScene = preload("res://Scenes/camera.tscn")
 var CharacterScene = preload("res://Scenes/debug_character.tscn")
 var SpikesScene = preload("res://Scenes/spikes.tscn")
+var PauseScene = preload("res://Menus/pause_menu.tscn")
+var CanvasLayerScene  = preload("res://Scenes/canvas_layer.tscn")
+
+var canvas = CanvasLayerScene.instantiate()
 
 const M_SIZE = 5
 const MAX_CAMERE = 7
@@ -14,9 +16,10 @@ var current_room_coords = Vector2(0, 0)  # Starting room
 var matrix = generate_dungeon()
 var room_size = Vector2(1150, 650)
 var rooms = {}
-
-
+var paused = false
+var pause_menu 
 var camera = CameraScene.instantiate()
+
 func get_current_room_coords():
 	return current_room_coords
 	
@@ -27,17 +30,29 @@ func get_camera():
 	return camera
 	
 	
+func pause_menu_():
+	print("PAUSE MENU SELECTED")
+	if paused:
+		pause_menu.hide()
+	else:
+		pause_menu.show()
+		
+	paused = ! paused	
+	
+	
 func _ready()	:
 
 	add_to_group("dungeon_generator")
 	add_child(camera)
+
+	
 	camera.position = Vector2(0,0)
 	camera.zoom.x = 1
 	camera.zoom.y = 1
 	
 	#debug purposes
-	#camera.zoom.x = 0.7
-	#camera.zoom.y = 0.7
+	camera.zoom.x = 0.7
+	camera.zoom.y = 0.7
 	
 	
 	instantiate_rooms()
@@ -49,10 +64,22 @@ func _ready()	:
 	add_doors()
 	
 	
+	pause_menu = PauseScene.instantiate()
+	camera.add_child(canvas)
+	canvas.add_child(pause_menu)
 	
+	pause_menu.set_script(load("res://Scripts/pause_menu.gd"))
+	
+	
+	print_tree_pretty()
+	
+	
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	if Input.is_action_just_pressed("pause"):
+		pause_menu_()
+
 	
 func instantiate_rooms():
 	
@@ -101,6 +128,9 @@ func add_doors():
 			if direction_names[i] in ["east", "south"]:
 				var dir = directions[i]
 				var neighbor_pos = Vector2(x + dir.x, y + dir.y)
+				#debug purposes !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+				if neighbor_pos.x > 5 or neighbor_pos.y >5:
+					pass
 				var cell_value_neighbour =  matrix[neighbor_pos.x][neighbor_pos.y]
 				if is_valid_position(neighbor_pos) and cell_value_neighbour > 0:
 					var door = DoorScene.instantiate()

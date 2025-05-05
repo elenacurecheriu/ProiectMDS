@@ -13,7 +13,6 @@ config_version=5
 config/name="Joc mds"
 run/main_scene="uid://co8lid0nt5dmy"
 config/features=PackedStringArray("4.4", "Forward Plus")
-config/icon="res://icon.svg"
 
 [dotnet]
 
