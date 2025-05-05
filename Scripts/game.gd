@@ -36,8 +36,8 @@ func _ready()	:
 	camera.zoom.y = 1
 	
 	#debug purposes
-	camera.zoom.x = 0.7
-	camera.zoom.y = 0.7
+	#camera.zoom.x = 0.7
+	#camera.zoom.y = 0.7
 	
 	
 	instantiate_rooms()

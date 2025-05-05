@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cshyj203j7hg6"]
+
+[ext_resource type="Script" uid="uid://bpe7th8rebrq6" path="res://Scenes/main_scene.gd" id="1_f16q4"]
+[ext_resource type="PackedScene" uid="uid://17e5xtypvudl" path="res://Menus/pause_menu.tscn" id="2_myuec"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_f16q4")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Pause_menu" parent="Camera2D" instance=ExtResource("2_myuec")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
