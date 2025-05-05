@@ -7,6 +7,7 @@ var minimapOffset = Vector2(5, 5)  # Padding from the edge of the screen
 var minimapSize
 var rooms_container
 var camera_position = Vector2(0,0)
+var rooms = []
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	
@@ -19,7 +20,15 @@ func _process(delta: float) -> void:
 	pass
 
 
-	
+func changeRoom(_roomID):
+	for room in rooms:
+		if room.roomID == _roomID:
+			print(_roomID)
+			room.markVisited()
+		else:
+			room.markUnvisited()
+		
+				
 func generateMinimap(matrix):
 	# Create a container node for all rooms to make positioning easier
 	var rooms_container = Node2D.new()
@@ -31,9 +40,11 @@ func generateMinimap(matrix):
 			var cell_value = matrix[i][j]
 			if cell_value > 0:
 				var room = UnvisitedScene.instantiate()
+				room.setRoomID(cell_value)
 				rooms_container.add_child(room)
 				room.scale = Vector2(0.5, 0.5)
 				room.position = Vector2((j-2) * mroomSize.x/2, -(2-i) * mroomSize.y/2)
+				rooms.append(room)
 	
 	# Center the rooms container (optional)
 	# This will center the minimap rooms relative to the top-right corner

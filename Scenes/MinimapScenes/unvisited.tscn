@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://bkfeuop2i45ay"]
+[gd_scene load_steps=3 format=3 uid="uid://bkfeuop2i45ay"]
 
 [ext_resource type="Texture2D" uid="uid://gjbi30vla5um" path="res://Textures/MinimapTextures/unvisited.png" id="1_jfqhl"]
+[ext_resource type="Script" uid="uid://bhetsicibjbvn" path="res://Scripts/unvisited.gd" id="2_o8fxl"]
 
 [node name="Unvisited" type="Sprite2D"]
 texture = ExtResource("1_jfqhl")
+script = ExtResource("2_o8fxl")

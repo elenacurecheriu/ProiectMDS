@@ -55,8 +55,8 @@ func _ready()	:
 	camera.zoom.y = 1
 	
 	#debug purposes
-	camera.zoom.x = 0.7
-	camera.zoom.y = 0.7
+	#camera.zoom.x = 0.7
+	#camera.zoom.y = 0.7
 	
 	
 	instantiate_rooms()
@@ -145,7 +145,7 @@ func add_doors():
 				if is_valid_position(neighbor_pos) and cell_value_neighbour > 0:
 					var door = DoorScene.instantiate()
 					door.setAdjacentRooms(str(cell_value_current) + " " + str(cell_value_neighbour))
-					door.setMinimapRefrence(minimap)
+					
 					add_child(door)
 
 					var current_room_pos = Vector2((y-2) * room_size.x, -(2-x) * room_size.y)
@@ -157,7 +157,9 @@ func add_doors():
 						door.rotation_degrees = 0
 					else:
 						door.rotation_degrees = 90
-
+func changeRoomOnMinimap(_roomID):
+	minimap.changeRoom(_roomID)
+	
 				
 # Helper function to check if a position is within the matrix bounds
 func is_valid_position(pos):
