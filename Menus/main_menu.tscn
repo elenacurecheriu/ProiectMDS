@@ -1,0 +1,127 @@
+[gd_scene load_steps=10 format=3 uid="uid://co8lid0nt5dmy"]
+
+[ext_resource type="Script" uid="uid://dcfdttthxuqnk" path="res://main_menu.gd" id="1_gn11b"]
+[ext_resource type="Texture2D" uid="uid://d04qglmbnlngl" path="res://Backgrounds/ChatGPT Image May 3, 2025, 03_37_05 PM.png" id="2_2k0p2"]
+[ext_resource type="StyleBox" uid="uid://dbwsmifo56ida" path="res://Themes/styles/menu_style.tres" id="3_y501u"]
+[ext_resource type="FontFile" uid="uid://bcdr71hm28v8m" path="res://Fonts/Pixel Game.otf" id="4_uayf2"]
+[ext_resource type="Theme" uid="uid://bs1etac5l7k8v" path="res://Themes/styles/button_style.tres" id="5_55uyf"]
+[ext_resource type="StyleBox" uid="uid://ld1iv0qdh505" path="res://Themes/styles/button_background.tres" id="6_62ju1"]
+[ext_resource type="Script" uid="uid://c0t6w680ywg5w" path="res://play.gd" id="7_lx30u"]
+
+[sub_resource type="Theme" id="Theme_7vrkn"]
+PanelContainer/styles/panel = ExtResource("3_y501u")
+
+[sub_resource type="Theme" id="Theme_qe12f"]
+
+[node name="Main_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 107.0
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gn11b")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.125
+anchor_top = -0.109
+anchor_right = 1.092
+anchor_bottom = 1.325
+offset_left = 122.375
+offset_top = 22.172
+offset_right = -212.828
+offset_bottom = -195.1
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_2k0p2")
+expand_mode = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -566.0
+offset_top = -169.0
+offset_right = -291.0
+offset_bottom = 243.0
+grow_horizontal = 0
+grow_vertical = 2
+theme = SubResource("Theme_7vrkn")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Separator" type="Control" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.533333, 0.345098, 0.223529, 1)
+theme_override_colors/font_shadow_color = Color(0.249874, 0.213672, 0.0910084, 0.219608)
+theme_override_colors/font_outline_color = Color(0.31518, 0.194019, 0.115365, 1)
+theme_override_constants/paragraph_spacing = 0
+theme_override_constants/shadow_offset_x = 10
+theme_override_constants/shadow_offset_y = 15
+theme_override_constants/outline_size = 13
+theme_override_fonts/font = ExtResource("4_uayf2")
+theme_override_font_sizes/font_size = 75
+text = "Village
+"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="Control" type="Control" parent="PanelContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+
+[node name="Play" type="Button" parent="PanelContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("5_55uyf")
+theme_override_colors/font_hover_color = Color(0.999892, 0.425898, 0.357203, 1)
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = ExtResource("6_62ju1")
+text = "Play"
+script = ExtResource("7_lx30u")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(40, 200)
+layout_mode = 2
+size_flags_horizontal = 3
+theme = SubResource("Theme_qe12f")
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="Exit" type="Button" parent="PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer2/VBoxContainer2"]
+layout_mode = 2
+theme = ExtResource("5_55uyf")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = ExtResource("6_62ju1")
+text = "Exit
+"
+
+[connection signal="mouse_entered" from="PanelContainer/HBoxContainer/VBoxContainer/Play" to="PanelContainer/HBoxContainer/VBoxContainer/Play" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="PanelContainer/HBoxContainer/VBoxContainer/Play" to="PanelContainer/HBoxContainer/VBoxContainer/Play" method="_on_mouse_exited"]
