@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://c3ujclm7w6a6f"]
+
+[ext_resource type="Texture2D" uid="uid://bhnq7ywabr1h1" path="res://Textures/InteractChar.png" id="1_iayp2"]
+[ext_resource type="PackedScene" uid="uid://dq04gbw6vi05c" path="res://Scenes/Interactable.tscn" id="2_xq1yf"]
+[ext_resource type="Script" uid="uid://bvpgpa6f8ju0k" path="res://Scripts/interactableCharacter.gd" id="3_ax3e4"]
+
+[node name="Sprite2D" type="Sprite2D"]
+z_index = 1
+scale = Vector2(0.24948, 0.24948)
+texture = ExtResource("1_iayp2")
+
+[node name="InteractionArea" parent="." instance=ExtResource("2_xq1yf")]
+scale = Vector2(7.745, 7.745)
+script = ExtResource("3_ax3e4")
