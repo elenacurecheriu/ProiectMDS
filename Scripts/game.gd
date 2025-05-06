@@ -94,8 +94,9 @@ func _ready()	:
 	#print_tree_pretty()
 	
 	var fireResistance = FireResistanceScene.instantiate()
-	add_child(fireResistance)
 	fireResistance.position = Vector2(250, 150)
+	add_child(fireResistance)
+	
 	
 	
 	

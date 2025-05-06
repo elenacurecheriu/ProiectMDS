@@ -7,7 +7,8 @@ extends CharacterBody2D
 	"mushroom": 0,
 	"beer": 0
 }
-
+var test1 = 0
+var test2 = 0
 var max_health = 100
 var current_health = 100
 
@@ -53,6 +54,10 @@ func die():
 	
 
 func _on_interaction_area_area_entered(area: Area2D) -> void:
+	if test1 == 0:
+		test1 += 1
+		#SE INSTANTIAZA PROST, SE PUNE IN CENTRU SI DUPA I SE MUTA POZITIA !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+		return
 	activeInteractions.insert(0, area)
 	print("Interaction Entered")
 
@@ -61,11 +66,9 @@ func _on_interaction_area_area_exited(area: Area2D) -> void:
 	print("Interaction Left")
 	
 func handleInteractions() -> void:
-	if !activeInteractions:
+	if activeInteractions.size() == 0:
 		return
-	if activeInteractions[0] != null:
-		print(activeInteractions)
-		activeInteractions[0].ActivateInteraction(self)
+	activeInteractions[0].ActivateInteraction(self)
 
 func increase_stat(stat_name: String) -> void:
 	if stats.has(stat_name):
