@@ -2,7 +2,7 @@ extends Node2D
 var RoomScene = preload("res://Scenes/Room.tscn")
 var DoorScene = preload("res://Scenes/door.tscn")
 var CameraScene = preload("res://Scenes/camera.tscn")
-var CharacterScene = preload("res://Scenes/debug_character.tscn")
+var CharacterScene = preload("res://assets/characters/debug_character.tscn")
 var SpikesScene = preload("res://Scenes/spikes.tscn")
 var PauseScene = preload("res://Menus/pause_menu.tscn")
 var CanvasLayerScene  = preload("res://Scenes/canvas_layer.tscn")
@@ -64,7 +64,7 @@ func _ready()	:
 	var player = CharacterScene.instantiate()
 	add_child(player)
 	player.position = Vector2 (0,0)
-	player.add_to_group("player")
+	#player.add_to_group("player")
 	print("Added player in the tree")
 	add_doors()
 	

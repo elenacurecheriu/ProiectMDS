@@ -11,3 +11,7 @@ func ActivateInteraction(player) -> void:
 		Iteractable.InteractionTypes.DIALOGUE:
 			DialogueManager.show_example_dialogue_balloon(dialogueScript, "start")
 	
+
+
+func _on_body_entered(body: Node2D) -> void:
+	pass # Replace with function body.

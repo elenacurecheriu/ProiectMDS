@@ -31,6 +31,7 @@ func _physics_process(delta):
 	get_input()
 	move_and_slide()
 	if Input.is_action_just_pressed("Interact"):
+		
 		handleInteractions()
 
 func take_damage(amount):
@@ -56,8 +57,9 @@ func die():
 func _on_interaction_area_area_entered(area: Area2D) -> void:
 	if test1 == 0:
 		test1 += 1
-		#SE INSTANTIAZA PROST, SE PUNE IN CENTRU SI DUPA I SE MUTA POZITIA !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+		##SE INSTANTIAZA PROST, SE PUNE IN CENTRU SI DUPA I SE MUTA POZITIA !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 		return
+	print("Interasfmk;masl;fmsamkl;f,")
 	activeInteractions.insert(0, area)
 	print("Interaction Entered")
 
@@ -82,3 +84,7 @@ func get_stat(stat_name: String) -> int:
 	else:
 		print("Error: Stat '" + stat_name + "' does not exist")
 		return 0			
+
+
+func _on_to_dungeon_body_entered(body: Node2D) -> void:
+	pass # Replace with function body.

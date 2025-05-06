@@ -7,12 +7,11 @@ func _ready() -> void:
 	interactable.interact = _on_interact
 	
 func _find_player(node):
-	for child in node.get_children():
-		if child is CharacterBody2D:
-			return child
-		var found = _find_player(child)
-		if found:
-			return found
+	if node is CharacterBody2D:
+		return node
+	var found = _find_player(node)
+	if found:
+		return found
 	return null
 
 func _on_interact():
