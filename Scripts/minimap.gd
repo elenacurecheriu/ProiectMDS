@@ -26,9 +26,10 @@ func changeRoom(_roomID):
 		if room.roomID == _roomID:
 			print(_roomID)
 			room.markVisited()
+			room.visible = true
 		else:
 			room.markUnvisited()
-		
+			
 				
 func generateMinimap(matrix):
 	for i in range(len(matrix)):
@@ -43,13 +44,14 @@ func generateMinimap(matrix):
 					room.add_child(spikeIcon)
 				get_node("Container").add_child(room)
 				room.scale = Vector2(0.5, 0.5)
+				room.visible = false
 				room.position = Vector2((j-2) * mroomSize.x/2, -(2-i) * mroomSize.y/2)
 				room.self_modulate.a = 0.75 #changes the opacity of a sprite
 				rooms.append(room)
 	minimapSize = getMinimapSize(matrix)
 	
-	
 
+	
 # Helper function to calculate the size of the minimap based on the matrix
 func getMinimapSize(matrix):
 	

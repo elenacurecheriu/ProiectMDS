@@ -1,5 +1,6 @@
 extends Node2D
 @onready var main = $".."
+@onready var minimap = $"../Camera2D/CanvasLayer/Minimap"
 var roomID = 0
 var test = 0 
 # Called when the node enters the scene tree for the first time.
