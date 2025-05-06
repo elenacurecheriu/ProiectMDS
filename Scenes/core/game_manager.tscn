@@ -1,0 +1,48 @@
+[gd_scene load_steps=5 format=3 uid="uid://sg2uu2h7fytj"]
+
+[ext_resource type="PackedScene" uid="uid://c0gy6p2pmqu2s" path="res://assets/characters/player.tscn" id="1_x6flg"]
+[ext_resource type="PackedScene" uid="uid://bola2tlukuyh5" path="res://scenes/levels/village.tscn" id="2_lv3y2"]
+[ext_resource type="Shader" uid="uid://c18jit3h3ipnk" path="res://assets/black_white.gdshader" id="3_lv3y2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vegsa"]
+shader = ExtResource("3_lv3y2")
+
+[node name="GameManager" type="Node"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="Control/SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(1152, 648)
+size_2d_override = Vector2i(1152, 648)
+size_2d_override_stretch = true
+render_target_update_mode = 4
+
+[node name="village" parent="Control/SubViewportContainer/SubViewport" instance=ExtResource("2_lv3y2")]
+texture_filter = 1
+
+[node name="Player" parent="Control/SubViewportContainer/SubViewport" instance=ExtResource("1_x6flg")]
+position = Vector2(300, 250)
+
+[node name="black_white_shader" type="ColorRect" parent="Control/SubViewportContainer/SubViewport"]
+visible = false
+material = SubResource("ShaderMaterial_vegsa")
+offset_left = -22.0
+offset_top = -13.0
+offset_right = 1188.0
+offset_bottom = 657.0

@@ -1,0 +1,105 @@
+[gd_scene load_steps=5 format=3 uid="uid://c0gy6p2pmqu2s"]
+
+[ext_resource type="Texture2D" uid="uid://brg6alrtc82kp" path="res://assets/character_art/original/mc_bf.png" id="1_3c0ok"]
+[ext_resource type="Script" uid="uid://d3s33plnspxys" path="res://Scripts/player.gd" id="1_y7kcb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qte20"]
+size = Vector2(32, 56.125)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_y7kcb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_3c0ok")
+}],
+"loop": true,
+"name": &"idle_down",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"idle_left",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"idle_right",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"idle_up",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"turn_down",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"turn_left",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"turn_right",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"turn_up",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"walk_down",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"walk_left",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"walk_right",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"walk_up",
+"speed": 5.0
+}]
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_y7kcb")
+
+[node name="Collider" type="CollisionShape2D" parent="."]
+position = Vector2(16, 27.9375)
+shape = SubResource("RectangleShape2D_qte20")
+
+[node name="Input" type="Node" parent="."]
+
+[node name="Movement" type="Node" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(16, 28)
+scale = Vector2(0.181818, 0.18123)
+sprite_frames = SubResource("SpriteFrames_y7kcb")
+animation = &"idle_down"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(16, 24)
+zoom = Vector2(2.5, 2.5)
+position_smoothing_enabled = true
+
+[node name="CollisionRayCast" type="RayCast2D" parent="."]
+position = Vector2(16, 24)
+target_position = Vector2(0, 40)
+collide_with_areas = true
+
+[node name="StateMachine" type="Node" parent="."]
+
+[node name="Roam" type="Node" parent="StateMachine"]
