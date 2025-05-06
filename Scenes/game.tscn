@@ -2,11 +2,7 @@
 
 [ext_resource type="Script" uid="uid://lqpk5b8htvva" path="res://Scripts/game.gd" id="1_ebmjs"]
 [ext_resource type="PackedScene" uid="uid://c3ujclm7w6a6f" path="res://Scenes/InteractChar.tscn" id="2_qxrlw"]
-
-[ext_resource type="PackedScene" uid="uid://dm6b887qcgwbm" path="res://Scenes/Interactions_items/fire_resistance.tscn" id="3_wrm1d"]
-
 [ext_resource type="PackedScene" uid="uid://b0ar2bx510n77" path="res://Scenes/DialogueChar.tscn" id="3_wrm1d"]
-
 
 [node name="game" type="Node2D"]
 script = ExtResource("1_ebmjs")
@@ -14,11 +10,5 @@ script = ExtResource("1_ebmjs")
 [node name="Sprite2D" parent="." instance=ExtResource("2_qxrlw")]
 position = Vector2(-171, -125)
 
-
-[node name="fire_resistance" parent="." instance=ExtResource("3_wrm1d")]
-z_index = 10
-position = Vector2(-67, 43)
-
 [node name="Sprite2D2" parent="." instance=ExtResource("3_wrm1d")]
 position = Vector2(291, -139)
-

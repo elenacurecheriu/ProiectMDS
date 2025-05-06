@@ -7,6 +7,7 @@ var SpikesScene = preload("res://Scenes/spikes.tscn")
 var PauseScene = preload("res://Menus/pause_menu.tscn")
 var CanvasLayerScene  = preload("res://Scenes/canvas_layer.tscn")
 var MinimapScene = preload("res://Scenes/minimap.tscn")
+var FireResistanceScene = preload("res://Scenes/Interactions_items/fire_resistance.tscn")
 #test
 var canvas = CanvasLayerScene.instantiate()
 var canvasMinimap = CanvasLayerScene.instantiate()
@@ -72,11 +73,13 @@ func _ready()	:
 	camera.add_child(canvas)
 	canvas.add_child(pause_menu)
 	
+	
+	
 	pause_menu.set_script(load("res://Scripts/pause_menu.gd"))
 	
 
 	var hotbar = preload("res://Scenes/Interactions_items/Hotbar.tscn").instantiate()
-	camera.add_child(canvas)
+	#camera.add_child(canvas)
 	canvas.add_child(hotbar)
 	hotbar.z_index = 100
 
@@ -90,8 +93,9 @@ func _ready()	:
 	
 	#print_tree_pretty()
 	
-	
-	
+	var fireResistance = FireResistanceScene.instantiate()
+	add_child(fireResistance)
+	fireResistance.position = Vector2(250, 150)
 	
 	
 	

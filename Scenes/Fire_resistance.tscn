@@ -1,8 +1,5 @@
-[gd_scene load_steps=2 format=3 uid="uid://s0xdbx1itbva"]
-
-[ext_resource type="Script" uid="uid://low27dgdcmhw" path="res://Scripts/fire_resistance.gd" id="1_3b6nv"]
+[gd_scene format=3 uid="uid://jomhxag0ct6c"]
 
 [node name="Area2D" type="Area2D"]
 collision_layer = 2
 collision_mask = 0
-script = ExtResource("1_3b6nv")

@@ -63,8 +63,9 @@ func _on_interaction_area_area_exited(area: Area2D) -> void:
 func handleInteractions() -> void:
 	if !activeInteractions:
 		return
-		
-	activeInteractions[0].ActivateInteraction(self)
+	if activeInteractions[0] != null:
+		print(activeInteractions)
+		activeInteractions[0].ActivateInteraction(self)
 
 func increase_stat(stat_name: String) -> void:
 	if stats.has(stat_name):
