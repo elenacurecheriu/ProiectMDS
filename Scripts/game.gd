@@ -70,8 +70,18 @@ func _ready()	:
 	
 	pause_menu.set_script(load("res://Scripts/pause_menu.gd"))
 	
+	var hotbar = preload("res://Scenes/Interactions_items/Hotbar.tscn").instantiate()
+	camera.add_child(canvas)
+	canvas.add_child(hotbar)
+	hotbar.z_index = 100
+
 	
 	print_tree_pretty()
+	
+	
+	
+	
+	
 	
 	
 

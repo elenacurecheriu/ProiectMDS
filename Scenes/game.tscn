@@ -1,10 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://byd8pv60jho2r"]
+[gd_scene load_steps=4 format=3 uid="uid://byd8pv60jho2r"]
 
 [ext_resource type="Script" uid="uid://lqpk5b8htvva" path="res://Scripts/game.gd" id="1_ebmjs"]
 [ext_resource type="PackedScene" uid="uid://c3ujclm7w6a6f" path="res://Scenes/InteractChar.tscn" id="2_qxrlw"]
+[ext_resource type="PackedScene" uid="uid://dm6b887qcgwbm" path="res://Scenes/Interactions_items/fire_resistance.tscn" id="3_wrm1d"]
 
 [node name="game" type="Node2D"]
 script = ExtResource("1_ebmjs")
 
 [node name="Sprite2D" parent="." instance=ExtResource("2_qxrlw")]
 position = Vector2(-171, -125)
+
+[node name="fire_resistance" parent="." instance=ExtResource("3_wrm1d")]
+z_index = 10
+position = Vector2(-67, 43)

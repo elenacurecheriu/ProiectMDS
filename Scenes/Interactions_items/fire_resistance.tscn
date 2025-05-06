@@ -1,0 +1,64 @@
+[gd_scene load_steps=10 format=3 uid="uid://dm6b887qcgwbm"]
+
+[ext_resource type="Script" uid="uid://dgsekglemdtfr" path="res://Scripts/Interacting_components_items_scripts/fire_resistance.gd" id="1_nkbf7"]
+[ext_resource type="Texture2D" uid="uid://bsb4en8ggkxcd" path="res://Textures/IdleLoop-Sheet.png" id="1_v2h3h"]
+[ext_resource type="PackedScene" uid="uid://d0vep7tqd81ct" path="res://Scenes/Interactions_items/Interactable_items.tscn" id="2_jo82h"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jo82h"]
+atlas = ExtResource("1_v2h3h")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nkbf7"]
+atlas = ExtResource("1_v2h3h")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yt1rv"]
+atlas = ExtResource("1_v2h3h")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_whjfx"]
+atlas = ExtResource("1_v2h3h")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v4h3h"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jo82h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nkbf7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yt1rv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_whjfx")
+}],
+"loop": true,
+"name": &"Fire",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yt1rv"]
+radius = 75.326
+
+[node name="fire_resistance" type="Node2D"]
+script = ExtResource("1_nkbf7")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, 0)
+scale = Vector2(6.71094, 6.71094)
+sprite_frames = SubResource("SpriteFrames_v4h3h")
+animation = &"Fire"
+frame_progress = 0.649598
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Interactable" parent="." instance=ExtResource("2_jo82h")]
+interact_name = "Collect fire"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
+shape = SubResource("CircleShape2D_yt1rv")

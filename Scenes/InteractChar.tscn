@@ -12,3 +12,4 @@ texture = ExtResource("1_iayp2")
 [node name="InteractionArea" parent="." instance=ExtResource("2_xq1yf")]
 scale = Vector2(7.745, 7.745)
 script = ExtResource("3_ax3e4")
+heal_amount = 10

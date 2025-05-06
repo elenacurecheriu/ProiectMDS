@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=3 uid="uid://cfoy00wc5bqlo"]
+
+[ext_resource type="Script" uid="uid://b3mgbnx806pej" path="res://Scripts/Interacting_components_items_scripts/interacting_component.gd" id="1_mywq7"]
+[ext_resource type="FontFile" uid="uid://bcdr71hm28v8m" path="res://Fonts/Pixel Game.otf" id="2_f4cit"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o2miv"]
+radius = 38.1182
+
+[node name="Interacting_component" type="Node2D"]
+script = ExtResource("1_mywq7")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_o2miv")
+
+[node name="Label" type="Label" parent="Area2D"]
+z_index = 10
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.5
+offset_top = -98.0
+offset_right = 5.5
+offset_bottom = -70.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.801971, 0.672625, 0.562651, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_f4cit")
+theme_override_font_sizes/font_size = 48
+text = "R"
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]

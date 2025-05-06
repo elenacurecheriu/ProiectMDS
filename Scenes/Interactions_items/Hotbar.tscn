@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://qeovu8xm60kt"]
+
+[ext_resource type="Script" uid="uid://w28u5x1yqaxg" path="res://Scenes/Interactions_items/hotbar.gd" id="1_ynj8w"]
+
+[node name="HotBar" type="VBoxContainer"]
+z_index = 40
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_ynj8w")
