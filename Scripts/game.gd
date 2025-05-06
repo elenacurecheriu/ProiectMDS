@@ -87,7 +87,7 @@ func _ready()	:
 	minimap.generateMinimap(matrix)
 	canvas.add_child(minimap)
 	minimap.scale = Vector2(0.5,0.5)
-	minimap.position += Vector2(1050,50)
+	minimap.position += Vector2(1025,75)
 	
 
 	

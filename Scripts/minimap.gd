@@ -5,12 +5,12 @@ var UnvisitedScene = preload("res://Scenes/MinimapScenes/unvisited.tscn")
 var mroomSize = Vector2(150, 75)
 var minimapOffset = Vector2(5, 5)  # Padding from the edge of the screen
 var minimapSize
-var rooms_container
 var camera_position = Vector2(0,0)
 var rooms = []
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	
+	get_node("Container/Container_Frame").self_modulate.a = 0.75
+	get_node("Container/Container_Sprite").self_modulate.a = 0.75
 	pass
 	# Position the entire minimap node in the top right corner
 	
@@ -30,24 +30,17 @@ func changeRoom(_roomID):
 		
 				
 func generateMinimap(matrix):
-	# Create a container node for all rooms to make positioning easier
-	var rooms_container = Node2D.new()
-	rooms_container.name = "Container"
-	add_child(rooms_container)
-	
 	for i in range(len(matrix)):
 		for j in range(len(matrix)):
 			var cell_value = matrix[i][j]
 			if cell_value > 0:
 				var room = UnvisitedScene.instantiate()
 				room.setRoomID(cell_value)
-				rooms_container.add_child(room)
+				get_node("Container").add_child(room)
 				room.scale = Vector2(0.5, 0.5)
 				room.position = Vector2((j-2) * mroomSize.x/2, -(2-i) * mroomSize.y/2)
+				room.self_modulate.a = 0.75 #changes the opacity of a sprite
 				rooms.append(room)
-	
-	# Center the rooms container (optional)
-	# This will center the minimap rooms relative to the top-right corner
 	minimapSize = getMinimapSize(matrix)
 	
 	
