@@ -6,6 +6,7 @@
 
 [node name="Sprite2D" type="Sprite2D"]
 z_index = 1
+rotation = -6.28319
 scale = Vector2(0.24948, 0.24948)
 texture = ExtResource("1_iayp2")
 
@@ -13,3 +14,7 @@ texture = ExtResource("1_iayp2")
 scale = Vector2(7.745, 7.745)
 script = ExtResource("3_ax3e4")
 heal_amount = 10
+
+dialogueScript = null
+InteractionType = 1
+

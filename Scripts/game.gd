@@ -6,8 +6,10 @@ var CharacterScene = preload("res://Scenes/debug_character.tscn")
 var SpikesScene = preload("res://Scenes/spikes.tscn")
 var PauseScene = preload("res://Menus/pause_menu.tscn")
 var CanvasLayerScene  = preload("res://Scenes/canvas_layer.tscn")
-
+var MinimapScene = preload("res://Scenes/minimap.tscn")
+#test
 var canvas = CanvasLayerScene.instantiate()
+var canvasMinimap = CanvasLayerScene.instantiate()
 
 const M_SIZE = 5
 const MAX_CAMERE = 7
@@ -19,7 +21,7 @@ var rooms = {}
 var paused = false
 var pause_menu 
 var camera = CameraScene.instantiate()
-
+var minimap = MinimapScene.instantiate()
 func get_current_room_coords():
 	return current_room_coords
 	
@@ -41,18 +43,20 @@ func pause_menu_():
 	
 	
 func _ready()	:
-
+	
+	add_child(canvasMinimap)
+	
 	add_to_group("dungeon_generator")
 	add_child(camera)
-
+	
 	
 	camera.position = Vector2(0,0)
 	camera.zoom.x = 1
 	camera.zoom.y = 1
 	
 	#debug purposes
-	camera.zoom.x = 0.7
-	camera.zoom.y = 0.7
+	#camera.zoom.x = 0.7
+	#camera.zoom.y = 0.7
 	
 	
 	instantiate_rooms()
@@ -70,13 +74,21 @@ func _ready()	:
 	
 	pause_menu.set_script(load("res://Scripts/pause_menu.gd"))
 	
+
 	var hotbar = preload("res://Scenes/Interactions_items/Hotbar.tscn").instantiate()
 	camera.add_child(canvas)
 	canvas.add_child(hotbar)
 	hotbar.z_index = 100
 
+
+	minimap.generateMinimap(matrix)
+	canvas.add_child(minimap)
+	minimap.scale = Vector2(0.5,0.5)
+	minimap.position += Vector2(1050,50)
 	
-	print_tree_pretty()
+
+	
+	#print_tree_pretty()
 	
 	
 	
@@ -89,7 +101,7 @@ func _ready()	:
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("pause"):
 		pause_menu_()
-
+	
 	
 func instantiate_rooms():
 	
@@ -108,6 +120,7 @@ func instantiate_rooms():
 				#(y-2) * room_size.x , (2-x) * room_size.y
 				# Position the room based on its coordinates in the matrix
 				room.position = Vector2((y-2) * room_size.x , -(2-x) * room_size.y)
+				
 				# Store the room in the dictionary for easy access later
 				rooms[Vector2(x, y)] = room
 				
@@ -139,12 +152,13 @@ func add_doors():
 				var dir = directions[i]
 				var neighbor_pos = Vector2(x + dir.x, y + dir.y)
 				#debug purposes !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-				if neighbor_pos.x > 5 or neighbor_pos.y >5:
-					pass
+				if not is_valid_position(neighbor_pos):
+					continue
 				var cell_value_neighbour =  matrix[neighbor_pos.x][neighbor_pos.y]
 				if is_valid_position(neighbor_pos) and cell_value_neighbour > 0:
 					var door = DoorScene.instantiate()
 					door.setAdjacentRooms(str(cell_value_current) + " " + str(cell_value_neighbour))
+					
 					add_child(door)
 
 					var current_room_pos = Vector2((y-2) * room_size.x, -(2-x) * room_size.y)
@@ -156,7 +170,9 @@ func add_doors():
 						door.rotation_degrees = 0
 					else:
 						door.rotation_degrees = 90
-
+func changeRoomOnMinimap(_roomID):
+	minimap.changeRoom(_roomID)
+	
 				
 # Helper function to check if a position is within the matrix bounds
 func is_valid_position(pos):

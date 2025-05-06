@@ -1,8 +1,9 @@
 extends Node2D  # Or Node2D, depending on what your door scene uses
-
+@onready var main = $"../.."
 var direction = ""
 var adjacentRooms = ""
 var size_of_door = 100
+
 func initialize(dir: String) -> void:
 	direction = dir
 	name = dir
@@ -21,9 +22,6 @@ func _ready() -> void:
 	dungeon_generators = get_tree().get_nodes_in_group("dungeon_generator")
 	if dungeon_generators.size() > 0:
 		camera = dungeon_generators[0].get_camera()
-	
-	# You can print the door name to verify it's accessible
-	#print("Door name: " + name)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -65,6 +63,7 @@ func move_camera_and_player():
 #
 	## Move camera to center of new room
 	camera.position = new_coords
+
 #
 	## Move player to entrance (opposite side of the door)
 	var player = get_tree().get_first_node_in_group("player")
