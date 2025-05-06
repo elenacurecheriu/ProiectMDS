@@ -2,7 +2,7 @@ extends Node2D
 var RoomScene = preload("res://Scenes/Room.tscn")
 var DoorScene = preload("res://Scenes/door.tscn")
 var CameraScene = preload("res://Scenes/camera.tscn")
-var CharacterScene = preload("res://Scenes/debug_character.tscn")
+var CharacterScene = preload("res://assets/characters/player.tscn")
 var SpikesScene = preload("res://Scenes/spikes.tscn")
 var PauseScene = preload("res://Menus/pause_menu.tscn")
 var CanvasLayerScene  = preload("res://Scenes/canvas_layer.tscn")
