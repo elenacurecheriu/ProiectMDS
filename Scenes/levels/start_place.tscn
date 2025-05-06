@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=4 uid="uid://bm4fna0qhb4la"]
+[gd_scene load_steps=10 format=4 uid="uid://bm4fna0qhb4la"]
 
-[ext_resource type="TileSet" uid="uid://be65eo2fvqoya" path="res://scenes/resources/level.tres" id="1_whtuq"]
+[ext_resource type="TileSet" uid="uid://be65eo2fvqoya" path="res://Scenes/resources/level.tres" id="1_whtuq"]
+[ext_resource type="Script" uid="uid://d1ljk0ubvw0o0" path="res://Scripts/leave_starting.gd" id="2_ktyw1"]
 
 [sub_resource type="Gradient" id="Gradient_u4dev"]
 colors = PackedColorArray(0, 0, 0, 1, 0.865445, 0.607827, 0.0167252, 1)
@@ -241,6 +242,9 @@ shader_parameter/tint = Color(0.394205, 0.0320596, 0, 1)
 shader_parameter/opacity = 0.244
 shader_parameter/blend_mode = 8
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jdjbs"]
+size = Vector2(112, 27.5)
+
 [node name="start_place" type="Node2D"]
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -293,3 +297,12 @@ clip_contents = true
 offset_right = 688.0
 offset_bottom = 768.0
 color = Color(0, 0, 0, 1)
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("2_ktyw1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(352, 610.75)
+shape = SubResource("RectangleShape2D_jdjbs")
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

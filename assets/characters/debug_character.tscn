@@ -76,7 +76,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gpudx"]
-radius = 67.0
+radius = 25.02
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_silhx")
@@ -128,9 +128,11 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interaction Nodes/InteractionArea"]
+position = Vector2(16, 25)
 shape = SubResource("CircleShape2D_gpudx")
 
 [node name="Interacting_component" parent="." instance=ExtResource("5_w0h7x")]
+position = Vector2(13, 24)
 
 [connection signal="health_changed" from="HealthComponent" to="HealthComponent/ProgressBar" method="_on_health_changed"]
 [connection signal="area_entered" from="Interaction Nodes/InteractionArea" to="." method="_on_interaction_area_area_entered"]

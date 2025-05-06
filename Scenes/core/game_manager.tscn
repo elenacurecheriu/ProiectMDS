@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://sg2uu2h7fytj"]
 
-[ext_resource type="PackedScene" uid="uid://bm4fna0qhb4la" path="res://scenes/levels/start_place.tscn" id="1_lv3y2"]
-[ext_resource type="PackedScene" uid="uid://c0gy6p2pmqu2s" path="res://assets/characters/player.tscn" id="1_x6flg"]
+[ext_resource type="PackedScene" uid="uid://bm4fna0qhb4la" path="res://Scenes/levels/start_place.tscn" id="1_lv3y2"]
+[ext_resource type="PackedScene" uid="uid://c0gy6p2pmqu2s" path="res://assets/characters/debug_character.tscn" id="1_x6flg"]
 
 [sub_resource type="Shader" id="Shader_whtuq"]
 code = "shader_type canvas_item;
@@ -257,6 +257,7 @@ canvas_item_default_texture_filter = 0
 size = Vector2i(1152, 648)
 size_2d_override = Vector2i(1152, 648)
 size_2d_override_stretch = true
+render_target_update_mode = 4
 
 [node name="start_place" parent="Control/SubViewportContainer/SubViewport" instance=ExtResource("1_lv3y2")]
 texture_filter = 1

@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=4 uid="uid://bola2tlukuyh5"]
+[gd_scene load_steps=14 format=4 uid="uid://bola2tlukuyh5"]
 
-[ext_resource type="TileSet" uid="uid://be65eo2fvqoya" path="res://scenes/resources/level.tres" id="1_7n8tl"]
+[ext_resource type="TileSet" uid="uid://be65eo2fvqoya" path="res://Scenes/resources/level.tres" id="1_7n8tl"]
 [ext_resource type="Texture2D" uid="uid://5am2g2u4e3ua" path="res://assets/shaders/particle2.png" id="1_hjghw"]
-[ext_resource type="PackedScene" uid="uid://c0gy6p2pmqu2s" path="res://assets/characters/player.tscn" id="2_7n8tl"]
+[ext_resource type="PackedScene" uid="uid://c0gy6p2pmqu2s" path="res://assets/characters/debug_character.tscn" id="2_7n8tl"]
 [ext_resource type="Shader" uid="uid://h4mfnmtdpf3h" path="res://assets/shaders/blending_modes.gdshader" id="4_v82ea"]
+[ext_resource type="Script" uid="uid://bxlhgsqranto8" path="res://Scripts/to_dungeon.gd" id="5_mm18o"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_7n8tl"]
 light_mode = 1
@@ -38,6 +39,9 @@ shader = ExtResource("4_v82ea")
 shader_parameter/tint = Color(0.195894, 0.366132, 0.72881, 1)
 shader_parameter/opacity = 0.328
 shader_parameter/blend_mode = 13
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fmbfy"]
+size = Vector2(36.5, 23.5)
 
 [node name="village" type="Node2D"]
 
@@ -119,3 +123,12 @@ offset_left = 524.0
 offset_top = -125.0
 offset_right = 1609.0
 offset_bottom = 316.0
+
+[node name="to_dungeon" type="Area2D" parent="."]
+script = ExtResource("5_mm18o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="to_dungeon"]
+position = Vector2(1019, -31)
+shape = SubResource("RectangleShape2D_fmbfy")
+
+[connection signal="body_entered" from="to_dungeon" to="to_dungeon" method="_on_body_entered"]

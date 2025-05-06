@@ -84,3 +84,7 @@ func get_stat(stat_name: String) -> int:
 	else:
 		print("Error: Stat '" + stat_name + "' does not exist")
 		return 0			
+
+
+func _on_to_dungeon_body_entered(body: Node2D) -> void:
+	pass # Replace with function body.
