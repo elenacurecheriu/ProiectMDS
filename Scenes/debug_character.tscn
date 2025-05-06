@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://d1kir3aeofhxg"]
+[gd_scene load_steps=8 format=3 uid="uid://t54v2vi2n8o5"]
 
 [ext_resource type="Script" uid="uid://d3s33plnspxys" path="res://Scripts/player.gd" id="1_8giqj"]
 [ext_resource type="Texture2D" uid="uid://bjw8fn1bcqucb" path="res://Textures/debug_character.png" id="2_8giqj"]
@@ -16,10 +16,12 @@ radius = 67.0
 z_index = 2
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+collision_layer = 3
+collision_mask = 3
 script = ExtResource("1_8giqj")
 
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
-scale = Vector2(0.151562, 0.170833)
+scale = Vector2(0.3, 0.338)
 texture = ExtResource("2_8giqj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
@@ -34,6 +36,7 @@ self_modulate = Color(0.356863, 0, 0.0431373, 1)
 offset_right = 4.0
 offset_bottom = 27.0
 script = ExtResource("4_dy2fl")
+metadata/_edit_use_anchors_ = true
 
 [node name="Interaction Nodes" type="Node2D" parent="CharacterBody2D"]
 

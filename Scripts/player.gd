@@ -31,6 +31,7 @@ func _physics_process(delta):
 	get_input()
 	move_and_slide()
 	if Input.is_action_just_pressed("Interact"):
+		
 		handleInteractions()
 
 func take_damage(amount):
@@ -56,8 +57,9 @@ func die():
 func _on_interaction_area_area_entered(area: Area2D) -> void:
 	if test1 == 0:
 		test1 += 1
-		#SE INSTANTIAZA PROST, SE PUNE IN CENTRU SI DUPA I SE MUTA POZITIA !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+		##SE INSTANTIAZA PROST, SE PUNE IN CENTRU SI DUPA I SE MUTA POZITIA !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 		return
+	print("Interasfmk;masl;fmsamkl;f,")
 	activeInteractions.insert(0, area)
 	print("Interaction Entered")
 

@@ -16,3 +16,5 @@ script = ExtResource("3_ax3e4")
 heal_amount = 10
 dialogueScript = null
 InteractionType = 1
+
+[connection signal="body_entered" from="InteractionArea" to="InteractionArea" method="_on_body_entered"]
