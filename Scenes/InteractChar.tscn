@@ -14,5 +14,7 @@ texture = ExtResource("1_iayp2")
 scale = Vector2(7.745, 7.745)
 script = ExtResource("3_ax3e4")
 heal_amount = 10
+
 dialogueScript = null
 InteractionType = 1
+

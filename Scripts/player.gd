@@ -2,6 +2,11 @@ extends CharacterBody2D
 
 @export var speed = 350
 
+@export var stats = {
+	"fire_resistance": 0,
+	"mushroom": 0,
+	"beer": 0
+}
 
 var max_health = 100
 var current_health = 100
@@ -9,6 +14,8 @@ var current_health = 100
 func _ready() -> void:
 	print("player.gd initialised")
 	current_health = max_health
+	
+	add_to_group("player")
 
 func get_health_values():
 	return [current_health, max_health]
@@ -58,3 +65,16 @@ func handleInteractions() -> void:
 		return
 		
 	activeInteractions[0].ActivateInteraction(self)
+
+func increase_stat(stat_name: String) -> void:
+	if stats.has(stat_name):
+		stats[stat_name] += 1
+	else:
+		print("Error: Stat '" + stat_name + "' does not exist")
+
+func get_stat(stat_name: String) -> int:
+	if stats.has(stat_name):
+		return stats[stat_name]
+	else:
+		print("Error: Stat '" + stat_name + "' does not exist")
+		return 0			

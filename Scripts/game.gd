@@ -74,13 +74,26 @@ func _ready()	:
 	
 	pause_menu.set_script(load("res://Scripts/pause_menu.gd"))
 	
+
+	var hotbar = preload("res://Scenes/Interactions_items/Hotbar.tscn").instantiate()
+	camera.add_child(canvas)
+	canvas.add_child(hotbar)
+	hotbar.z_index = 100
+
+
 	minimap.generateMinimap(matrix)
 	canvas.add_child(minimap)
 	minimap.scale = Vector2(0.5,0.5)
 	minimap.position += Vector2(1050,50)
 	
+
 	
 	#print_tree_pretty()
+	
+	
+	
+	
+	
 	
 	
 

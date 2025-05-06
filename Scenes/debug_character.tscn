@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://dii7k66583hg4"]
+[gd_scene load_steps=8 format=3 uid="uid://d1kir3aeofhxg"]
 
 [ext_resource type="Script" uid="uid://d3s33plnspxys" path="res://Scripts/player.gd" id="1_8giqj"]
 [ext_resource type="Texture2D" uid="uid://bjw8fn1bcqucb" path="res://Textures/debug_character.png" id="2_8giqj"]
 [ext_resource type="Script" uid="uid://d058rgxy13qn1" path="res://Scripts/health_changed.gd" id="3_xshqr"]
 [ext_resource type="Script" uid="uid://bg0i0kfe5ha7j" path="res://Scripts/health_bar.gd" id="4_dy2fl"]
+[ext_resource type="PackedScene" uid="uid://cfoy00wc5bqlo" path="res://Scenes/Interactions_items/interacting_component_items.tscn" id="5_4ouli"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_242vi"]
 size = Vector2(82, 67)
@@ -42,6 +43,8 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Interaction Nodes/InteractionArea"]
 shape = SubResource("CircleShape2D_8giqj")
+
+[node name="Interacting_component" parent="CharacterBody2D" instance=ExtResource("5_4ouli")]
 
 [connection signal="health_changed" from="CharacterBody2D/HealthComponent" to="CharacterBody2D/HealthComponent/ProgressBar" method="_on_health_changed"]
 [connection signal="area_entered" from="CharacterBody2D/Interaction Nodes/InteractionArea" to="CharacterBody2D" method="_on_interaction_area_area_entered"]
