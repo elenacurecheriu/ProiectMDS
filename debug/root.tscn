@@ -57,6 +57,7 @@ offset_bottom = 50.0
 position = Vector2(1050, 50)
 scale = Vector2(0.5, 0.5)
 
+[node name="Container2" type="Node2D" parent="game/Camera2D/CanvasLayer/Minimap"]
 
 [node name="Room" parent="game" instance=ExtResource("10_q0din")]
 position = Vector2(0, -650)
