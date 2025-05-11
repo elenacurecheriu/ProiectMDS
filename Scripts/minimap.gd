@@ -2,6 +2,7 @@ extends Node2D
 
 var VisitedScene = preload("res://Scenes/MinimapScenes/visited.tscn")
 var UnvisitedScene = preload("res://Scenes/MinimapScenes/unvisited.tscn")
+var SpikeIconResource = preload("res://Scenes/MinimapScenes/spikeicon.tscn")
 var mroomSize = Vector2(150, 75)
 var minimapOffset = Vector2(5, 5)  # Padding from the edge of the screen
 var minimapSize
@@ -25,9 +26,10 @@ func changeRoom(_roomID):
 		if room.roomID == _roomID:
 			print(_roomID)
 			room.markVisited()
+			room.visible = true
 		else:
 			room.markUnvisited()
-		
+			
 				
 func generateMinimap(matrix):
 	for i in range(len(matrix)):
@@ -36,15 +38,20 @@ func generateMinimap(matrix):
 			if cell_value > 0:
 				var room = UnvisitedScene.instantiate()
 				room.setRoomID(cell_value)
+				if cell_value == 2:
+					var spikeIcon = SpikeIconResource.instantiate()
+					spikeIcon.position = Vector2(0,0)
+					room.add_child(spikeIcon)
 				get_node("Container").add_child(room)
 				room.scale = Vector2(0.5, 0.5)
+				room.visible = false
 				room.position = Vector2((j-2) * mroomSize.x/2, -(2-i) * mroomSize.y/2)
 				room.self_modulate.a = 0.75 #changes the opacity of a sprite
 				rooms.append(room)
 	minimapSize = getMinimapSize(matrix)
 	
-	
 
+	
 # Helper function to calculate the size of the minimap based on the matrix
 func getMinimapSize(matrix):
 	

@@ -126,18 +126,36 @@ func instantiate_rooms():
 				# Position the room based on its coordinates in the matrix
 				room.position = Vector2((y-2) * room_size.x , -(2-x) * room_size.y)
 				
+				#the position is the center of the room
+				
+				
 				# Store the room in the dictionary for easy access later
 				rooms[Vector2(x, y)] = room
 				
 				# 1 -> starting_room
 				# 2 -> spike_room
 				# 7 -> boss_room
-				
+				var centerx = (y-2) * room_size.x
+				var centery =  -(2-x) * room_size.y
 				if cell_value == 2:
+					#TEST OF A SPIKE ROOM, NOT FINAL
 					# Center of the room: room.position = Vector2((y-2) * room_size.x , -(2-x) * room_size.y)
-					var spikes = SpikesScene.instantiate()
-					add_child(spikes)
-					spikes.position = Vector2((y-2) * room_size.x , -(2-x) * room_size.y)
+					var offsetGrid = Vector2(0,0)
+					var spikesSize
+					var temp = 0
+					for spike_index1 in range(4):
+						temp += 1
+						for spike_index in range(6):
+							var spikes = SpikesScene.instantiate()
+							spikesSize =  spikes.get_node("Area2D/CollisionShape2D").shape.size #Vector2
+							spikes.position = Vector2(centerx - 575 - 8 , centery - 325) + spikesSize + offsetGrid
+							offsetGrid += Vector2(2 * spikesSize.x,0)
+							add_child(spikes)
+						if temp == 2: 
+							offsetGrid += Vector2(0, 2 * spikesSize.y)
+
+						offsetGrid.x = 0
+						offsetGrid += Vector2(0, 2 * spikesSize.y)
 					pass
 					# If your Room has properties like is_starting_room, you can set them here
 	
