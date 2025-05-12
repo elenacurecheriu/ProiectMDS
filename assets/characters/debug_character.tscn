@@ -1,9 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://c0gy6p2pmqu2s"]
+[gd_scene load_steps=7 format=3 uid="uid://c0gy6p2pmqu2s"]
 
 [ext_resource type="Script" uid="uid://d3s33plnspxys" path="res://Scripts/player.gd" id="1_silhx"]
 [ext_resource type="Texture2D" uid="uid://brg6alrtc82kp" path="res://assets/character_art/original/mc_bf.png" id="2_cqpka"]
-[ext_resource type="Script" uid="uid://d058rgxy13qn1" path="res://Scripts/health_changed.gd" id="3_2oc2y"]
-[ext_resource type="Script" uid="uid://bg0i0kfe5ha7j" path="res://Scripts/health_bar.gd" id="4_xgc3s"]
 [ext_resource type="PackedScene" uid="uid://cfoy00wc5bqlo" path="res://Scenes/Interactions_items/interacting_component_items.tscn" id="5_w0h7x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qte20"]
@@ -110,17 +108,6 @@ collide_with_areas = true
 
 [node name="Roam" type="Node" parent="StateMachine"]
 
-[node name="HealthComponent" type="Node2D" parent="."]
-script = ExtResource("3_2oc2y")
-
-[node name="ProgressBar" type="ProgressBar" parent="HealthComponent"]
-modulate = Color(0.358103, 0, 0.0449308, 1)
-self_modulate = Color(0.356863, 0, 0.0431373, 1)
-offset_right = 4.0
-offset_bottom = 27.0
-script = ExtResource("4_xgc3s")
-metadata/_edit_use_anchors_ = true
-
 [node name="Interaction Nodes" type="Node2D" parent="."]
 
 [node name="InteractionArea" type="Area2D" parent="Interaction Nodes"]
@@ -134,6 +121,5 @@ shape = SubResource("CircleShape2D_gpudx")
 [node name="Interacting_component" parent="." instance=ExtResource("5_w0h7x")]
 position = Vector2(13, 24)
 
-[connection signal="health_changed" from="HealthComponent" to="HealthComponent/ProgressBar" method="_on_health_changed"]
 [connection signal="area_entered" from="Interaction Nodes/InteractionArea" to="." method="_on_interaction_area_area_entered"]
 [connection signal="area_exited" from="Interaction Nodes/InteractionArea" to="." method="_on_interaction_area_area_exited"]
