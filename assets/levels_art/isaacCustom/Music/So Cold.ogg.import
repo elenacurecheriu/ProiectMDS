@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://byvu4c4mmaxks"
+path="res://.godot/imported/So Cold.ogg-fa06bd59e4fba4acadbd92b639fa05e3.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/levels_art/isaacCustom/Music/So Cold.ogg"
+dest_files=["res://.godot/imported/So Cold.ogg-fa06bd59e4fba4acadbd92b639fa05e3.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

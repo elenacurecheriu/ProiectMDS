@@ -1,0 +1,88 @@
+@@@@@ $ TRoom, GChest, Boss $ Abomination Baby(F)* Melty Bro! *: Always drops a troll bomb at the end of the room.
+@@@@@ $ Shop $ Angel Token(T)* Wealth of light. *: Chance to drop soul hearts when picking up coins.
+@@@@@ $ Shop, TRoom *Big Meaty Claw(P)* Bring it on old man! *: +1 Red heart container, full heal, chance to charm
+@@@@@ $ TRoom $ Bleeding Rock(P)* Even the hardest bleed. *: Destroyed rocks will have a chance at droping red hearts
+@@@@@ $ TRoom, Shop, Boss $ Blood Pendant(S)* Bloody Ground! *: Converts all on ground hearts into red hearts. 3 Charge
+@@@@@ $ Secret Room $ Bomb Bug(S)* Suicidal Friend! *: Walks around like a spider, runs into the closest monster and explodes, respawns each room.
+@@@@@ $ Shop, Library, GChest $ Book of Sand(S)* Dont get it in your eyes. *: Turns tear rate to 5 for the room. 4 charge
+@@@@@ $ Boss, Beggar $ Burnt Burger(P)* Do I eat this... *: +2 red hearts not filled. Slows speed .2
+@@@@@ $ Devil Room, Devil Begger $ Caymadhal(P)* Deep Anger *: Has a 25% Chance of activating Whore Of Babylon if red heart damage is taken.
+@@@@@ $ TRoom, SecretRoom $ Lil' Bro!(P)* Classic *: Exact same as the halo
+@@@@@ $ TRoom, Angel room $ Commandment Stone(S)* Looks Fragile... *: Crack The Sky effect + Algiz for 5 seconds + Soul heart dropped onto floor, 20% chance of breaking with each use. 6 charge
+@@@@@ $ Shop, Golden Chest $ Corrupt(S)* 54656c6521 *: Takes you to iamerror room, 1 use.
+@@@@@ $ Troom, Shop, Boss $ Cracked Lenses(S)* Spare glasses *: Doubles tear projectiles like 20/20 for that room 4 charge
+@@@@@ $ Troom, Boss, Begger $ Mayo Jar(P)* Mayo me up! *: Tears have a chance at leaving a small slowing white creep. +1tears
+@@@@@ $ Curseroom, devilroom, devilbeggar $ Shade Crown(S)* Looks evil... *: 50/50 Chance to spawn 2 black hearts around player or 4 chasing troll bombs 6 charge
+@@@@@ $ Devil room $ Cursed Heart(P)* Darkened lifeforce *: Gets rid of all red health and replaces with 3 black hearts, red hearts will now be droped as (80% nothing 20% black heart) 
+@@@@@ $ Troom, boss, beggar $ Pickle Jar(P)* Pickle me up! *: Tears have a chance at leaving a small damaging green creep. +1tears
+@@@@@ $ Devil Room $ Dark Calling(P)* Lure your enemies : Give godhead like tears but it attracts monsters into walking into them but also fears the monster from you.
+@@@@@ $ Troom, Curse room, Red chest $ Demonic Relic(F)* Satanic! *: Drops black heart every 6 rooms.
+@@@@@ $ Boss, Shop $ Desizumab(P)* The strong stuff *: +.5 Damage -2Tears -5 range
+@@@@@ Eternal Candle 1(P): Needed to get to the secret boss.
+@@@@@ Eternal Candle 2(P): Needed to get to the secret boss.
+@@@@@ Eternal Candle 3(P): Needed to get to the secret boss.
+@@@@@ Eternal Candle 4(P): Needed to get to the secret boss.
+@@@@@ Eternal Candle 5(P): Needed to get to the secret boss.
+@@@@@ $ Devil room $ Eye of the Haunted(S)* Ghosted Recon *: Turn into a fragment of yourself/seethrough you can go into any open door, cant pick up anything, shoot tears, use items, or get damaged. On use screen turns black and white and time is stopped. ( used to scout out the next room )
+@@@@@ $ Troom, Shop, Secret room $ Eye Shadow(P)* Got it in my eye... *: Halfs Damage Doubles tear rate
+@@@@@ $ Troom, Shop, Secretroom $ Fat Spider(P)* Chubby Friend! *: -.2speed add slow 25% to tears
+@@@@@ $ Troom, Gchest $ Fetus Bomb(P)* Explosive embro! *: Is nomral bomb but spawns stationary brother bobby that aims and shoots at monsters by themselfs. max of 10 per room. +5 bombs
+@@@@@ $ Troom, gchest, shop $ Flamin Fast(S)* Running Shoes *: When actived you run as fast as the horsehead charge, you can control, you leave flames, lasts 3 seconds. 4 charge
+@@@@@ $ Angel Room $ Forbidden Fruit(S)* Looks delicious... : 1 use only, when used gets rid of all health, gives 24 soul hearts. can not get red heart conatiners, all hearts will be turned into coins from now on, no heart drops.
+@@@@@ $ Troom, Gchest $ Bird Skull(P)* Collecters Item! *: Chance to Drop items when you kill a monster
+@@@@@ $ Troom, Secretroom $ Ghost Fish(S)* Spooky... *: Grants the ablity to walk through rocks but not over pits for 1 room 6 charge.
+@@@@@ $ Boss, Beggar $ Fish Bones(P)* No gill's : 1+ heart container 1/2 filled
+@@@@@ $ Angel Room $ Glass Heart(P)* Fragile... : 1+ soul heart, whenever you take damage its like ice heart from gungeon
+@@@@@ $ Troom $G.M.Onion(P)* You care now. *: Gives 20/20 but halfs damage mulitplyer. chance to posion
+@@@@@ $ Troom , Boss $Infection(P)* Im sick *: Tears that can posion. posioned monsters will take damage and leave behind greencreep that can infect other monsters.
+@@@@@ $ Shop $ I O U(T)* Universal payment *: Free devil item(Dont need to pay hearts)
+@@@@@ $ Secret room $ Jewel of Wealth(P)* May you find more money *: Increases chances at finding dimes + 10 coins
+@@@@@ $ Treasure room, Gchest $ Judgement Baby(F)* *Judgeful Stare * *: If no damage random pickup, if damage troll bomb, given at the end of each room
+@@@@@ $ Troom $ Lead Posioning(P)* I feel heavy *: Shot speed -.5 Damage up +2, knock back high, can concussion.
+@@@@@ $ Angel Room $ Locked Rings(S)* Free Items at a cost *: clones all pedistal items like diplopia and then perthro and d20( Random extra items for free ) 1 use
+@@@@@ $ Shop, Secret room $ Lucky Pawn(P)* Luck up! *: +3 Luck
+@@@@@ $ Troom $ Lymphoma(P)* Ew... Gross... *: Speed down -.15 Blood tears +1.5 Damage
+@@@@@ $ Troom, Shop $ No More Space(S)* No more space *: No more space bar items. while taken in your spacebar slot
+@@@@@ $ Shop, Boss $ Orange Juice(P)* Vitimin-C! *: +1 red heart +.2 Damage
+@@@@@ $ Troom, secret room $ Origami Bomb(P)* Fragile Explosions *: Blanks all projectiles including your own when explosion happens bomb still works like normal, +5 bombs
+@@@@@ $ Eteranl(New pool) $ Ora(P)* Eternal Life *: All soul/black hearts are now eternal hearts 15% heart 85% nothing.
+@@@@@ $ Troom, Curse room, Secret room $ Pain Pill(P)* Ease me over! *: Gives holy mantle and percs for that room. 5 charge
+@@@@@ $ Curse room, red chest, devil beggar $ Parting Gift(P)* One last trick *: 33% chance killed monsters will drop a troll bomb
+@@@@@ $ Secret room $ Pet Rock(F)* Rock Friend! *: Super slow rock that follows you like a bum, hurts monsters and breaks rock.
+@@@@@ $ Troom $ Pillow(P)* No Shading! *: Tears up +3, if tears is 5 then bring down to 3
+@@@@@ $ Troom, shop $ Religion for Dummies(P)* Learn *: +5% chance for both angel and devil room
+@@@@@ $ Curseroom, devilroom, red chest, devil beggar $Rotten Heart(P)* Asphyxiation! *: Tears up -2, blue tears now, Gives 3 black hearts
+@@@@@ $ Troom, Secret room $ Sack of Keys(F)* A sack of keys *: Randomly drops keys.
+@@@@@ $ Troom , Secret room $ Salt(S)* MY EYES! *: Brings your tear rate to 1 and blood tears for 6 seconds, and damages you 1 whole heart. no charge
+@@@@@ $ Angel room $ Scale(P)* Balance your life *: If redhearts = Soulhearts+blackhearts +3 damage
+@@@@@ $ Troom, curse room $ Scary Bomb(P)* Horrifying! *: Normal bombs but will fear monsters +5 bombs.
+@@@@@ $ Curse room, devil room, redchest $ Scary Mask(S)* Frightening! *: Monsters close will get feared untill outside raduis. 4 charge
+@@@@@ $ Troom, Curseroom, boss $ Shady Bag(S)* Wonder whats inside? *: Spawns a random syring, can spawn if already spawned ( if you pick up growth hormones earier, it can still spawn growth hormones ]) 1 use
+@@@@@ $ Secret room Beggar $ Shroom's(S)* High as a kite *: Allows the player to fly in that room. Gives homing tears in room. 6charge.
+@@@@@ $ Troom, Beggar $ Slug Fluid(P)* Slimey... *: Choclet milk but with shot speed and knock back +3 tears
+@@@@@ $ Troom $ Snowflake(P)* Chilly *: Chance to freeze monsters if tear hits tears up +2
+@@@@@ $ Troom , Boss, Beggar $ Spice Jar(P)* Spice me up!* : Tears have a chance at leaving a flame. +1tears
+@@@@@ $ Curse, Devilroom, redchest devilbeggar $ Hemophobia(P)* *Faint* *: Whenever damaged your tear rate goes down 1 for that room
+@@@@@ $ Troom, Boss $ Stitchs(P)* Yay! Stitchs! *: +1 heart container not filled , chance to burst and monster lung tears with no aim. leave blood creep trail if hurt.
+@@@@@ $ Shop $ Styx Coin(T)* Wealth of darkness *: Chance to drop black hearts when picking up coins
+@@@@@ $ Shop $ The D2(S)* Trinket flipper *: Re-Rolls Trinket 2 charge
+@@@@@ $ Devil room $ The Shadow(S)* ... *: Spawns 2 random devil deal items for free. 1 use
+@@@@@ $ Angel Room $ The Light(S) * ... *: Spawns 2 random angel items for free. 1 use
+@@@@@ $ Shop, Gchest $ Tilopolyute(P)* Addiction! *: Pills are more common, drops 1 pill
+@@@@@ $ Troom $ Upset Bomb(P) * Violent Explosion * : Will charm monsters, make them faster while charged, instead of pink its red to look mad. +5 bombs
+@@@@@ $ Eternal $ Valtras(S)* Live Eternally. *: Spawns 4 eternal hearts. 1 use
+@@@@@ $ curseroom $Wall of Eyes(P)* Block head! *: fires 6 tears in a straight line (isaacs head is a wall now) mutentspider tearrate down
+@@@@@ $ Troom, Shop $ Wet Cog(S)* Feeling lucky? *: Chance to (-2,-1,+0,+1,+2) your luck stat, usable once per 4 rooms
+@@@@@ $ Troom $ White Blood Cells(P)* Immune system *: Adds 1 etranal heart. Full heal on pickup.
+@@@@@ $ Troom, Angel room $ White Bum(F)* He wants to take your soul! *: Collects Dark hearts to convert to soul hearts grab 3 pay 4.
+@@@@@ $ Troom, shop, boss $ ZAP!(P)* ZAP! *: any tear hit will have a chance to send a very low damaging lazer across the room in a random direction. breifly paralyzing monsters if hit.
+@@@@@ $ Troom, Shop $ Corn(P)* Yummy! *: Chances of all types of poop are increased t0 200%
+
+DEVIL COSTS
+Caymadhal - 1
+Cursed Heart - 2
+Dark Calling - 2
+Eye of the Haunted - 1 
+Rotten Heart - 2 
+Scary Mask - 1
+The Shadow - 2

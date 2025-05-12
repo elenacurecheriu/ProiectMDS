@@ -12,13 +12,17 @@ config_version=5
 
 config/name="mds v1"
 run/main_scene="uid://co8lid0nt5dmy"
-config/features=PackedStringArray("4.4", "Forward Plus")
+config/features=PackedStringArray("4.4", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 Globals="*res://scripts/core/Globals.cs"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
+
+[dialogue_manager]
+
+runtime/advanced/uses_dotnet=true
 
 [dotnet]
 
