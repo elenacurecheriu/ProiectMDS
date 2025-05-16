@@ -1424,22 +1424,7 @@ position = Vector2(16, 24)
 target_position = Vector2(0, 40)
 collide_with_areas = true
 
-#<<<<<<< Luca
-#[node name="HealthComponent" type="Node2D" parent="."]
-#script = ExtResource("3_2oc2y")
 
-#[node name="ProgressBar" type="ProgressBar" parent="HealthComponent"]
-#modulate = Color(0.358103, 0, 0.0449308, 1)
-#self_modulate = Color(0.356863, 0, 0.0431373, 1)
-#offset_right = 4.0
-#offset_bottom = 27.0
-#script = ExtResource("4_xgc3s")
-#metadata/_edit_use_anchors_ = true
-#=======
-#[node name="StateMachine" type="Node" parent="."]
-
-#[node name="Roam" type="Node" parent="StateMachine"]
-#>>>>>>> main
 
 [node name="Interaction Nodes" type="Node2D" parent="."]
 
