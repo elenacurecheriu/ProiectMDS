@@ -349,8 +349,6 @@ script = ExtResource("1_gwqs2")
 position = Vector2(0, 0.25)
 shape = SubResource("RectangleShape2D_qvr35")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 texture_filter = 1
 tile_map_data = PackedByteArray("AAD+////CQAEAAcAAAD+//7/CQAEAAcAAAD///7/CQAEAAcAAAAAAP7/CQAEAAcAAAABAP7/CQAEAAcAAAACAP7/CQAEAAcAAAD9/wAACQAEAAcAAAD+/wAACQAEAAcAAAD//wAACQAEAAcAAAAAAAAACQAEAAcAAAABAAAACQAEAAcAAAD/////CQAEAAcAAAAAAP//CQAEAAcAAAABAP//CQAEAAcAAAACAP//CQAEAAcAAAACAAAACQAEAAcAAAD9////CQAEAAcAAAD9//7/CQAEAAcAAAA=")
