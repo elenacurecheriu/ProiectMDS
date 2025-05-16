@@ -1,7 +1,0 @@
-sewagegaper : randomly walks around randomly like theyre headless. If hurt will chase player at faster speed than normal gapers. leaves small creep line like skinny but green.
-sewagegaper2: randomly walks around slowly like the balocyst at its smallest form, but walks not jumps. If hurt will chase player at faster speed than normal gapers. leaves small creep line like skinny but green.
-sewagegaperalt: Same as sewagegaper but starts off chasing player, is as fast as eyed globin. trail of creep lasts longer, leaves small creep puddle when killed for 3 seconds.
-sewagegapergushbody: wonders around randomly , leaving a thin trail of green creep, shots 2 random shots every so often.
-sewagegaperbody: wonders around randomly, leaving a thin trail of green creep
-sewageoneeye: uses cyclopia AI but slower
-sewagethreeeye: cyclopia AI but fires a triple shot

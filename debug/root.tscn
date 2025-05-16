@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dq2y8myydqvnm"]
+[gd_scene load_steps=16 format=3 uid="uid://dq2y8myydqvnm"]
 
 [ext_resource type="Script" uid="uid://c3rodes2l3gxb" path="res://addons/dialogue_manager/dialogue_manager.gd" id="1_70ipy"]
 [ext_resource type="PackedScene" uid="uid://byd8pv60jho2r" path="res://Scenes/game.tscn" id="2_yxgsx"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://17e5xtypvudl" path="res://Menus/pause_menu.tscn" id="5_0037v"]
 [ext_resource type="PackedScene" uid="uid://qeovu8xm60kt" path="res://Scenes/Interactions_items/Hotbar.tscn" id="6_gtnvj"]
 [ext_resource type="PackedScene" uid="uid://1xh31yk5rusl" path="res://Scenes/minimap.tscn" id="7_hjbve"]
+[ext_resource type="PackedScene" uid="uid://bkfeuop2i45ay" path="res://Scenes/MinimapScenes/unvisited.tscn" id="8_38hsq"]
+[ext_resource type="Texture2D" uid="uid://dusug2jqyuajt" path="res://Textures/MinimapTextures/visited.png" id="9_vu1ft"]
 [ext_resource type="PackedScene" uid="uid://2eutn4vjrjmd" path="res://Scenes/Room.tscn" id="10_q0din"]
 [ext_resource type="PackedScene" uid="uid://ksns2k3rn0r5" path="res://Scenes/spikes.tscn" id="11_84brr"]
 [ext_resource type="PackedScene" uid="uid://c0gy6p2pmqu2s" path="res://assets/characters/debug_character.tscn" id="12_1jjdh"]
@@ -57,7 +59,35 @@ offset_bottom = 50.0
 position = Vector2(1050, 50)
 scale = Vector2(0.5, 0.5)
 
-[node name="Container2" type="Node2D" parent="game/Camera2D/CanvasLayer/Minimap"]
+[node name="Container" type="Node2D" parent="game/Camera2D/CanvasLayer/Minimap"]
+
+[node name="Unvisited" parent="game/Camera2D/CanvasLayer/Minimap/Container" instance=ExtResource("8_38hsq")]
+position = Vector2(0, -37.5)
+scale = Vector2(0.5, 0.5)
+
+[node name="_Sprite2D_16" parent="game/Camera2D/CanvasLayer/Minimap/Container" instance=ExtResource("8_38hsq")]
+position = Vector2(75, -37.5)
+scale = Vector2(0.5, 0.5)
+
+[node name="_Sprite2D_17" parent="game/Camera2D/CanvasLayer/Minimap/Container" instance=ExtResource("8_38hsq")]
+position = Vector2(-75, 0)
+scale = Vector2(0.5, 0.5)
+
+[node name="_Sprite2D_18" parent="game/Camera2D/CanvasLayer/Minimap/Container" instance=ExtResource("8_38hsq")]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_vu1ft")
+
+[node name="_Sprite2D_19" parent="game/Camera2D/CanvasLayer/Minimap/Container" instance=ExtResource("8_38hsq")]
+position = Vector2(75, 0)
+scale = Vector2(0.5, 0.5)
+
+[node name="_Sprite2D_20" parent="game/Camera2D/CanvasLayer/Minimap/Container" instance=ExtResource("8_38hsq")]
+position = Vector2(0, 37.5)
+scale = Vector2(0.5, 0.5)
+
+[node name="_Sprite2D_21" parent="game/Camera2D/CanvasLayer/Minimap/Container" instance=ExtResource("8_38hsq")]
+position = Vector2(75, 37.5)
+scale = Vector2(0.5, 0.5)
 
 [node name="Room" parent="game" instance=ExtResource("10_q0din")]
 position = Vector2(0, -650)
