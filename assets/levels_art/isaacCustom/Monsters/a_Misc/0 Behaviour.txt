@@ -1,0 +1,15 @@
+Bomb Spider: Suicides at the player if they get too close
+Blind Fold: Will randomly run fast around the room
+Brimstone Haunt: Like Haunt but for firing they stop, charge brimstone, and shoot where you were when they stopped
+Blue Fly: Randomly bounches at 45degree angles, when killed has a toxic cloud like the mushrooms in gungeon for a few seconds
+Cracked Host: Shoots a few tears in a monstro fashion but straight, not cannon.
+Leather Face: Bounches around room like a skull, shoots at player a diamond shaped 1,3,1, shot
+Leather Faced: Same as leather face but shoots 5 rapid shots of 5
+Petried Baby: Cannot be damaged, Shoots and teleports like baby.
+Eyeless Baby: Randomly shoots tears ( 2 a second ) in a random direction, teleports alot.
+Yellow Pokey: Cannot be damaged, slowly charges player at 45degree angles
+Bloody Pokey: Randomly moves in straight lines fastly, will charge player fast
+Homing Ghost: Like Ghost but shoots a few homing tears
+Holy Haunt: Like Haunt but with homing shots
+Mad Haunt: Super shakey random rapid firing haunt
+Grubby: Spawns a maggot instead of shooting, can have a max of 3

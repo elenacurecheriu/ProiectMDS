@@ -1,0 +1,2 @@
+The Scream: Almost invisable, can teleport silently, chases player dealing contact damage, if damaged it appears breifly
+Stone Boom: Cannot be damaged, slowly chases player and explodes like muliboom, killing self

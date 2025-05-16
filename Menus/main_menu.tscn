@@ -1,12 +1,41 @@
-[gd_scene load_steps=10 format=3 uid="uid://co8lid0nt5dmy"]
+[gd_scene load_steps=17 format=3 uid="uid://co8lid0nt5dmy"]
 
 [ext_resource type="Script" uid="uid://dcfdttthxuqnk" path="res://Scripts/main_menu.gd" id="1_gn11b"]
-[ext_resource type="Texture2D" uid="uid://d04qglmbnlngl" path="res://Backgrounds/ChatGPT Image May 3, 2025, 03_37_05 PM.png" id="2_2k0p2"]
+[ext_resource type="Texture2D" uid="uid://d04qglmbnlngl" path="res://assets/Backgrounds/ChatGPT Image May 3, 2025, 03_37_05 PM.png" id="2_2k0p2"]
+[ext_resource type="Texture2D" uid="uid://5am2g2u4e3ua" path="res://assets/shaders/particle2.png" id="2_y501u"]
 [ext_resource type="StyleBox" uid="uid://dbwsmifo56ida" path="res://Themes/styles/menu_style.tres" id="3_y501u"]
-[ext_resource type="FontFile" uid="uid://bcdr71hm28v8m" path="res://Fonts/Pixel Game.otf" id="4_uayf2"]
+[ext_resource type="FontFile" uid="uid://3ouse7y00yvl" path="res://Fonts/Glitchdemo-lxgGq.ttf" id="5_2k0p2"]
 [ext_resource type="Theme" uid="uid://bs1etac5l7k8v" path="res://Themes/styles/button_style.tres" id="5_55uyf"]
 [ext_resource type="StyleBox" uid="uid://ld1iv0qdh505" path="res://Themes/styles/button_background.tres" id="6_62ju1"]
 [ext_resource type="Script" uid="uid://c0t6w680ywg5w" path="res://Scripts/play.gd" id="7_lx30u"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_uayf2"]
+light_mode = 1
+
+[sub_resource type="Curve" id="Curve_55uyf"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.125, 0.651685), 0.0, 0.0, 0, 0, Vector2(0.848837, 1), 0.0, 0.0, 0, 0, Vector2(0.953488, 0.52809), 0.0, 0.0, 0, 0, Vector2(1, 0.0561798), 0.0, 0.0, 0, 0]
+point_count = 5
+
+[sub_resource type="CurveTexture" id="CurveTexture_qq8ng"]
+curve = SubResource("Curve_55uyf")
+
+[sub_resource type="Gradient" id="Gradient_62ju1"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_yjrqv"]
+gradient = SubResource("Gradient_62ju1")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lx30u"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(2600, 1800, 1)
+spread = 89.554
+initial_velocity_min = 5.0
+initial_velocity_max = 10.0
+gravity = Vector3(0, 0, 0)
+damping_max = 10.843
+scale_min = 0.1
+color_ramp = SubResource("GradientTexture1D_yjrqv")
+alpha_curve = SubResource("CurveTexture_qq8ng")
 
 [sub_resource type="Theme" id="Theme_7vrkn"]
 PanelContainer/styles/panel = ExtResource("3_y501u")
@@ -24,7 +53,30 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_gn11b")
 
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -2
+texture_filter = 1
+layout_mode = 0
+offset_left = -86.0
+offset_top = -32.0
+offset_right = 1276.0
+offset_bottom = 818.0
+color = Color(0, 0, 0, 1)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+z_index = -1
+material = SubResource("CanvasItemMaterial_uayf2")
+position = Vector2(539, 298)
+amount = 1013
+texture = ExtResource("2_y501u")
+lifetime = 6.0
+randomness = 0.45
+visibility_rect = Rect2(-50, -50, 50, 50)
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_lx30u")
+
 [node name="TextureRect" type="TextureRect" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -0.125
@@ -47,10 +99,10 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -566.0
-offset_top = -169.0
-offset_right = -291.0
-offset_bottom = 243.0
+offset_left = -478.0
+offset_top = -163.0
+offset_right = -203.0
+offset_bottom = 249.0
 grow_horizontal = 0
 grow_vertical = 2
 theme = SubResource("Theme_7vrkn")
@@ -61,17 +113,16 @@ theme_override_constants/separation = 0
 
 [node name="Label" type="Label" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.533333, 0.345098, 0.223529, 1)
+theme_override_colors/font_color = Color(0.989772, 0.969405, 0.957401, 1)
 theme_override_colors/font_shadow_color = Color(0.249874, 0.213672, 0.0910084, 0.219608)
-theme_override_colors/font_outline_color = Color(0.31518, 0.194019, 0.115365, 1)
+theme_override_colors/font_outline_color = Color(0.417724, 0.239356, 0.463395, 1)
 theme_override_constants/paragraph_spacing = 0
 theme_override_constants/shadow_offset_x = 10
 theme_override_constants/shadow_offset_y = 15
 theme_override_constants/outline_size = 13
-theme_override_fonts/font = ExtResource("4_uayf2")
-theme_override_font_sizes/font_size = 75
-text = "Village
-"
+theme_override_fonts/font = ExtResource("5_2k0p2")
+theme_override_font_sizes/font_size = 41
+text = "runaway"
 horizontal_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer"]

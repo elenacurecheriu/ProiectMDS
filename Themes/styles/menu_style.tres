@@ -2,7 +2,7 @@
 
 [resource]
 content_margin_top = 42.0
-bg_color = Color(0.67451, 0.584314, 0.47451, 0.639216)
+bg_color = Color(1, 1, 1, 0.639216)
 corner_radius_top_left = 50
 corner_radius_top_right = 50
 corner_radius_bottom_right = 50

@@ -11,7 +11,7 @@ func _ready():
 	
 	
 func on_start_pressed()	-> void:
-	get_tree().change_scene_to_file("res://Scenes/core/game_manager.tscn")
+	get_tree().change_scene_to_file("res://Scenes/levels/game_manager.tscn")
 	
 func on_exit_pressed() -> void:
 	get_tree().quit()

@@ -1,0 +1,55 @@
+=========================   Joseph   =========================
+
+Health : 
+Damage : 
+Tears : 
+Shot Speed : 
+Range : 
+Speed : 
+Luck : 
+Pickups : 
+Items : 
+Spec : 
+
+=========================   Esther   =========================
+
+Health : 2 Red Hearts 1 Soul Heart
+Damage : 2.7(*1.00)
+Tears : 10
+Shot Speed : 0.95
+Range : 25
+Speed : 1.1
+Luck : 1
+Pickups : Nothing
+Items : Astral Shard 
+Spec : Can leave body
+
+=========================   The Hollow   =========================
+
+Health : 12 Black Hearts
+Damage : 3.5(1.20)
+Tears : 10
+Shot Speed : 0.5
+Range : 47.25
+Speed : 1.0
+Luck : 0.0
+Pickups : 2 Bombs
+Items : Gnawed Leaf
+Spec : Explosions do not damage him, no hearts will drop during the whole run ( Hearts are now a coin,key,or bomb )
+
+=========================   The Banshee   =========================
+
+Health : 2 Black Hearts
+Damage : 3.5 (*1.00)
+Tears : 72
+Shot Speed : 1.00
+Range : 23.75
+Speed : 0.8
+Luck : -2.00
+Pickups : Joker
+Items : Red Scroll 
+Spec : Flying, Spec, Pierce, AOE
+
+Astral Shard: Toggle betwin phys and non-phys. while in non-phys your body will remain motionless
+Phys : Monsters attack this, can pick up pickups/items, can open chests, can get hurt, can shoot 
+Non-Phys: Monsters ignore you, cant get hurt, flying, spec tears, cant open or pick up anything, higher damage

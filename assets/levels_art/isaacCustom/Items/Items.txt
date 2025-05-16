@@ -1,0 +1,70 @@
+@@@@@ Abomination Baby(F): Always drops a troll bomb at the end of the room.
+@@@@@ Angel Token(T): Chance to drop soul hearts when picking up coins.
+@@@@@ Ball of Yarn(T): Higher chance of finding cat items. ( Guppie pieces )
+@@@@@ Big Meaty Claw(P): +1 Red heart container, full heal, + .25 damage
+@@@@@ Blood Pendant(S): Converts all on ground hearts into red hearts. 3 Charge
+@@@@@ Bloody Skull(T): Rare chance of half red heart droping when you kill a monster
+@@@@@ Book of Sand(S): Turns tear rate to 5 for the room 4 charge
+@@@@@ Bug Spray(S): All Bugs Get fear for a long time . 2 Charge ( Flys and spiders )
+@@@@@ Burnt Burger(P): +2 red hearts not filled. Slows speed .2
+@@@@@ Caymadhal(P): Has a 25% Chance of activating Whore Of Babylon if red heart damage is taken.
+@@@@@ The Classic(P): All stats up
+@@@@@ Commandment Stone(P): 
+@@@@@ Corrupted(S): Teleports you to the iamerror room 1 use
+@@@@@ Cracked Crown(S): 50/50 Chance to spawn 4 coins around player or 4 chasing troll bombs 6 charge
+@@@@@ Cracked Lenses(P): Small chance to do 20/20. Can be increased with luck.
+@@@@@ Cursed Card(P): Changes all your red hearts into 2 black hearts each
+@@@@@ Cursed Crown(S): 50/50 Chance to spawn 2 black hearts around player or 4 chasing troll bombs 6 charge
+@@@@@ Cursed Heart(P): Removes all HP Replaces with 6 black hearts. Removes all heart drops from chests and rewards. flight. homing tears. x2 damage
+Demonic Relic(F): Generates a black heart every 6 rooms.
+Desizumab(P): +.5 Damage -2Tears -5 range
+Devil Dish(P): Adds 4 Black hearts
+Effigy (P): Goathead for eternal bosses
+Eye Shadow(P): Halfs Damage Doubles tear rate
+Fat Spider(P): -.2speed add slow 25% to tears
+Genecticly Modified Onion(P): Doubles projectiles fired but halfs damage. like 20/20
+God Dish(P): Adds 4 Soul hearts
+Handkerchief(S): Monstro shotgun with poison tears. 3 charge
+Heavens Flower(S): Turns all black hearts/soul hearts you have into eternal hearts. Only 1 use.
+Infection(P): Leaves Green creep that can also poison. if poisoned they spread the pposin
+I O U(T): Free devil item(Dont need to pay hearts)
+Jagged Stone(T): Adds the chance for rocks to drop red hearts when broken
+Jar of Vomit(S): Shoots monstero shotgun, poison, leaves huge green creep. 4Charge
+Jester Juice(P): +1 Damage -1 Tears
+Judgement Baby(F): If no damage key/coin if damage troll bomb, given at the end of each room
+Lead Posioning(P): Shot speed way lowerd, Damage up, knock back high, can concussion. Random tear
+Locked Rings(S): Rerolls all pedistal items like diplopia and then perthro( Random extra items for free ) 1 use
+Lust(P): Converts each red heart into +1 Damage and +.1 Speed. takes all red hearts but 1
+Lymphoma(P): Speed down -.15 Blood tears +1.5 Damage
+Mutant Clover(P): +2Luck
+Mutilated Foot(S): Paralyzes all monsters in the room for 5 seconds. 2 charge
+Orange Juice(P): +1 red heart +.2 Damage
+Pain Pill(P): Random chance to give holy mantle effect
+Pillow(P): Tears Up
+Plush Paw(T): Adds a 3% chance of a soul heart being droped at the start of a room
+Religion for Dummies(P): +5% chance for both angel and devil room
+Rich Skull(T): Change that monsters drop coins when killed
+Satan's Fanboy(P): Impossible to get to an angel room now also 1 black heart
+Scary Mask(P): Melee monsters have a chance to get fear'd when they get close
+Shroom's(S): Allows the player to fly in that room. Gives homing tears in room. 6charge.
+Sigil(P): Higher chance of eternal hearts
+Slug Fluid(P): Choclet milk but with speed and knock back
+Susie Slug(P): Chance to Paralize Monster. shoots seprate tears
+The D2(S): Re-Rolls Trinket 3 charge
+The Shadow(P): Spawns 3 random devil deal items for free.
+The Light(P): God Head + Soymilk + Flight + All stats up
+Tilopolyute(P): Pills are more common
+Valtras(P): Spawns 4 eternal hearts
+White Blood Cells(P): Adds 1 etranal heart. Full heal on pickup.
+White Bum(F): Collects Dark hearts to convert to soul hearts grab 3 pay 4.
+Mr.Buddy(P): whenever hit sends a sceaming fast disfigured being towards the attacker, explodes
+Red Scroll(S): Allows you to charge in the curent faced direction, 1charge, does not do damage, still can get hurt. 
+Pet Rock(F): Slow pet that does contact damage, grimaces wont shoot you anymore.
+Foreign Bill(S): Grants a random tear effect for that room, 2 charge
+Spider Venom(P): Tingly! Grants a random effect (Burn,Bleed,Fear,Posion,or slow), changes every second to the monster that is hit
+Creamy Sauce(P): +1 Red heart container +1 Soul heart Range up 5 Shot speed down .2
+Dank Sauce(P): +1 Red heart container not filled +1 soul heart damage up .25
+Spicey Sauce(P): +1 Red heart container not filled + firemind effect chance + tears up -1
+
+Transformations
+Lost in the Sauce: 3 Sauce items Grants you -2 tears, bypasses 5 tear cap +0.5 damage and creep leaving tears

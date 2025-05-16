@@ -1,0 +1,3 @@
+Chasity heart: Outlines your last heart,can take 1 hit before breaking, max at one time is 3, always in front. max health is 24+3 more hits
+Raptured hearts: Goes behind red hearts, will not vanish. Full heals all raptured hearts with each floor, cannot be gotten rid of
+Spiked Heart: Does 100 damage to the monster that broke the heart

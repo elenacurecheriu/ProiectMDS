@@ -1,7 +1,7 @@
-[gd_resource type="TileSet" load_steps=143 format=3 uid="uid://be65eo2fvqoya"]
+[gd_resource type="TileSet" load_steps=147 format=3 uid="uid://be65eo2fvqoya"]
 
 [ext_resource type="Texture2D" uid="uid://d0xmgiegl6e3j" path="res://assets/levels_art/Environment/Tilesets/TX Tileset Grass.png" id="1_1l0cm"]
-[ext_resource type="Texture2D" uid="uid://dd42ov0jhfvra" path="res://assets/levels_art/TILESET VILLAGE TOP DOWN.png" id="2_wjhj8"]
+[ext_resource type="Texture2D" uid="uid://dd42ov0jhfvra" path="res://assets/levels_art/Environment/TILESET VILLAGE TOP DOWN.png" id="2_kc1g6"]
 [ext_resource type="Texture2D" uid="uid://b27qt2kqraxld" path="res://assets/levels_art/Environment/Props/Static/Trees/TX Plant.png" id="3_guhou"]
 [ext_resource type="Texture2D" uid="uid://ch16vuw5osly4" path="res://assets/levels_art/Environment/Structures/Buildings/Props.png" id="3_v5dff"]
 [ext_resource type="Texture2D" uid="uid://belq76fu4wq5b" path="res://assets/levels_art/Environment/Structures/Buildings/Roofs.png" id="4_3ts05"]
@@ -65,9 +65,11 @@
 [ext_resource type="Texture2D" uid="uid://d4hv5lj3pu45e" path="res://assets/levels_art/Environment/seasonal sample (autumn).png" id="60_800mc"]
 [ext_resource type="Texture2D" uid="uid://bwlwdgxdknfwt" path="res://assets/levels_art/Environment/seasonal sample (spring).png" id="61_nsp12"]
 [ext_resource type="Texture2D" uid="uid://b4bfgjtgvvw6g" path="res://assets/levels_art/Environment/seasonal sample (summer).png" id="63_0rymb"]
-[ext_resource type="Texture2D" uid="uid://cv7n0716gst2r" path="res://assets/levels_art/winter.png" id="64_k3ewl"]
-[ext_resource type="Texture2D" uid="uid://baa8bnu8nhunh" path="res://assets/levels_art/spritesheet.png" id="65_ijvtm"]
+[ext_resource type="Texture2D" uid="uid://cv7n0716gst2r" path="res://assets/levels_art/Environment/winter.png" id="64_r838d"]
+[ext_resource type="Texture2D" uid="uid://baa8bnu8nhunh" path="res://assets/levels_art/Environment/spritesheet.png" id="65_03p64"]
+[ext_resource type="Texture2D" uid="uid://bkroag71fwfg6" path="res://assets/levels_art/Environment/tileset_dark.png" id="66_1kjbg"]
 [ext_resource type="Texture2D" uid="uid://dheetfutslyga" path="res://assets/levels_art/Environment/Props/Static/TX costumGrass.png" id="66_hmsl2"]
+[ext_resource type="Texture2D" uid="uid://q87sqhyksc71" path="res://assets/tileset_dark - Copy.png" id="67_kc1g6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1l0cm"]
 resource_name = "grass"
@@ -331,7 +333,7 @@ texture = ExtResource("1_1l0cm")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wjhj8"]
 resource_name = "buildings"
-texture = ExtResource("2_wjhj8")
+texture = ExtResource("2_kc1g6")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -3041,6 +3043,8 @@ texture = ExtResource("3_guhou")
 2:30/0 = 0
 0:30/size_in_atlas = Vector2i(2, 2)
 0:30/0 = 0
+5:16/0 = 0
+5:16/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_u7vob"]
 texture = ExtResource("14_k3f2g")
@@ -15967,7 +15971,7 @@ texture = ExtResource("63_0rymb")
 15:15/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0u8oy"]
-texture = ExtResource("64_k3ewl")
+texture = ExtResource("64_r838d")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -16455,7 +16459,7 @@ texture = ExtResource("64_k3ewl")
 4:28/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qejpg"]
-texture = ExtResource("65_ijvtm")
+texture = ExtResource("65_03p64")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -16972,6 +16976,11 @@ texture = ExtResource("66_hmsl2")
 0:0/size_in_atlas = Vector2i(3, 2)
 0:0/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r838d"]
+texture = ExtResource("67_kc1g6")
+0:0/0 = 0
+1:0/0 = 0
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4oa56"]
 texture = ExtResource("52_i23lk")
 0:0/0 = 0
@@ -17179,6 +17188,101 @@ texture = ExtResource("52_i23lk")
 7:14/0 = 0
 8:14/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_03p64"]
+texture = ExtResource("66_1kjbg")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+8:0/0 = 0
+9:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+8:1/0 = 0
+9:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+8:2/0 = 0
+9:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+8:3/0 = 0
+9:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+7:4/0 = 0
+8:4/0 = 0
+9:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+6:5/0 = 0
+7:5/0 = 0
+8:5/0 = 0
+9:5/0 = 0
+0:6/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+3:6/0 = 0
+4:6/0 = 0
+5:6/0 = 0
+6:6/0 = 0
+7:6/0 = 0
+0:7/0 = 0
+1:7/0 = 0
+2:7/0 = 0
+3:7/0 = 0
+4:7/0 = 0
+5:7/0 = 0
+6:7/0 = 0
+7:7/0 = 0
+0:8/0 = 0
+1:8/0 = 0
+2:8/0 = 0
+3:8/0 = 0
+4:8/0 = 0
+5:8/0 = 0
+6:8/0 = 0
+7:8/0 = 0
+0:9/0 = 0
+1:9/0 = 0
+2:9/0 = 0
+3:9/0 = 0
+4:9/0 = 0
+5:9/0 = 0
+6:9/0 = 0
+7:9/0 = 0
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_et3a8"]
 texture = ExtResource("53_12smg")
 0:0/0 = 0
@@ -17192,6 +17296,7 @@ texture = ExtResource("53_12smg")
 2:2/0 = 0
 
 [resource]
+physics_layer_0/collision_layer = 1
 terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "Dungeon Teal tile 0"
 terrain_set_0/terrain_0/color = Color(0.564197, 0.204352, 0.593986, 1)
@@ -17277,3 +17382,5 @@ sources/70 = SubResource("TileSetAtlasSource_mtlqq")
 sources/72 = SubResource("TileSetAtlasSource_qejpg")
 sources/71 = SubResource("TileSetAtlasSource_0u8oy")
 sources/75 = SubResource("TileSetAtlasSource_8rxd5")
+sources/79 = SubResource("TileSetAtlasSource_r838d")
+sources/80 = SubResource("TileSetAtlasSource_03p64")
