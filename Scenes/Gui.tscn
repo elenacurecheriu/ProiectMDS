@@ -1,0 +1,54 @@
+[gd_scene load_steps=6 format=3 uid="uid://cvby8wc516w8w"]
+
+[ext_resource type="PackedScene" uid="uid://1xh31yk5rusl" path="res://Scenes/minimap.tscn" id="1_jgtsv"]
+[ext_resource type="Script" uid="uid://disasiiwjykw3" path="res://Scripts/aspect_ratio_container.gd" id="1_rvqur"]
+[ext_resource type="Texture2D" uid="uid://677kyd5svu3a" path="res://Textures/healthbar/healthbarUnder.png" id="3_fhpok"]
+[ext_resource type="Texture2D" uid="uid://1jfe6yupp7n5" path="res://Textures/healthbar/healthbarProgress.png" id="4_rabkm"]
+[ext_resource type="Script" uid="uid://bg0i0kfe5ha7j" path="res://Scripts/health_bar.gd" id="5_slxwj"]
+
+[node name="Gui" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
+custom_minimum_size = Vector2(1150, 650)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -1152.0
+offset_right = -2.0
+offset_bottom = 650.0
+grow_horizontal = 0
+stretch_mode = 3
+script = ExtResource("1_rvqur")
+
+[node name="Minimap" parent="AspectRatioContainer" instance=ExtResource("1_jgtsv")]
+position = Vector2(1025, 75)
+scale = Vector2(0.5, 0.5)
+
+[node name="HealthBar" type="TextureProgressBar" parent="."]
+layout_mode = 2
+offset_left = 52.0
+offset_top = 31.0
+offset_right = 116.0
+offset_bottom = 41.0
+scale = Vector2(3, 3)
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture_under = ExtResource("3_fhpok")
+texture_progress = ExtResource("4_rabkm")
+script = ExtResource("5_slxwj")
+
+[node name="HealthLabel" type="Label" parent="HealthBar"]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 1.33333
+offset_right = 85.0
+offset_bottom = 24.3333
+scale = Vector2(0.3, 0.3)
+text = "100/100"

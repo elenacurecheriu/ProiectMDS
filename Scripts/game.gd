@@ -6,15 +6,18 @@ var CharacterScene = preload("res://assets/characters/debug_character.tscn")
 var SpikesScene = preload("res://Scenes/spikes.tscn")
 var PauseScene = preload("res://Menus/pause_menu.tscn")
 var CanvasLayerScene  = preload("res://Scenes/canvas_layer.tscn")
-var MinimapScene = preload("res://Scenes/minimap.tscn")
+#var MinimapScene = preload("res://Scenes/minimap.tscn")
 var FireResistanceScene = preload("res://Scenes/Interactions_items/fire_resistance.tscn")
+var GUIScene = preload("res://Scenes/Gui.tscn")
 #test
 var canvas = CanvasLayerScene.instantiate()
 var canvasMinimap = CanvasLayerScene.instantiate()
-
+var gui = GUIScene.instantiate()
 const M_SIZE = 5
 const MAX_CAMERE = 7
 var current_room_coords = Vector2(0, 0)  # Starting room
+
+var minimap
 
 var matrix = generate_dungeon()
 var room_size = Vector2(1150, 650)
@@ -22,7 +25,7 @@ var rooms = {}
 var paused = false
 var pause_menu 
 var camera = CameraScene.instantiate()
-var minimap = MinimapScene.instantiate()
+#var minimap = MinimapScene.instantiate()
 func get_current_room_coords():
 	return current_room_coords
 	
@@ -61,7 +64,13 @@ func _ready()	:
 	
 	
 	instantiate_rooms()
+	
+	canvas.add_child(gui)
+
 	var player = CharacterScene.instantiate()
+	
+	player.set_health_component(gui.get_node("HealthBar"))
+	
 	add_child(player)
 	player.position = Vector2 (0,0)
 	#player.add_to_group("player")
@@ -83,11 +92,13 @@ func _ready()	:
 	canvas.add_child(hotbar)
 	hotbar.z_index = 100
 
-
+	
+	#minimap.generateMinimap(matrix)
+	minimap = get_node("Camera2D/CanvasLayer/Gui/AspectRatioContainer/Minimap")
 	minimap.generateMinimap(matrix)
-	canvas.add_child(minimap)
-	minimap.scale = Vector2(0.5,0.5)
-	minimap.position += Vector2(1025,75)
+	#canvas.add_child(minimap)
+	#minimap.scale = Vector2(0.5,0.5)wa
+	#minimap.position += Vector2(1025,75)
 	
 
 	

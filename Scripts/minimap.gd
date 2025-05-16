@@ -12,6 +12,8 @@ var rooms = []
 func _ready() -> void:
 	get_node("Container/Container_Frame").self_modulate.a = 0.75
 	get_node("Container/Container_Sprite").self_modulate.a = 0.75
+	#scale = Vector2(0.5,0.5)
+	#position += Vector2(1025,75)
 	pass
 	# Position the entire minimap node in the top right corner
 	
