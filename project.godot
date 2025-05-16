@@ -21,9 +21,9 @@ Globals="*res://scripts/core/Globals.cs"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 
 #<<<<<<< Luca
-#[dialogue_manager]
+[dialogue_manager]
 
-#runtime/advanced/uses_dotnet=true
+runtime/advanced/uses_dotnet=true
 #=======
 [display]
 
