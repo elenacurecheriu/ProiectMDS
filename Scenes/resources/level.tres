@@ -3041,6 +3041,8 @@ texture = ExtResource("3_guhou")
 2:30/0 = 0
 0:30/size_in_atlas = Vector2i(2, 2)
 0:30/0 = 0
+3:16/0 = 0
+3:16/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_u7vob"]
 texture = ExtResource("14_k3f2g")
@@ -17192,6 +17194,7 @@ texture = ExtResource("53_12smg")
 2:2/0 = 0
 
 [resource]
+physics_layer_0/collision_layer = 1
 terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "Dungeon Teal tile 0"
 terrain_set_0/terrain_0/color = Color(0.564197, 0.204352, 0.593986, 1)

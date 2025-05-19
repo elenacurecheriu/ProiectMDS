@@ -35,6 +35,8 @@ func get_input():
 func _physics_process(delta):
 	get_input()
 	move_and_slide()
+	update_animation()
+
 	if Input.is_action_just_pressed("Interact"):
 		
 		handleInteractions()
@@ -95,3 +97,38 @@ func get_stat(stat_name: String) -> int:
 
 func _on_to_dungeon_body_entered(body: Node2D) -> void:
 	pass # Replace with function body.
+	
+	
+#animation state machine
+@onready var animated_sprite : AnimatedSprite2D = $AnimatedSprite2D
+var animation_locked : bool = false
+var facing = "front"
+
+func update_animation():
+	var direction = Input.get_vector("left", "right", "up", "down")
+
+	
+	if direction != Vector2.ZERO:
+		if direction.y < 0:
+			animated_sprite.play("run_back")
+			facing = "back"
+		elif direction.y > 0:
+			animated_sprite.play("run_front")
+			facing = "front"
+		elif direction.x < 0:
+			animated_sprite.play("run_left")
+			facing = "left"
+		elif direction.x > 0:
+			animated_sprite.play("run_right")
+			facing = "right"
+	else:
+		match facing:
+			"back":
+				animated_sprite.play("idle_back")
+			"front":
+				animated_sprite.play("idle_front")
+			"left":
+				animated_sprite.play("idle_left")
+			"right":
+				animated_sprite.play("idle_right")
+		
