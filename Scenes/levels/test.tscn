@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=4 uid="uid://cf3pb3fivrcoi"]
 
-[ext_resource type="TileSet" uid="uid://be65eo2fvqoya" path="res://scenes/resources/level.tres" id="1_8153q"]
+[ext_resource type="TileSet" uid="uid://be65eo2fvqoya" path="res://Scenes/resources/level.tres" id="1_8153q"]
 
 [sub_resource type="Curve" id="Curve_up1fl"]
 _data = [Vector2(0.213415, 0.0898877), 0.0, 0.0, 0, 0, Vector2(0.512195, 0.730337), 0.0, 0.0, 0, 0, Vector2(0.859756, 0.0337079), 0.0, 0.0, 0, 0]

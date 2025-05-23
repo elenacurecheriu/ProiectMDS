@@ -101,16 +101,11 @@ func _ready()	:
 	#minimap.position += Vector2(1025,75)
 	
 
-	
 	#print_tree_pretty()
 	
 	var fireResistance = FireResistanceScene.instantiate()
 	fireResistance.position = Vector2(250, 150)
 	add_child(fireResistance)
-	
-	
-	
-	
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -118,12 +113,9 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("pause"):
 		pause_menu_()
 	
-	
+
 func instantiate_rooms():
-	
-	
 	print_matrix(matrix)
-		
 	for x in range(matrix.size()):
 		for y in range(matrix[x].size()):
 			var cell_value = matrix[x][y]
@@ -139,10 +131,15 @@ func instantiate_rooms():
 				
 				#the position is the center of the room
 				
-				
+
 				# Store the room in the dictionary for easy access later
 				rooms[Vector2(x, y)] = room
 				
+				if cell_value != 1 and cell_value != 2: 
+					var enemy = preload("res://Scenes/enemy.tscn").instantiate()
+					var spawn_pos = room.get_random_spawn_point()
+					enemy.global_position = spawn_pos
+					add_child(enemy)
 				# 1 -> starting_room
 				# 2 -> spike_room
 				# 7 -> boss_room
@@ -255,3 +252,4 @@ func print_matrix(_matrix):
 		for j in range(M_SIZE):
 			row += str(_matrix[i][j]) + " "
 		print(row)
+		
