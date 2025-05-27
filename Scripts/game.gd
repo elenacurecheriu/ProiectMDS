@@ -135,14 +135,16 @@ func instantiate_rooms():
 				# Store the room in the dictionary for easy access later
 				rooms[Vector2(x, y)] = room
 				
-				if cell_value != 1 and cell_value != 2: 
-					var enemy = preload("res://Scenes/enemy.tscn").instantiate()
-					var spawn_pos = room.get_random_spawn_point()
-					enemy.global_position = spawn_pos
-					add_child(enemy)
 				# 1 -> starting_room
 				# 2 -> spike_room
 				# 7 -> boss_room
+				
+				if cell_value != 1 and cell_value != 2 and cell_value != 7:
+					for i in range(3):
+						var enemy = preload("res://Scenes/enemy.tscn").instantiate()
+						var spawn_pos = room.get_random_spawn_point()
+						enemy.global_position = spawn_pos
+						add_child(enemy)
 				var centerx = (y-2) * room_size.x
 				var centery =  -(2-x) * room_size.y
 				if cell_value == 2:

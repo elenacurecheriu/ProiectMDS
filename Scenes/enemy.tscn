@@ -139,7 +139,7 @@ script = ExtResource("1_1f0kj")
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_tk7xo")
 animation = &"walk_right"
-frame_progress = 0.816383
+frame_progress = 0.508523
 offset = Vector2(0, -6)
 
 [node name="detection_area" type="Area2D" parent="."]
