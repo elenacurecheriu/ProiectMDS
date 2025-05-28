@@ -7,7 +7,12 @@ var SpikesScene = preload("res://Scenes/spikes.tscn")
 var PauseScene = preload("res://Menus/pause_menu.tscn")
 var CanvasLayerScene  = preload("res://Scenes/canvas_layer.tscn")
 #var MinimapScene = preload("res://Scenes/minimap.tscn")
+
+#ITEMS:
 var FireResistanceScene = preload("res://Scenes/Interactions_items/fire_resistance.tscn")
+var MushroomScene = preload("res://Scenes/Interactions_items/mushroom.tscn")
+var CakeScene = preload("res://Scenes/Interactions_items/cake.tscn")
+
 var GUIScene = preload("res://Scenes/Gui.tscn")
 #test
 var canvas = CanvasLayerScene.instantiate()
@@ -73,7 +78,7 @@ func _ready()	:
 	
 	add_child(player)
 	player.position = Vector2 (0,0)
-	#player.add_to_group("player")
+	player.add_to_group("player")
 	print("Added player in the tree")
 	add_doors()
 	
@@ -86,12 +91,11 @@ func _ready()	:
 	
 	pause_menu.set_script(load("res://Scripts/pause_menu.gd"))
 	
-
+	#Adaug hotbarul in GUI
 	var hotbar = preload("res://Scenes/Interactions_items/Hotbar.tscn").instantiate()
-	#camera.add_child(canvas)
-	canvas.add_child(hotbar)
-	hotbar.z_index = 100
-
+	gui.add_child(hotbar)  
+	
+	
 	
 	#minimap.generateMinimap(matrix)
 	minimap = get_node("Camera2D/CanvasLayer/Gui/AspectRatioContainer/Minimap")
@@ -103,11 +107,6 @@ func _ready()	:
 
 	
 	#print_tree_pretty()
-	
-	var fireResistance = FireResistanceScene.instantiate()
-	fireResistance.position = Vector2(250, 150)
-	add_child(fireResistance)
-	
 	
 	
 	
@@ -145,9 +144,11 @@ func instantiate_rooms():
 				
 				# 1 -> starting_room
 				# 2 -> spike_room
+				# 3 -> item_room
 				# 7 -> boss_room
 				var centerx = (y-2) * room_size.x
 				var centery =  -(2-x) * room_size.y
+				
 				if cell_value == 2:
 					#TEST OF A SPIKE ROOM, NOT FINAL
 					# Center of the room: room.position = Vector2((y-2) * room_size.x , -(2-x) * room_size.y)
@@ -168,6 +169,48 @@ func instantiate_rooms():
 						offsetGrid.x = 0
 						offsetGrid += Vector2(0, 2 * spikesSize.y)
 					pass
+					
+				if cell_value == 3:
+					#!TEST! of an item room , where you can see and collect all the items that exist in the game
+
+					var random_position = Vector2(0,0)
+					var room_center = Vector2((y - 2) * room_size.x, -(2 - x) * room_size.y)
+
+					#MUSHROOM:
+					var mushroom = MushroomScene.instantiate()
+					
+					random_position = Vector2(
+						randf() * room_size.x - room_size.x / 2,
+						randf() * room_size.y - room_size.y / 2
+					)
+					mushroom.position = room_center + random_position
+					add_child(mushroom)
+					
+					#FIRE RESISTANCE
+					var fireResistance = FireResistanceScene.instantiate()
+					random_position = Vector2(
+						randf() * room_size.x - room_size.x / 2,
+						randf() * room_size.y - room_size.y / 2
+					)
+					fireResistance.position = room_center + random_position
+					add_child(fireResistance)
+					
+					#Cake
+					var cake = CakeScene.instantiate()
+					random_position = Vector2(
+						randf() * room_size.x - room_size.x / 2,
+						randf() * room_size.y - room_size.y / 2
+					)
+					cake.position = room_center + random_position
+					add_child(cake)
+					
+					
+					
+					
+					
+					
+					
+						
 					# If your Room has properties like is_starting_room, you can set them here
 	
 

@@ -1,9 +1,8 @@
-
 extends Node2D
+
+
 @onready var interactable: Area2D = $Interactable
-@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
-
-
+@onready var sprite: CharacterBody2D = $CharacterBody2D
 
 var is_moving_to_player: bool = false
 var original_scale: Vector2
@@ -13,14 +12,12 @@ var min_scale: float = 0.1
 
 func _ready() -> void:
 	interactable.interact = _on_interact
-	sprite.play("Fire")
 	original_scale = scale
-
-
+	
 func _process(delta: float) -> void:
 	if is_moving_to_player:
 		animate_to_player(delta)
-	
+			
 func _find_player(node):
 	if node is CharacterBody2D:
 		return node
@@ -33,14 +30,15 @@ func _on_interact():
 	var player_node = get_tree().get_first_node_in_group("player")
 	var player = _find_player(player_node)
 		
-	player.increase_stat("fire_resistance")
-	var new_value = player.get_stat("fire_resistance")
-	print("Gained 1 fire. New fire_resistance: " + str(new_value))
+	player.increase_stat("cake")
+	var new_value = player.get_stat("cake")
+	print("Gained 1 cake. New cake: " + str(new_value))
 	
 	#opresc colisiunile ca sa nu mai detecteze itemul
 	interactable.monitoring = false
 	interactable.set_deferred("collision_layer", 0)
 	interactable.set_deferred("collision_mask", 0)
+	
 	start_move_to_player(player)
 
 func start_move_to_player(player: Node2D):

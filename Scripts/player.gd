@@ -5,7 +5,7 @@ extends CharacterBody2D
 @export var stats = {
 	"fire_resistance": 0,
 	"mushroom": 0,
-	"beer": 0
+	"cake": 0
 }
 var test1 = 0
 var test2 = 0
