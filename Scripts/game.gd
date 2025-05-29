@@ -138,15 +138,10 @@ func instantiate_rooms():
 				# 1 -> starting_room
 				# 2 -> spike_room
 				# 7 -> boss_room
-				
-				if cell_value != 1 and cell_value != 2 and cell_value != 7:
-					for i in range(3):
-						var enemy = preload("res://Scenes/enemy.tscn").instantiate()
-						var spawn_pos = room.get_random_spawn_point()
-						enemy.global_position = spawn_pos
-						add_child(enemy)
+
 				var centerx = (y-2) * room_size.x
 				var centery =  -(2-x) * room_size.y
+				
 				if cell_value == 2:
 					#TEST OF A SPIKE ROOM, NOT FINAL
 					# Center of the room: room.position = Vector2((y-2) * room_size.x , -(2-x) * room_size.y)
@@ -168,7 +163,24 @@ func instantiate_rooms():
 						offsetGrid += Vector2(0, 2 * spikesSize.y)
 					pass
 					# If your Room has properties like is_starting_room, you can set them here
-	
+				
+				if cell_value != 1 and cell_value != 2 and cell_value != 7:
+					var num_enemies = randi() % 5 + 1  # spawn 1 to 5 enemies
+					for i in range(num_enemies):
+						var enemy = preload("res://Scenes/enemy.tscn").instantiate()
+						var spawn_offset = Vector2(
+							randf_range(-room_size.x * 0.3, room_size.x * 0.3),
+							randf_range(-room_size.y * 0.3, room_size.y * 0.3)
+						)
+						var spawn_pos = Vector2(centerx, centery) + spawn_offset
+						enemy.global_position = spawn_pos
+						if randf() < 0.5:
+							enemy.patrol_mode = "horizontal"
+						else:
+							enemy.patrol_mode = "vertical"
+						enemy.patrol_distance = randf_range(200, 400)
+						enemy.speed = randf_range(100, 200)
+						add_child(enemy)
 
 
 func add_doors():

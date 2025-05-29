@@ -4,8 +4,6 @@ extends Node2D
 var roomID = 0
 var test = 0 
 
-@export var enemy_spawn_points: Array[NodePath] = []
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -25,17 +23,3 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	else:
 		test +=1
 		
-		
-func get_random_spawn_point() -> Vector2:
-	var spawns: Array[Vector2] = []
-	for path in enemy_spawn_points:
-		if not has_node(path):
-			print("Invalid path: ", path)
-		else:
-			var point = get_node(path)
-			spawns.append(point.global_position)
-			print ("s-a spawnat regele")
-	if spawns.is_empty():
-		print ("inamici nespawnati")
-		return Vector2.ZERO
-	return spawns.pick_random()

@@ -36,9 +36,7 @@ func _physics_process(delta):
 	get_input()
 	move_and_slide()
 	update_animation()
-
 	if Input.is_action_just_pressed("Interact"):
-		
 		handleInteractions()
 
 func take_damage(amount):
