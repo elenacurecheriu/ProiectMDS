@@ -68,8 +68,8 @@ func move_camera_and_player():
 	var player = get_tree().get_first_node_in_group("player")
 	if player:
 		var offset_from_center = {
-			"north": Vector2(0,size_of_door ),
-			"south": Vector2(0,-size_of_door),
+			"north": Vector2(0,size_of_door + 30 ),
+			"south": Vector2(0,-size_of_door - 30),
 			
 			"west": Vector2(size_of_door + 100, 0),
 			"east": Vector2(-size_of_door - 100, 0),

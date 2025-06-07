@@ -56,8 +56,8 @@ func _ready()	:
 	
 	
 	camera.position = Vector2(0,0)
-	camera.zoom.x = 1
-	camera.zoom.y = 1
+	camera.zoom.x = 0.955
+	camera.zoom.y = 0.955
 	
 	#debug purposes
 	#camera.zoom.x = 0.7
@@ -71,7 +71,8 @@ func _ready()	:
 	var player = CharacterScene.instantiate()
 	
 	player.set_health_component(gui.get_node("HealthBar"))
-	
+	player.scale.x = 1.5
+	player.scale.y = 1.5
 	add_child(player)
 	player.position = Vector2 (0,0)
 	#player.add_to_group("player")
