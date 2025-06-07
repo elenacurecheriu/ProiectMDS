@@ -15,9 +15,33 @@ func _process(delta: float) -> void:
 	pass
 
 
+
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if test > 0:
 		print("Entered room", roomID)
+		
+		for door in main.doors:
+			if roomID in main.doors[door]:
+				#daca e o camera din alea, sa se invarta usa spre mijlocul camerei
+				#print(door)
+				#print(door.direction)
+				#print(door.directionName)
+				var thisX = position.x
+				var thisY = position.y
+				var doorX = door.position.x
+				var doorY = door.position.y
+				if doorX > thisX: #inseamna ca e in dreapta
+					door.rotation_degrees = 90
+				if doorX < thisX: #inseamna ca e in stanga
+					door.rotation_degrees = -90
+				if doorY > thisY: #inseamna ca e jos
+					door.rotation_degrees = 180
+				if doorY < thisY: #inseamna ca e sus nu se intampla nimic
+					door.rotation_degrees = 0
+				print()
+		
+		
+		
 		main.changeRoomOnMinimap(roomID)
 	else:
 		test +=1

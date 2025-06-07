@@ -3,10 +3,9 @@ extends Node2D  # Or Node2D, depending on what your door scene uses
 var direction = ""
 var adjacentRooms = ""
 var size_of_door = 100
-
+var directionName = ""
 func initialize(dir: String) -> void:
 	direction = dir
-	name = dir
 
 var dungeon_generators
 var camera
