@@ -3,10 +3,9 @@ extends Node2D  # Or Node2D, depending on what your door scene uses
 var direction = ""
 var adjacentRooms = ""
 var size_of_door = 100
-
+var directionName = ""
 func initialize(dir: String) -> void:
 	direction = dir
-	name = dir
 
 var dungeon_generators
 var camera
@@ -69,8 +68,8 @@ func move_camera_and_player():
 	var player = get_tree().get_first_node_in_group("player")
 	if player:
 		var offset_from_center = {
-			"north": Vector2(0,size_of_door ),
-			"south": Vector2(0,-size_of_door),
+			"north": Vector2(0,size_of_door + 30 ),
+			"south": Vector2(0,-size_of_door - 30),
 			
 			"west": Vector2(size_of_door + 100, 0),
 			"east": Vector2(-size_of_door - 100, 0),

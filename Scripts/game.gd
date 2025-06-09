@@ -27,6 +27,7 @@ var minimap
 var matrix = generate_dungeon()
 var room_size = Vector2(1150, 650)
 var rooms = {}
+var doors = {}
 var paused = false
 var pause_menu 
 var camera = CameraScene.instantiate()
@@ -60,8 +61,8 @@ func _ready()	:
 	
 	
 	camera.position = Vector2(0,0)
-	camera.zoom.x = 1
-	camera.zoom.y = 1
+	camera.zoom.x = 0.955
+	camera.zoom.y = 0.955
 	
 	#debug purposes
 	#camera.zoom.x = 0.7
@@ -75,7 +76,8 @@ func _ready()	:
 	var player = CharacterScene.instantiate()
 	
 	player.set_health_component(gui.get_node("HealthBar"))
-	
+	player.scale.x = 1.5
+	player.scale.y = 1.5
 	add_child(player)
 	player.position = Vector2 (0,0)
 	player.add_to_group("player")
@@ -107,8 +109,14 @@ func _ready()	:
 
 	
 	#print_tree_pretty()
+
+	var fireResistance = FireResistanceScene.instantiate()
+	fireResistance.position = Vector2(250, 150)
+	add_child(fireResistance)
 	
-	
+#	print(doors)
+#	print(rooms)
+
 	
 	
 
@@ -234,19 +242,22 @@ func add_doors():
 				var cell_value_neighbour =  matrix[neighbor_pos.x][neighbor_pos.y]
 				if is_valid_position(neighbor_pos) and cell_value_neighbour > 0:
 					var door = DoorScene.instantiate()
-					door.setAdjacentRooms(str(cell_value_current) + " " + str(cell_value_neighbour))
-					
+					#door.setAdjacentRooms(str(cell_value_current) + " " + str(cell_value_neighbour))
+					door.name = "Door " + (str(cell_value_current) + " -> " + str(cell_value_neighbour))
+					doors[door] = [cell_value_current, cell_value_neighbour]
+					door.direction = dir
+					door.directionName = direction_names[i]
 					add_child(door)
-
-					var current_room_pos = Vector2((y-2) * room_size.x, -(2-x) * room_size.y)
-					var neighbor_room_pos = Vector2((neighbor_pos.y-2) * room_size.x, -(2-neighbor_pos.x) * room_size.y)
+					#in x si y sunt pozitiile din matrice, ex (2.0, 1.0)
+					var current_room_pos = Vector2(rooms[room_pos].position)
+					var neighbor_room_pos = Vector2(rooms[neighbor_pos].position)
 					var door_position = current_room_pos.lerp(neighbor_room_pos, 0.5)
 					door.position = door_position
 
-					if dir.x != 0:
-						door.rotation_degrees = 0
-					else:
-						door.rotation_degrees = 90
+					#if dir.x != 0:
+						#door.rotation_degrees = 0
+					#else:
+						#door.rotation_degrees = 90
 func changeRoomOnMinimap(_roomID):
 	minimap.changeRoom(_roomID)
 	

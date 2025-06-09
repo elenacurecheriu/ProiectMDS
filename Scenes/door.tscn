@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://decpvnv7obori"]
 
-[ext_resource type="Texture2D" uid="uid://bd18tw8bg2mu7" path="res://Textures/Door.png" id="1_w6aom"]
+[ext_resource type="Texture2D" uid="uid://bpio2e537y3fg" path="res://Textures/Door2.png" id="2_fahql"]
 [ext_resource type="Script" uid="uid://dxpps0mo0pdrt" path="res://Scripts/door.gd" id="2_p0e35"]
 [ext_resource type="Script" uid="uid://c0v7s6pbrfgab" path="res://Scripts/doorarea2d.gd" id="3_fahql"]
 
@@ -10,9 +10,10 @@ size = Vector2(90.6364, 245.666)
 [node name="Door" type="Node2D"]
 script = ExtResource("2_p0e35")
 
-[node name="Door" type="Sprite2D" parent="."]
-scale = Vector2(0.504, 0.12)
-texture = ExtResource("1_w6aom")
+[node name="Door_texture" type="Sprite2D" parent="."]
+position = Vector2(0, 0.500002)
+scale = Vector2(0.504, 0.328431)
+texture = ExtResource("2_fahql")
 
 [node name="Area2D" type="Area2D" parent="."]
 scale = Vector2(1.05, 0.272728)
