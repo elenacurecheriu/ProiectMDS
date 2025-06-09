@@ -17,6 +17,8 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if is_moving_to_player:				#cand playerul interactioneaza cu itemul acesta incepe procesul de animatie catre el
 		animate_to_player(delta)	
+	
+		
 		
 func _find_player(node):
 	if node is CharacterBody2D:
@@ -63,9 +65,9 @@ func animate_to_player(delta: float):
 	#Se miscoreaza
 	var shrink_factor = 1.0 - (shrink_speed * delta)
 	scale *= shrink_factor
-	
 	#Regula sa nu se micsoreze mai mult decat limita
 	if scale.x < min_scale:
 		scale = Vector2(min_scale, min_scale)
-		
+	await get_tree().create_timer(2.0).timeout
+	hide()	
 	
