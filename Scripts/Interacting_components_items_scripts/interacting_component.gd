@@ -4,7 +4,7 @@ var available_interactions = []
 var able_to_interact = true
 
 func _input(event: InputEvent) -> void:  #Cand apasa pe R sa selectez item-ul
-	if event.is_action_pressed("Collect") and able_to_interact:
+	if event.is_action_pressed("Interact") and able_to_interact:
 		if available_interactions and available_interactions.size() > 0:
 			var interactable = available_interactions[0]
 			

@@ -1,0 +1,46 @@
+[gd_scene load_steps=8 format=3 uid="uid://cibkf0ppc2sly"]
+
+[ext_resource type="Script" uid="uid://7hn183lqipc8" path="res://Scenes/Interactions_items/mushroom.gd" id="1_ea8de"]
+[ext_resource type="Texture2D" uid="uid://c3lkjgkd816i3" path="res://Textures/Items/red-shroom-idle.png" id="2_kr56c"]
+[ext_resource type="PackedScene" uid="uid://d0vep7tqd81ct" path="res://Scenes/Interactions_items/Interactable_items.tscn" id="2_t8yjc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_67811"]
+atlas = ExtResource("2_kr56c")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rjk0v"]
+atlas = ExtResource("2_kr56c")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2r1e8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_67811")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rjk0v")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kr56c"]
+radius = 77.0584
+
+[node name="Mushroom" type="Node2D"]
+script = ExtResource("1_ea8de")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2.25, 2.25)
+sprite_frames = SubResource("SpriteFrames_2r1e8")
+animation = &"Idle"
+frame_progress = 0.11163
+
+[node name="Interactable" parent="." instance=ExtResource("2_t8yjc")]
+interact_name = "collect mushroom"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
+position = Vector2(0, 18)
+shape = SubResource("CircleShape2D_kr56c")
