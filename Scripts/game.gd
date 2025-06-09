@@ -180,16 +180,16 @@ func instantiate_rooms():
 					
 				if cell_value == 3:
 					#!TEST! of an item room , where you can see and collect all the items that exist in the game
-
+					var room_size_inside = Vector2(1000, 500)
 					var random_position = Vector2(0,0)
-					var room_center = Vector2((y - 2) * room_size.x, -(2 - x) * room_size.y)
+					var room_center = Vector2((y - 2) * room_size_inside.x, -(2 - x) * room_size_inside.y)
 
 					#MUSHROOM:
 					var mushroom = MushroomScene.instantiate()
 					
 					random_position = Vector2(
-						randf() * room_size.x - room_size.x / 2,
-						randf() * room_size.y - room_size.y / 2
+						randf() * room_size_inside.x - room_size_inside.x / 2,
+						randf() * room_size_inside.y - room_size_inside.y / 2
 					)
 					mushroom.position = room_center + random_position
 					add_child(mushroom)
@@ -197,8 +197,8 @@ func instantiate_rooms():
 					#FIRE RESISTANCE
 					var fireResistance = FireResistanceScene.instantiate()
 					random_position = Vector2(
-						randf() * room_size.x - room_size.x / 2,
-						randf() * room_size.y - room_size.y / 2
+						randf() * room_size_inside.x - room_size_inside.x / 2,
+						randf() * room_size_inside.y - room_size_inside.y / 2
 					)
 					fireResistance.position = room_center + random_position
 					add_child(fireResistance)
@@ -206,8 +206,8 @@ func instantiate_rooms():
 					#Cake
 					var cake = CakeScene.instantiate()
 					random_position = Vector2(
-						randf() * room_size.x - room_size.x / 2,
-						randf() * room_size.y - room_size.y / 2
+						randf() * room_size_inside.x - room_size_inside.x / 2,
+						randf() * room_size_inside.y - room_size_inside.y / 2
 					)
 					cake.position = room_center + random_position
 					add_child(cake)

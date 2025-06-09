@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://daxe2g70nc6rt"]
+
+[ext_resource type="Texture2D" uid="uid://bxdvy31xc1elc" path="res://Textures/Commands/Q-Key.png" id="1_7yj5p"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cq28w"]
+atlas = ExtResource("1_7yj5p")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5l6wg"]
+atlas = ExtResource("1_7yj5p")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uoxjl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cq28w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5l6wg")
+}],
+"loop": true,
+"name": &"press",
+"speed": 5.0
+}]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_uoxjl")
+animation = &"press"
+frame_progress = 0.864589
+
+[node name="Label" type="Label" parent="."]
+offset_left = -24.0
+offset_top = -40.0
+offset_right = 26.0
+offset_bottom = -17.0
+text = "Attack"
