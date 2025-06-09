@@ -72,3 +72,4 @@ func animate_to_player(delta: float):
 	# Ensure we don't shrink below minimum
 	if scale.x < min_scale:
 		scale = Vector2(min_scale, min_scale)
+		

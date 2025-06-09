@@ -52,8 +52,6 @@ scale = Vector2(3.99023, 3.99023)
 sprite_frames = SubResource("SpriteFrames_v4h3h")
 animation = &"Fire"
 
-[node name="Area2D" type="Area2D" parent="."]
-
 [node name="Timer" type="Timer" parent="."]
 
 [node name="Interactable" parent="." instance=ExtResource("2_jo82h")]
