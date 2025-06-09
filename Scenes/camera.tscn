@@ -3,4 +3,5 @@
 [ext_resource type="Script" uid="uid://c02dw5axkec05" path="res://Scripts/camera.gd" id="1_375tr"]
 
 [node name="Camera2D" type="Camera2D"]
+texture_filter = 1
 script = ExtResource("1_375tr")

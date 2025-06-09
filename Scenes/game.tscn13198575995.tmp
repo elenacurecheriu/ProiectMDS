@@ -5,7 +5,6 @@
 [ext_resource type="PackedScene" uid="uid://b0ar2bx510n77" path="res://Scenes/DialogueChar.tscn" id="3_wrm1d"]
 
 [node name="game" type="Node2D"]
-texture_filter = 1
 script = ExtResource("1_ebmjs")
 
 [node name="Sprite2D" parent="." instance=ExtResource("2_qxrlw")]
