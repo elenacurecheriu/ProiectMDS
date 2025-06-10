@@ -1,9 +1,10 @@
-[gd_scene load_steps=17 format=3 uid="uid://bepjd4v46sb53"]
+[gd_scene load_steps=18 format=3 uid="uid://bepjd4v46sb53"]
 
 [ext_resource type="Texture2D" uid="uid://binof1a16aor" path="res://Textures/Commands/W-Key.png" id="1_wo8k2"]
 [ext_resource type="Texture2D" uid="uid://tlcxvfhsomf5" path="res://Textures/Commands/S-Key.png" id="2_1ovpe"]
 [ext_resource type="Texture2D" uid="uid://b5811qsyvsqde" path="res://Textures/Commands/D-Key.png" id="3_66mpj"]
 [ext_resource type="Texture2D" uid="uid://dt14ffdq3iyqv" path="res://Textures/Commands/A-Key.png" id="4_mpmba"]
+[ext_resource type="FontFile" uid="uid://bcdr71hm28v8m" path="res://Fonts/Pixel Game.otf" id="5_1ovpe"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gk52d"]
 atlas = ExtResource("1_wo8k2")
@@ -119,3 +120,12 @@ animation = &"press D"
 position = Vector2(-40, 35)
 sprite_frames = SubResource("SpriteFrames_ddqku")
 animation = &"press A"
+
+[node name="Label" type="Label" parent="."]
+offset_left = -25.0
+offset_top = -45.0
+offset_right = 34.0
+offset_bottom = -16.0
+theme_override_fonts/font = ExtResource("5_1ovpe")
+theme_override_font_sizes/font_size = 25
+text = "Move"

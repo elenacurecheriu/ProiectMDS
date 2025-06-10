@@ -2,7 +2,7 @@ extends Area2D
 
 var target_node: Node2D
 @export var fade_duration: float = 1.0
-
+var x = 0
 var current_tween: Tween  #variabila ca sa tion cont de tween-urile faucte
 # si cand ies/intru in AREA 2D  sa sterg tween ul respectiv ca sa nu se suprapuna
 
@@ -10,7 +10,8 @@ var current_tween: Tween  #variabila ca sa tion cont de tween-urile faucte
 func _ready():
 	var scene = preload("res://Scenes/Tutorial/Attack_button.tscn")
 	target_node = scene.instantiate()
-	
+	target_node.position = Vector2(-9999, -9999)  # move it far away just in case
+
 	
 	body_entered.connect(_on_body_entered)
 	body_exited.connect(_on_body_exited)
@@ -22,7 +23,7 @@ func _ready():
 		target_node.modulate.a = 0.0
 		target_node.visible = false
 		
-func _on_body_entered(body: Node2D) -> void:		#il scot pe ala de dinainte
+func _on_body_entered(body: Node2D) -> void:	#il scot pe ala de dinainte
 		print("Entered www area: ", self.name, " Body: ", body.name)
 
 		if current_tween:
@@ -30,15 +31,20 @@ func _on_body_entered(body: Node2D) -> void:		#il scot pe ala de dinainte
 			
 		if target_node.get_parent():
 			target_node.get_parent().remove_child(target_node)
-		
 			
-		target_node.position = Vector2(185, 400)
 		self.add_child(target_node)
+
+		if x == 0:
+			target_node.position = Vector2(0, 0)
+			x+=1
+		else:	
 		
-		#animatii	
-		target_node.visible = true
-		fade_in_node()
-		start_animated_sprites()
+			#animatii	
+			target_node.visible = true
+			fade_in_node()
+			start_animated_sprites()
+			target_node.position = Vector2(185, 440)
+
 
 func _on_body_exited(body: Node2D) -> void:
 	if target_node:

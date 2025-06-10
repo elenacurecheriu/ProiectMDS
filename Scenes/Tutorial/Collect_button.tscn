@@ -30,12 +30,13 @@ animations = [{
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ecwqn")
 animation = &"press"
-frame_progress = 0.824412
+frame_progress = 0.108482
 
 [node name="Label" type="Label" parent="."]
-offset_left = -24.0
-offset_top = -34.0
-offset_right = 24.0
-offset_bottom = -11.0
+offset_left = -37.0
+offset_top = -40.0
+offset_right = 38.0
+offset_bottom = -14.0
 theme_override_fonts/font = ExtResource("2_2huog")
+theme_override_font_sizes/font_size = 25
 text = "Collect"

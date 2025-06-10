@@ -2,7 +2,7 @@ extends Area2D
 
 var target_node: Node2D
 @export var fade_duration: float = 1.0
-
+var x =0
 var current_tween: Tween  #variabila ca sa tion cont de tween-urile faucte
 # si cand ies/intru in AREA 2D  sa sterg tween ul respectiv ca sa nu se suprapuna
 
@@ -10,7 +10,6 @@ var current_tween: Tween  #variabila ca sa tion cont de tween-urile faucte
 func _ready():
 	var scene = preload("res://Scenes/Tutorial/Collect_button.tscn")
 	target_node = scene.instantiate()
-	
 	
 	body_entered.connect(_on_body_entered)
 	body_exited.connect(_on_body_exited)
@@ -31,15 +30,20 @@ func _on_body_entered(body: Node2D) -> void:		#il scot pe ala de dinainte
 		if target_node.get_parent():
 			target_node.get_parent().remove_child(target_node)
 		
-			
-		target_node.position = Vector2(185, 250)
 		self.add_child(target_node)
 		
-		#animatii	
-		target_node.visible = true
-		fade_in_node()
-		start_animated_sprites()
-
+		if x == 0:
+			target_node.position = Vector2(0, 0)
+			x+=1
+		else:
+			
+			#animatii	
+			target_node.visible = true
+			fade_in_node()
+			start_animated_sprites()
+			target_node.position = Vector2(185, 300)
+			
+		
 func _on_body_exited(body: Node2D) -> void:
 	if target_node:
 		if current_tween:
