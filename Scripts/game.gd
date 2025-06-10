@@ -174,12 +174,11 @@ func instantiate_rooms():
 						)
 						var spawn_pos = Vector2(centerx, centery) + spawn_offset
 						enemy.global_position = spawn_pos
-						if randf() < 0.5:
-							enemy.patrol_mode = "horizontal"
-						else:
-							enemy.patrol_mode = "vertical"
+						
 						enemy.patrol_distance = randf_range(200, 400)
 						enemy.speed = randf_range(100, 200)
+						enemy.patrol_switch_time = randf_range(2.0, 5.0)  # Randomize switch timing
+						
 						add_child(enemy)
 
 

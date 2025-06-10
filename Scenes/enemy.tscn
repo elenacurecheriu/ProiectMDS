@@ -127,7 +127,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_scl1n"]
-radius = 167.003
+radius = 134.034
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dhkrs"]
 radius = 19.9249
@@ -148,7 +148,6 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="detection_area"]
-visible = false
 shape = SubResource("CircleShape2D_scl1n")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
