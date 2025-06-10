@@ -1,7 +1,10 @@
-[gd_scene load_steps=10 format=4 uid="uid://bm4fna0qhb4la"]
+[gd_scene load_steps=16 format=4 uid="uid://bm4fna0qhb4la"]
 
 [ext_resource type="TileSet" uid="uid://be65eo2fvqoya" path="res://Scenes/resources/level.tres" id="1_whtuq"]
 [ext_resource type="Script" uid="uid://d1ljk0ubvw0o0" path="res://Scripts/leave_starting.gd" id="2_ktyw1"]
+[ext_resource type="Script" uid="uid://cjjsnpxwvtu1e" path="res://Scenes/levels/wasd.gd" id="3_jdjbs"]
+[ext_resource type="Script" uid="uid://blfg3r65qmqyf" path="res://Scripts/Tutorial/attack_command.gd" id="4_jgoxy"]
+[ext_resource type="Script" uid="uid://cg6om5803g3hu" path="res://Scripts/Tutorial/collect_command.gd" id="5_mrevx"]
 
 [sub_resource type="Gradient" id="Gradient_u4dev"]
 colors = PackedColorArray(0, 0, 0, 1, 0.865445, 0.607827, 0.0167252, 1)
@@ -245,6 +248,15 @@ shader_parameter/blend_mode = 8
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jdjbs"]
 size = Vector2(112, 27.5)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jgoxy"]
+size = Vector2(196, 43.375)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mrevx"]
+size = Vector2(198, 52)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8je82"]
+size = Vector2(195, 55.5)
+
 [node name="start_place" type="Node2D"]
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -310,4 +322,31 @@ script = ExtResource("2_ktyw1")
 position = Vector2(352, 610.75)
 shape = SubResource("RectangleShape2D_jdjbs")
 
+[node name="WASD" type="Area2D" parent="."]
+script = ExtResource("3_jdjbs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WASD"]
+position = Vector2(354, 143)
+shape = SubResource("RectangleShape2D_jgoxy")
+
+[node name="Attack" type="Area2D" parent="."]
+script = ExtResource("4_jgoxy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Attack"]
+position = Vector2(353, 476)
+shape = SubResource("RectangleShape2D_mrevx")
+
+[node name="Collect" type="Area2D" parent="."]
+script = ExtResource("5_mrevx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collect"]
+position = Vector2(352, 315.75)
+shape = SubResource("RectangleShape2D_8je82")
+
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
+[connection signal="area_entered" from="WASD" to="Area2D" method="_on_wasd_area_entered"]
+[connection signal="body_entered" from="WASD" to="Area2D" method="_on_wasd_body_entered"]
+[connection signal="body_exited" from="WASD" to="Area2D" method="_on_wasd_body_exited"]
+[connection signal="body_entered" from="Attack" to="Attack" method="_on_body_entered"]
+[connection signal="body_exited" from="Attack" to="Attack" method="_on_body_exited"]
+[connection signal="body_entered" from="Collect" to="Attack" method="_on_collect_body_entered"]

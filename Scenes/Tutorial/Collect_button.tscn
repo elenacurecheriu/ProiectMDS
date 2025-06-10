@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://dmwc8bi3w7wqy"]
+
+[ext_resource type="Texture2D" uid="uid://dsj8u0wedpcpy" path="res://Textures/Commands/E-Key.png" id="1_ot7xc"]
+[ext_resource type="FontFile" uid="uid://bcdr71hm28v8m" path="res://Fonts/Pixel Game.otf" id="2_2huog"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2huog"]
+atlas = ExtResource("1_ot7xc")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ecwqn"]
+atlas = ExtResource("1_ot7xc")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ecwqn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2huog")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ecwqn")
+}],
+"loop": true,
+"name": &"press",
+"speed": 5.0
+}]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ecwqn")
+animation = &"press"
+frame_progress = 0.108482
+
+[node name="Label" type="Label" parent="."]
+offset_left = -37.0
+offset_top = -40.0
+offset_right = 38.0
+offset_bottom = -14.0
+theme_override_fonts/font = ExtResource("2_2huog")
+theme_override_font_sizes/font_size = 25
+text = "Collect"
