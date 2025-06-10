@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=4 uid="uid://2eutn4vjrjmd"]
+[gd_scene load_steps=10 format=4 uid="uid://2eutn4vjrjmd"]
 
 [ext_resource type="Texture2D" uid="uid://bnmpyxsqgdarw" path="res://Textures/TileSetFurat/TX Tileset Stone Ground.png" id="1_nn86p"]
 [ext_resource type="Script" uid="uid://ce57yxbqkhsh7" path="res://Scripts/room.gd" id="1_uj218"]
 [ext_resource type="Texture2D" uid="uid://2h6l4ng3jay2" path="res://Textures/TileSetFurat/TX Tileset Wall.png" id="2_uj218"]
+[ext_resource type="Texture2D" uid="uid://h7ia0julsa0b" path="res://assets/button/button.png" id="4_a2si3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a2si3"]
 texture = ExtResource("1_nn86p")
@@ -422,6 +423,9 @@ sources/1 = SubResource("TileSetAtlasSource_aaq88")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uj218"]
 size = Vector2(1096, 606)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aaq88"]
+size = Vector2(39, 37)
+
 [node name="Room" type="Node2D"]
 script = ExtResource("1_uj218")
 
@@ -436,4 +440,21 @@ tile_set = SubResource("TileSet_7gm67")
 position = Vector2(3, 0)
 shape = SubResource("RectangleShape2D_uj218")
 
+[node name="Button" type="Node2D" parent="."]
+position = Vector2(331, 116)
+
+[node name="InteractingArea" type="Area2D" parent="Button"]
+position = Vector2(0, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Button/InteractingArea"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_aaq88")
+
+[node name="ButtonTexture" type="Sprite2D" parent="Button"]
+position = Vector2(3.05176e-05, 2.38419e-07)
+scale = Vector2(0.316667, 0.338785)
+texture = ExtResource("4_a2si3")
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Button/InteractingArea" to="." method="buttonPressedbyPlayer"]
+[connection signal="body_exited" from="Button/InteractingArea" to="." method="leftButtonPlayer"]

@@ -24,10 +24,13 @@ var current_room_coords = Vector2(0, 0)  # Starting room
 
 var minimap
 
+var currentRoomID = 1
+
 var matrix = generate_dungeon()
 var room_size = Vector2(1150, 650)
 var rooms = {}
 var doors = {}
+var roomsWithId = {}
 var paused = false
 var pause_menu 
 var camera = CameraScene.instantiate()
@@ -115,8 +118,8 @@ func _ready()	:
 	add_child(fireResistance)
 	
 #	print(doors)
-#	print(rooms)
-
+	print(rooms)
+	print(roomsWithId)
 	
 	
 
@@ -139,7 +142,8 @@ func instantiate_rooms():
 				var room = RoomScene.instantiate()
 				room.setRoomID(cell_value)
 				add_child(room)
-
+				
+				roomsWithId[cell_value] = room
 				#(y-2) * room_size.x , (2-x) * room_size.y
 				# Position the room based on its coordinates in the matrix
 				room.position = Vector2((y-2) * room_size.x , -(2-x) * room_size.y)
