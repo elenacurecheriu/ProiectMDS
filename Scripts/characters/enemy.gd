@@ -53,6 +53,9 @@ func _physics_process(delta: float) -> void:
 		position_stuck_timer = 0.0
 	
 	move_and_slide()
+	
+	# Check for player collision damage (most reliable method)
+	check_player_collision()
 
 func chase_player():
 	var to_player = player.global_position - global_position
@@ -193,20 +196,66 @@ func _on_detection_area_body_entered(body: Node2D) -> void:
 
 func _on_detection_area_body_exited(body: Node2D) -> void:
 	if body == player:
-		# Don't immediately stop chasing, add some buffer
-		await get_tree().create_timer(0.2).timeout
-		if player and global_position.distance_to(player.global_position) > chase_range:
-			player = null
-			player_chase = false
-			patrol_origin = global_position  # Resume patrol from current position
+		# Don't immediately stop chasing, add some buffer with null check
+		if get_tree():
+			await get_tree().create_timer(0.2).timeout
+			if player and is_instance_valid(player) and global_position.distance_to(player.global_position) > chase_range:
+				player = null
+				player_chase = false
+				patrol_origin = global_position  # Resume patrol from current position
 
 # Damage collision with cooldown
 var can_damage := true
 
 func _on_collision_body_entered(body: Node) -> void:
 	if body.is_in_group("player") and can_damage:
+		print("Enemy touching player - dealing damage!")  # Debug print
 		if body.has_method("take_damage"):
 			body.take_damage(10)
 		can_damage = false
-		await get_tree().create_timer(1.0).timeout
-		can_damage = true
+		# Use a safer timer approach
+		if get_tree():
+			await get_tree().create_timer(1.0).timeout
+			can_damage = true
+		else:
+			# Fallback if get_tree() is null
+			can_damage = true
+
+# Alternative damage detection using Area2D (more reliable for damage)
+func _on_damage_area_body_entered(body: Node2D) -> void:
+	if body.is_in_group("player") and can_damage:
+		print("Enemy damage area touching player!")  # Debug print
+		if body.has_method("take_damage"):
+			body.take_damage(10)
+		can_damage = false
+		# Use a safer timer approach
+		if get_tree():
+			await get_tree().create_timer(1.0).timeout
+			can_damage = true
+		else:
+			# Fallback if get_tree() is null
+			can_damage = true
+
+# Continuous damage check in physics process (most reliable)
+func check_player_collision():
+	if not can_damage:
+		return
+		
+	# Get all bodies colliding with this enemy
+	for i in get_slide_collision_count():
+		var collision = get_slide_collision(i)
+		var collider = collision.get_collider()
+		
+		if collider and collider.is_in_group("player"):
+			print("Physics collision with player - dealing damage!")  # Debug print
+			if collider.has_method("take_damage"):
+				collider.take_damage(10)
+			can_damage = false
+			# Use a safer timer approach
+			if get_tree():
+				await get_tree().create_timer(1.0).timeout
+				can_damage = true
+			else:
+				# Fallback if get_tree() is null
+				can_damage = true
+			break

@@ -12,10 +12,10 @@ var test2 = 0
 var max_health = 374
 var current_health = 100
 var health_bar 
+
 func _ready() -> void:
 	print("player.gd initialised")
 	current_health = max_health
-	
 	add_to_group("player")
 	
 func set_health_component(_health_bar):
