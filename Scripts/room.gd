@@ -31,7 +31,7 @@ func rotate_doors():
 					door.rotation_degrees = 0
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if test > 0:
+	if test > 1:
 		print("Entered room", roomID)
 		rotate_doors()
 		main.changeRoomOnMinimap(roomID)

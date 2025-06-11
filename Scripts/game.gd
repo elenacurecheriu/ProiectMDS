@@ -6,8 +6,9 @@ var CharacterScene = preload("res://assets/characters/debug_character.tscn")
 var SpikesScene = preload("res://Scenes/spikes.tscn")
 var PauseScene = preload("res://Menus/pause_menu.tscn")
 var CanvasLayerScene  = preload("res://Scenes/canvas_layer.tscn")
-#var MinimapScene = preload("res://Scenes/minimap.tscn")
 
+#var MinimapScene = preload("res://Scenes/minimap.tscn")
+ 
 #ITEMS:
 var FireResistanceScene = preload("res://Scenes/Interactions_items/fire_resistance.tscn")
 var MushroomScene = preload("res://Scenes/Interactions_items/mushroom.tscn")
@@ -51,8 +52,8 @@ func pause_menu_():
 		
 	paused = ! paused	
 	
-	
 func _ready()	:
+	
 	
 	add_child(canvasMinimap)
 	
@@ -61,9 +62,9 @@ func _ready()	:
 	
 	
 	camera.position = Vector2(0,0)
-	camera.zoom.x = 0.955
-	camera.zoom.y = 0.955
-	
+	camera.zoom.x = 1
+	camera.zoom.y = 1
+	camera.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS
 	#debug purposes
 	#camera.zoom.x = 0.7
 	#camera.zoom.y = 0.7
@@ -76,8 +77,9 @@ func _ready()	:
 	var player = CharacterScene.instantiate()
 	
 	player.set_health_component(gui.get_node("HealthBar"))
-	player.scale.x = 1.5
-	player.scale.y = 1.5
+	player.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
+	player.scale.x = 1.64
+	player.scale.y = 1.64
 	add_child(player)
 	player.position = Vector2 (0,0)
 	player.add_to_group("player")
@@ -89,13 +91,12 @@ func _ready()	:
 	camera.add_child(canvas)
 	canvas.add_child(pause_menu)
 	
-	
-	
 	pause_menu.set_script(load("res://Scripts/pause_menu.gd"))
 	
 	#Adaug hotbarul in GUI
 	var hotbar = preload("res://Scenes/Interactions_items/Hotbar.tscn").instantiate()
-	gui.add_child(hotbar)  
+	gui.add_child(hotbar) 
+	 
 	
 	
 	
@@ -113,12 +114,9 @@ func _ready()	:
 	var fireResistance = FireResistanceScene.instantiate()
 	fireResistance.position = Vector2(250, 150)
 	add_child(fireResistance)
-	
 #	print(doors)
 #	print(rooms)
 
-	
-	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

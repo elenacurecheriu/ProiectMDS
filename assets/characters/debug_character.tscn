@@ -1287,6 +1287,7 @@ animations = [{
 radius = 25.02
 
 [node name="Player" type="CharacterBody2D"]
+texture_filter = 1
 script = ExtResource("1_silhx")
 
 [node name="Collider" type="CollisionShape2D" parent="."]
@@ -1302,7 +1303,7 @@ texture_filter = 1
 position = Vector2(16, 28)
 scale = Vector2(0.503, 0.5)
 sprite_frames = SubResource("SpriteFrames_y7kcb")
-animation = &"run_back"
+animation = &"idle_front"
 autoplay = "idle_front"
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -1329,6 +1330,7 @@ position = Vector2(16, 25)
 shape = SubResource("CircleShape2D_gpudx")
 
 [node name="Interacting_component" parent="." instance=ExtResource("5_w0h7x")]
+texture_filter = 1
 position = Vector2(13, 24)
 
 [connection signal="area_entered" from="Interaction Nodes/InteractionArea" to="." method="_on_interaction_area_area_entered"]
