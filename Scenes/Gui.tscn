@@ -29,6 +29,7 @@ grow_vertical = 2
 
 [node name="Shader" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_slxwj")
+layout_mode = 0
 offset_left = -269.0
 offset_top = -128.0
 offset_right = 1557.0

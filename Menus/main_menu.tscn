@@ -217,104 +217,104 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 18.0
+"speed": 10.0
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uayf2"]
 atlas = ExtResource("9_uayf2")
-region = Rect2(594, 0, 54, 122)
+region = Rect2(0, 0, 54, 122)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_55uyf"]
 atlas = ExtResource("9_uayf2")
-region = Rect2(648, 0, 54, 122)
+region = Rect2(54, 0, 54, 122)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m40k1"]
 atlas = ExtResource("9_uayf2")
-region = Rect2(702, 0, 54, 122)
+region = Rect2(108, 0, 54, 122)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vjnny"]
 atlas = ExtResource("9_uayf2")
-region = Rect2(756, 0, 54, 122)
+region = Rect2(162, 0, 54, 122)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pjw51"]
 atlas = ExtResource("9_uayf2")
-region = Rect2(810, 0, 54, 122)
+region = Rect2(216, 0, 54, 122)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pmr7m"]
 atlas = ExtResource("9_uayf2")
-region = Rect2(864, 0, 54, 122)
+region = Rect2(270, 0, 54, 122)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k1een"]
 atlas = ExtResource("9_uayf2")
-region = Rect2(918, 0, 54, 122)
+region = Rect2(324, 0, 54, 122)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tbe3f"]
 atlas = ExtResource("9_uayf2")
-region = Rect2(972, 0, 54, 122)
+region = Rect2(378, 0, 54, 122)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5n8m7"]
 atlas = ExtResource("9_uayf2")
-region = Rect2(1026, 0, 54, 122)
+region = Rect2(432, 0, 54, 122)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yiy1p"]
 atlas = ExtResource("9_uayf2")
-region = Rect2(1080, 0, 54, 122)
+region = Rect2(486, 0, 54, 122)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kqcmj"]
 atlas = ExtResource("9_uayf2")
-region = Rect2(1134, 0, 54, 122)
+region = Rect2(540, 0, 54, 122)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cf3xn"]
 atlas = ExtResource("9_uayf2")
-region = Rect2(1188, 0, 54, 122)
+region = Rect2(594, 0, 54, 122)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nfm7k"]
 atlas = ExtResource("9_uayf2")
-region = Rect2(1242, 0, 54, 122)
+region = Rect2(648, 0, 54, 122)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8d72e"]
 atlas = ExtResource("9_uayf2")
-region = Rect2(540, 0, 54, 122)
+region = Rect2(702, 0, 54, 122)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rwius"]
 atlas = ExtResource("9_uayf2")
-region = Rect2(0, 0, 54, 122)
+region = Rect2(756, 0, 54, 122)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_abdjx"]
 atlas = ExtResource("9_uayf2")
-region = Rect2(54, 0, 54, 122)
+region = Rect2(810, 0, 54, 122)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ghsgv"]
 atlas = ExtResource("9_uayf2")
-region = Rect2(108, 0, 54, 122)
+region = Rect2(864, 0, 54, 122)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bhskc"]
 atlas = ExtResource("9_uayf2")
-region = Rect2(162, 0, 54, 122)
+region = Rect2(918, 0, 54, 122)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jk6bf"]
 atlas = ExtResource("9_uayf2")
-region = Rect2(216, 0, 54, 122)
+region = Rect2(972, 0, 54, 122)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a650w"]
 atlas = ExtResource("9_uayf2")
-region = Rect2(270, 0, 54, 122)
+region = Rect2(1026, 0, 54, 122)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5jwhw"]
 atlas = ExtResource("9_uayf2")
-region = Rect2(324, 0, 54, 122)
+region = Rect2(1080, 0, 54, 122)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ahdv4"]
 atlas = ExtResource("9_uayf2")
-region = Rect2(378, 0, 54, 122)
+region = Rect2(1134, 0, 54, 122)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e2ny6"]
 atlas = ExtResource("9_uayf2")
-region = Rect2(432, 0, 54, 122)
+region = Rect2(1188, 0, 54, 122)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ehuh1"]
 atlas = ExtResource("9_uayf2")
-region = Rect2(486, 0, 54, 122)
+region = Rect2(1242, 0, 54, 122)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_14p3a"]
 animations = [{
@@ -393,7 +393,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 18.0
+"speed": 10.0
 }]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vjnny"]
@@ -548,7 +548,7 @@ position = Vector2(206, 631)
 scale = Vector2(8.09549, 7.87935)
 sprite_frames = SubResource("SpriteFrames_m40k1")
 autoplay = "default"
-frame_progress = 0.43852
+frame_progress = 0.855585
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="AnimatedSprite2D"]
 texture_filter = 1
