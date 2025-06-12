@@ -2,7 +2,10 @@
 
 [ext_resource type="TileSet" uid="uid://be65eo2fvqoya" path="res://Scenes/resources/level.tres" id="1_7n8tl"]
 [ext_resource type="Texture2D" uid="uid://5am2g2u4e3ua" path="res://assets/shaders/particle2.png" id="1_hjghw"]
-[ext_resource type="PackedScene" uid="uid://c0gy6p2pmqu2s" path="res://assets/characters/debug_character.tscn" id="2_7n8tl"]
+
+[ext_resource type="PackedScene" uid="uid://c0gy6p2pmqu2s" path="res://Scenes/Attack/debug_character.tscn" id="2_7n8tl"]
+[ext_resource type="Shader" uid="uid://h4mfnmtdpf3h" path="res://assets/shaders/blending_modes.gdshader" id="4_v82ea"]
+
 [ext_resource type="Script" uid="uid://bxlhgsqranto8" path="res://Scripts/to_dungeon.gd" id="5_mm18o"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_7n8tl"]
