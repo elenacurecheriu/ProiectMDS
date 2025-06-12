@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://daxe2g70nc6rt"]
+
+[ext_resource type="Texture2D" uid="uid://bxdvy31xc1elc" path="res://Textures/Commands/Q-Key.png" id="1_7yj5p"]
+[ext_resource type="FontFile" uid="uid://bcdr71hm28v8m" path="res://Fonts/Pixel Game.otf" id="2_cq28w"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cq28w"]
+atlas = ExtResource("1_7yj5p")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5l6wg"]
+atlas = ExtResource("1_7yj5p")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uoxjl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cq28w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5l6wg")
+}],
+"loop": true,
+"name": &"press",
+"speed": 5.0
+}]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_uoxjl")
+animation = &"press"
+frame_progress = 0.372793
+
+[node name="Label" type="Label" parent="."]
+offset_left = -33.0
+offset_top = -42.0
+offset_right = 34.0
+offset_bottom = -16.0
+theme_override_fonts/font = ExtResource("2_cq28w")
+theme_override_font_sizes/font_size = 25
+text = "Attack"

@@ -1,0 +1,77 @@
+[gd_scene load_steps=9 format=3 uid="uid://cvby8wc516w8w"]
+
+[ext_resource type="PackedScene" uid="uid://1xh31yk5rusl" path="res://Scenes/minimap.tscn" id="1_jgtsv"]
+[ext_resource type="Shader" uid="uid://h4mfnmtdpf3h" path="res://assets/shaders/blending_modes.gdshader" id="1_rabkm"]
+[ext_resource type="Script" uid="uid://disasiiwjykw3" path="res://Scripts/aspect_ratio_container.gd" id="1_rvqur"]
+[ext_resource type="Texture2D" uid="uid://dx5oivptok1tg" path="res://Textures/healthbar/Outside.png" id="3_fhpok"]
+[ext_resource type="Texture2D" uid="uid://b4qdhmns4vdcx" path="res://Textures/healthbar/inside.png" id="4_rabkm"]
+[ext_resource type="Script" uid="uid://bg0i0kfe5ha7j" path="res://Scripts/health_bar.gd" id="5_slxwj"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_slxwj"]
+shader = ExtResource("1_rabkm")
+shader_parameter/tint = Color(0.533223, 0.277985, 0.264456, 1)
+shader_parameter/opacity = 1.0
+shader_parameter/blend_mode = 7
+
+[sub_resource type="LabelSettings" id="LabelSettings_fhpok"]
+font_size = 70
+outline_size = 20
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Gui" type="Control"]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Shader" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_slxwj")
+layout_mode = 0
+offset_left = -269.0
+offset_top = -128.0
+offset_right = 1557.0
+offset_bottom = 866.0
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
+custom_minimum_size = Vector2(1150, 650)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -1152.0
+offset_right = -2.0
+offset_bottom = 650.0
+grow_horizontal = 0
+stretch_mode = 3
+script = ExtResource("1_rvqur")
+
+[node name="Minimap" parent="AspectRatioContainer" instance=ExtResource("1_jgtsv")]
+position = Vector2(1025, 75)
+scale = Vector2(0.5, 0.5)
+
+[node name="HealthBar" type="TextureProgressBar" parent="."]
+layout_mode = 2
+offset_left = 24.0
+offset_top = 15.0
+offset_right = 541.0
+offset_bottom = 710.0
+scale = Vector2(0.15, 0.15)
+size_flags_horizontal = 0
+size_flags_vertical = 0
+fill_mode = 3
+texture_under = ExtResource("3_fhpok")
+texture_progress = ExtResource("4_rabkm")
+texture_progress_offset = Vector2(10, 10)
+script = ExtResource("5_slxwj")
+
+[node name="HealthLabel" type="Label" parent="HealthBar"]
+layout_mode = 0
+offset_left = 126.0
+offset_top = 366.0
+offset_right = 393.0
+offset_bottom = 462.0
+text = "100/100"
+label_settings = SubResource("LabelSettings_fhpok")

@@ -6,23 +6,33 @@ var CharacterScene = preload("res://assets/characters/debug_character.tscn")
 var SpikesScene = preload("res://Scenes/spikes.tscn")
 var PauseScene = preload("res://Menus/pause_menu.tscn")
 var CanvasLayerScene  = preload("res://Scenes/canvas_layer.tscn")
-var MinimapScene = preload("res://Scenes/minimap.tscn")
+
+#var MinimapScene = preload("res://Scenes/minimap.tscn")
+ 
+#ITEMS:
 var FireResistanceScene = preload("res://Scenes/Interactions_items/fire_resistance.tscn")
+var MushroomScene = preload("res://Scenes/Interactions_items/mushroom.tscn")
+var CakeScene = preload("res://Scenes/Interactions_items/cake.tscn")
+
+var GUIScene = preload("res://Scenes/Gui.tscn")
 #test
 var canvas = CanvasLayerScene.instantiate()
 var canvasMinimap = CanvasLayerScene.instantiate()
-
+var gui = GUIScene.instantiate()
 const M_SIZE = 5
 const MAX_CAMERE = 7
 var current_room_coords = Vector2(0, 0)  # Starting room
 
+var minimap
+
 var matrix = generate_dungeon()
 var room_size = Vector2(1150, 650)
 var rooms = {}
+var doors = {}
 var paused = false
 var pause_menu 
 var camera = CameraScene.instantiate()
-var minimap = MinimapScene.instantiate()
+#var minimap = MinimapScene.instantiate()
 func get_current_room_coords():
 	return current_room_coords
 	
@@ -42,8 +52,8 @@ func pause_menu_():
 		
 	paused = ! paused	
 	
-	
 func _ready()	:
+	
 	
 	add_child(canvasMinimap)
 	
@@ -54,17 +64,25 @@ func _ready()	:
 	camera.position = Vector2(0,0)
 	camera.zoom.x = 1
 	camera.zoom.y = 1
-	
+	camera.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS
 	#debug purposes
 	#camera.zoom.x = 0.7
 	#camera.zoom.y = 0.7
 	
 	
 	instantiate_rooms()
+	
+	canvas.add_child(gui)
+
 	var player = CharacterScene.instantiate()
+	
+	player.set_health_component(gui.get_node("HealthBar"))
+	player.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
+	player.scale.x = 1.64
+	player.scale.y = 1.64
 	add_child(player)
 	player.position = Vector2 (0,0)
-	#player.add_to_group("player")
+	player.add_to_group("player")
 	print("Added player in the tree")
 	add_doors()
 	
@@ -73,34 +91,32 @@ func _ready()	:
 	camera.add_child(canvas)
 	canvas.add_child(pause_menu)
 	
-	
-	
 	pause_menu.set_script(load("res://Scripts/pause_menu.gd"))
 	
-
+	#Adaug hotbarul in GUI
 	var hotbar = preload("res://Scenes/Interactions_items/Hotbar.tscn").instantiate()
-	#camera.add_child(canvas)
-	canvas.add_child(hotbar)
-	hotbar.z_index = 100
-
-
+	gui.add_child(hotbar) 
+	 
+	
+	
+	
+	#minimap.generateMinimap(matrix)
+	minimap = get_node("Camera2D/CanvasLayer/Gui/AspectRatioContainer/Minimap")
 	minimap.generateMinimap(matrix)
-	canvas.add_child(minimap)
-	minimap.scale = Vector2(0.5,0.5)
-	minimap.position += Vector2(1025,75)
+	#canvas.add_child(minimap)
+	#minimap.scale = Vector2(0.5,0.5)wa
+	#minimap.position += Vector2(1025,75)
 	
 
 	
 	#print_tree_pretty()
-	
+
 	var fireResistance = FireResistanceScene.instantiate()
 	fireResistance.position = Vector2(250, 150)
 	add_child(fireResistance)
-	
-	
-	
-	
-	
+#	print(doors)
+#	print(rooms)
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -134,9 +150,11 @@ func instantiate_rooms():
 				
 				# 1 -> starting_room
 				# 2 -> spike_room
+				# 3 -> item_room
 				# 7 -> boss_room
 				var centerx = (y-2) * room_size.x
 				var centery =  -(2-x) * room_size.y
+				
 				if cell_value == 2:
 					#TEST OF A SPIKE ROOM, NOT FINAL
 					# Center of the room: room.position = Vector2((y-2) * room_size.x , -(2-x) * room_size.y)
@@ -157,6 +175,48 @@ func instantiate_rooms():
 						offsetGrid.x = 0
 						offsetGrid += Vector2(0, 2 * spikesSize.y)
 					pass
+					
+				if cell_value == 3:
+					#!TEST! of an item room , where you can see and collect all the items that exist in the game
+					var room_size_inside = Vector2(1000, 500)
+					var random_position = Vector2(0,0)
+					var room_center = Vector2((y - 2) * room_size_inside.x, -(2 - x) * room_size_inside.y)
+
+					#MUSHROOM:
+					var mushroom = MushroomScene.instantiate()
+					
+					random_position = Vector2(
+						randf() * room_size_inside.x - room_size_inside.x / 2,
+						randf() * room_size_inside.y - room_size_inside.y / 2
+					)
+					mushroom.position = room_center + random_position
+					add_child(mushroom)
+					
+					#FIRE RESISTANCE
+					var fireResistance = FireResistanceScene.instantiate()
+					random_position = Vector2(
+						randf() * room_size_inside.x - room_size_inside.x / 2,
+						randf() * room_size_inside.y - room_size_inside.y / 2
+					)
+					fireResistance.position = room_center + random_position
+					add_child(fireResistance)
+					
+					#Cake
+					var cake = CakeScene.instantiate()
+					random_position = Vector2(
+						randf() * room_size_inside.x - room_size_inside.x / 2,
+						randf() * room_size_inside.y - room_size_inside.y / 2
+					)
+					cake.position = room_center + random_position
+					add_child(cake)
+					
+					
+					
+					
+					
+					
+					
+						
 					# If your Room has properties like is_starting_room, you can set them here
 	
 
@@ -180,19 +240,22 @@ func add_doors():
 				var cell_value_neighbour =  matrix[neighbor_pos.x][neighbor_pos.y]
 				if is_valid_position(neighbor_pos) and cell_value_neighbour > 0:
 					var door = DoorScene.instantiate()
-					door.setAdjacentRooms(str(cell_value_current) + " " + str(cell_value_neighbour))
-					
+					#door.setAdjacentRooms(str(cell_value_current) + " " + str(cell_value_neighbour))
+					door.name = "Door " + (str(cell_value_current) + " -> " + str(cell_value_neighbour))
+					doors[door] = [cell_value_current, cell_value_neighbour]
+					door.direction = dir
+					door.directionName = direction_names[i]
 					add_child(door)
-
-					var current_room_pos = Vector2((y-2) * room_size.x, -(2-x) * room_size.y)
-					var neighbor_room_pos = Vector2((neighbor_pos.y-2) * room_size.x, -(2-neighbor_pos.x) * room_size.y)
+					#in x si y sunt pozitiile din matrice, ex (2.0, 1.0)
+					var current_room_pos = Vector2(rooms[room_pos].position)
+					var neighbor_room_pos = Vector2(rooms[neighbor_pos].position)
 					var door_position = current_room_pos.lerp(neighbor_room_pos, 0.5)
 					door.position = door_position
 
-					if dir.x != 0:
-						door.rotation_degrees = 0
-					else:
-						door.rotation_degrees = 90
+					#if dir.x != 0:
+						#door.rotation_degrees = 0
+					#else:
+						#door.rotation_degrees = 90
 func changeRoomOnMinimap(_roomID):
 	minimap.changeRoom(_roomID)
 	

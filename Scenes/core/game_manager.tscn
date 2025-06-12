@@ -263,7 +263,6 @@ render_target_update_mode = 4
 texture_filter = 1
 
 [node name="Player" parent="Control/SubViewportContainer/SubViewport" instance=ExtResource("1_x6flg")]
-texture_filter = 1
 position = Vector2(336, 128)
 
 [node name="Shader" type="ColorRect" parent="Control/SubViewportContainer/SubViewport"]
