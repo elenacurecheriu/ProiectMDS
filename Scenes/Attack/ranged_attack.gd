@@ -4,7 +4,12 @@ extends Attack
 @export var bulletSpeed = 10.0
 @export var bulletDistance = 10.0
 
-func attack(directionX, directionY, startPosition: Vector2):
+@onready var timer: Timer = $Timer
+
+func attackLogic(directionX, directionY, startPosition: Vector2):
+	canAttack = false
+	
+	
 	var bullet = bulletScene.instantiate() as attackBullet
 	bullet.damage = attackDamage
 	bullet.speed = bulletSpeed
@@ -18,3 +23,7 @@ func attack(directionX, directionY, startPosition: Vector2):
 	bullet.startPosition = startPosition
 	
 	get_tree().current_scene.get_parent().add_child(bullet)
+	timer.start()
+
+func _on_timer_timeout() -> void:
+	canAttack = true

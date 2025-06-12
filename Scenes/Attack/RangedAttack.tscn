@@ -8,3 +8,8 @@ script = ExtResource("1_oexc2")
 bulletScene = ExtResource("2_d54q7")
 bulletSpeed = 300.0
 bulletDistance = 300.0
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
