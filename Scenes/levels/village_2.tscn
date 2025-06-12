@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://cwqocb6oje2v7"]
+
+[ext_resource type="PackedScene" uid="uid://bola2tlukuyh5" path="res://Scenes/levels/village.tscn" id="1_4r0el"]
+[ext_resource type="Texture2D" uid="uid://c6t8qi8o8pv3a" path="res://assets/character_art/original/mihai_af.png" id="2_w70xs"]
+[ext_resource type="Shader" uid="uid://h4mfnmtdpf3h" path="res://assets/shaders/blending_modes.gdshader" id="3_n8n8i"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6dfpp"]
+shader = ExtResource("3_n8n8i")
+shader_parameter/tint = Color(0.759444, 0.819082, 0.467292, 1)
+shader_parameter/opacity = 0.625
+shader_parameter/blend_mode = 9
+
+[node name="Village2" type="Node2D"]
+
+[node name="village" parent="." instance=ExtResource("1_4r0el")]
+position = Vector2(2726.29, 1609.18)
+
+[node name="mihai" type="Sprite2D" parent="village"]
+texture_filter = 1
+position = Vector2(1277, 916)
+scale = Vector2(0.379922, 0.379922)
+texture = ExtResource("2_w70xs")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_6dfpp")
+offset_left = -4.0
+offset_top = 60.0
+offset_right = 6924.0
+offset_bottom = 5619.0
