@@ -11,22 +11,34 @@ var test1 = 0
 var test2 = 0
 var max_health = 374
 var current_health = 100
+
 var health_bar 
+
+
+var attack_item: attackItem
+
 func _ready() -> void:
 	print("player.gd initialised")
 	current_health = max_health
 	
 	add_to_group("player")
+  attack_item  = defaultAttackItem.new()
+
 	
 func set_health_component(_health_bar):
 	self.health_bar = _health_bar
 	health_bar.set_max_health(max_health)
 	
+
+	
+
 func get_health_values():
 	print("get_health_values()")
 	return [current_health, max_health]
 
 var activeInteractions = []
+
+
 
 func get_input():
 	var input_direction = Input.get_vector("left", "right", "up", "down")
@@ -38,8 +50,10 @@ func _physics_process(delta):
 	update_animation()
 
 	if Input.is_action_just_pressed("Interact"):
-		
 		handleInteractions()
+		
+	if Input.is_action_just_pressed("attack"):
+		attack_item.attack(1,1)
 
 func take_damage(amount):
 	current_health -= amount
