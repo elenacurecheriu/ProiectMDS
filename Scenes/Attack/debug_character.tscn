@@ -1335,9 +1335,5 @@ shape = SubResource("CircleShape2D_gpudx")
 texture_filter = 1
 position = Vector2(13, 24)
 
-[node name="RangedAttack" parent="." instance=ExtResource("2_x45mt")]
-bulletSpeed = 700.0
-bulletDistance = 100.0
-
 [connection signal="area_entered" from="Interaction Nodes/InteractionArea" to="." method="_on_interaction_area_area_entered"]
 [connection signal="area_exited" from="Interaction Nodes/InteractionArea" to="." method="_on_interaction_area_area_exited"]

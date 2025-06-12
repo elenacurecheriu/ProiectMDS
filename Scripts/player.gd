@@ -15,13 +15,18 @@ var current_health = 100
 
 var health_bar
 
-@onready var attackComponent = $RangedAttack
+var attackComponent
 
 func _ready() -> void:
 	print("player.gd initialised")
 	current_health = max_health
 	
 	add_to_group("player")
+	
+	if attackScene:
+		attackComponent = attackScene.instantiate()
+		attackComponent
+		add_child(attackComponent)
 	
 func set_health_component(_health_bar):
 	self.health_bar = _health_bar
