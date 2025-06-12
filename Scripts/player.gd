@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 @export var speed = 350
+@export var attackScene: PackedScene
 
 @export var stats = {
 	"fire_resistance": 0,
@@ -12,18 +13,15 @@ var test2 = 0
 var max_health = 374
 var current_health = 100
 
-var health_bar 
+var health_bar
 
-
-var attack_item: attackItem
+@onready var attackComponent = $RangedAttack
 
 func _ready() -> void:
 	print("player.gd initialised")
 	current_health = max_health
 	
 	add_to_group("player")
-  attack_item  = defaultAttackItem.new()
-
 	
 func set_health_component(_health_bar):
 	self.health_bar = _health_bar
@@ -39,9 +37,14 @@ func get_health_values():
 var activeInteractions = []
 
 
-
+var lastDirection = Vector2.RIGHT
 func get_input():
 	var input_direction = Input.get_vector("left", "right", "up", "down")
+	
+	if input_direction != Vector2.ZERO:
+		lastDirection = input_direction.normalized()
+
+	
 	velocity = input_direction * speed
 
 func _physics_process(delta):
@@ -53,7 +56,8 @@ func _physics_process(delta):
 		handleInteractions()
 		
 	if Input.is_action_just_pressed("attack"):
-		attack_item.attack(1,1)
+		if attackComponent:
+			attackComponent.attack(lastDirection.x, lastDirection.y, self.global_position)
 
 func take_damage(amount):
 	current_health -= amount
