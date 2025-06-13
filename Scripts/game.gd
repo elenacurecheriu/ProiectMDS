@@ -211,10 +211,39 @@ func instantiate_rooms():
 					add_child(cake)
 					
 					
+				#if cell_value != 1 and cell_value != 2 and cell_value != 7:
+					#var num_enemies = randi() % 5 + 1  # spawn 1 to 5 enemies
+					#for i in range(num_enemies):
+						#var enemy = preload("res://Scenes/enemy.tscn").instantiate()
+						#var spawn_offset = Vector2(
+							#randf_range(-room_size.x * 0.3, room_size.x * 0.3),
+							#randf_range(-room_size.y * 0.3, room_size.y * 0.3)
+						#)
+						#var spawn_pos = Vector2(centerx, centery) + spawn_offset
+						#enemy.global_position = spawn_pos
+						#
+						#enemy.patrol_distance = randf_range(200, 400)
+						#enemy.speed = randf_range(100, 200)
+						#enemy.patrol_switch_time = randf_range(2.0, 5.0)  # Randomize switch timing
+						#
+						#add_child(enemy)
 					
-					
-					
-					
+				if cell_value != 1 and cell_value != 2 and cell_value != 7:
+					var num_enemies = randi() % 3 + 1  # spawn 1 to 3 enemies
+					for i in range(num_enemies):
+						var ranged_enemy = preload("res://Scenes/ranged_enemy.tscn").instantiate()
+						var spawn_offset = Vector2(
+							randf_range(-room_size.x * 0.3, room_size.x * 0.3),
+							randf_range(-room_size.y * 0.3, room_size.y * 0.3)
+						)
+						var spawn_pos = Vector2(centerx, centery) + spawn_offset
+						ranged_enemy.global_position = spawn_pos
+						
+						ranged_enemy.patrol_distance = randf_range(200, 400)
+						ranged_enemy.speed = randf_range(100, 200)
+						ranged_enemy.patrol_switch_time = randf_range(2.0, 5.0)  # Randomize switch timing
+						
+						add_child(ranged_enemy)
 					
 						
 					# If your Room has properties like is_starting_room, you can set them here
