@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=161 format=3 uid="uid://be65eo2fvqoya"]
+[gd_resource type="TileSet" load_steps=163 format=3 uid="uid://be65eo2fvqoya"]
 
 [ext_resource type="Texture2D" uid="uid://d0xmgiegl6e3j" path="res://assets/levels_art/Environment/Tilesets/TX Tileset Grass.png" id="1_1l0cm"]
 [ext_resource type="Texture2D" uid="uid://dd42ov0jhfvra" path="res://assets/levels_art/TILESET VILLAGE TOP DOWN.png" id="2_wjhj8"]
@@ -67,6 +67,7 @@
 [ext_resource type="Texture2D" uid="uid://b4bfgjtgvvw6g" path="res://assets/levels_art/Environment/seasonal sample (summer).png" id="63_0rymb"]
 [ext_resource type="Texture2D" uid="uid://cv7n0716gst2r" path="res://assets/levels_art/winter.png" id="64_k3ewl"]
 [ext_resource type="Texture2D" uid="uid://baa8bnu8nhunh" path="res://assets/levels_art/spritesheet.png" id="65_ijvtm"]
+[ext_resource type="Texture2D" uid="uid://cmdso2o4n3iry" path="res://assets/levels_art/Environment/mirror_frame.png" id="66_a6gex"]
 [ext_resource type="Texture2D" uid="uid://dheetfutslyga" path="res://assets/levels_art/Environment/Props/Static/TX costumGrass.png" id="66_hmsl2"]
 [ext_resource type="Texture2D" uid="uid://da5x8xyi4yj33" path="res://assets/levels_art/Environment/Structures/World of Solaria Marketplace Update 05 DEMO.png" id="66_tvl3w"]
 [ext_resource type="Texture2D" uid="uid://dmwhlk5nyaub8" path="res://assets/levels_art/Environment/Structures/Buildings/TopDownHouse_DoorsAndWindows.png" id="68_py4ah"]
@@ -16978,6 +16979,54 @@ texture = ExtResource("65_ijvtm")
 12:18/size_in_atlas = Vector2i(4, 1)
 12:18/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1gcj4"]
+texture = ExtResource("66_a6gex")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+8:0/0 = 0
+9:0/0 = 0
+10:0/0 = 0
+11:0/0 = 0
+12:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+8:1/0 = 0
+9:1/0 = 0
+10:1/0 = 0
+11:1/0 = 0
+12:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+8:2/0 = 0
+9:2/0 = 0
+10:2/0 = 0
+11:2/0 = 0
+12:2/0 = 0
+7:7/0 = 0
+7:8/0 = 0
+7:9/0 = 0
+8:7/0 = 0
+8:8/0 = 0
+8:9/0 = 0
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8rxd5"]
 texture = ExtResource("66_hmsl2")
 0:0/size_in_atlas = Vector2i(3, 2)
@@ -18826,3 +18875,4 @@ sources/82 = SubResource("TileSetAtlasSource_86sn2")
 sources/83 = SubResource("TileSetAtlasSource_g77nw")
 sources/86 = SubResource("TileSetAtlasSource_1tkoi")
 sources/88 = SubResource("TileSetAtlasSource_a6gex")
+sources/73 = SubResource("TileSetAtlasSource_1gcj4")
