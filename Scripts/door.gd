@@ -81,5 +81,10 @@ func move_camera_and_player():
 		
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.get_class() == "CharacterBody2D":
-		print("Debug character touched the " + adjacentRooms + " door!")
-		move_camera_and_player()
+		var _roomID = main.get_node("game").currentRoomID
+		var roomInstance = main.get_node("game").roomsWithId[_roomID]
+		var is_the_room_cleared = roomInstance.room_cleared
+		
+		if is_the_room_cleared:
+			print("Debug character touched the " + adjacentRooms + " door!")
+			move_camera_and_player()
