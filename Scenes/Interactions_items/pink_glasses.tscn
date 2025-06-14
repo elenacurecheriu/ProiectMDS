@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://bkwxl0wyx36xk"]
+
+[ext_resource type="Texture2D" uid="uid://bgteijhgcowth" path="res://Textures/Items/pink_glasses.png" id="1_1ypyi"]
+[ext_resource type="PackedScene" uid="uid://d0vep7tqd81ct" path="res://Scenes/Interactions_items/Interactable_items.tscn" id="2_3p3wo"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x4dys"]
+radius = 45.0111
+
+[node name="pink_glasses" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_1ypyi")
+
+[node name="Interactable" parent="." instance=ExtResource("2_3p3wo")]
+interact_name = "collect cake"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_x4dys")

@@ -17,6 +17,7 @@ collision_mask = 3
 shape = SubResource("CircleShape2D_o2miv")
 
 [node name="Label" type="Label" parent="Area2D"]
+visible = false
 z_index = 10
 anchors_preset = 8
 anchor_left = 0.5

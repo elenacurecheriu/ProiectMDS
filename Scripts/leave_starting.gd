@@ -12,9 +12,5 @@ func _process(delta: float) -> void:
 
 
 func _on_body_entered(body: Node2D) -> void:
-	if test == 0:
-		test+= 1
-	#imi pare rau mihai, dar merge
-	else: 
-		get_tree().change_scene_to_file("res://Scenes/levels/village.tscn")
-	pass # Replace with function body.
+	if body.is_in_group("player"):
+		get_tree().change_scene_to_file("res://Scenes/levels/village_1.tscn")

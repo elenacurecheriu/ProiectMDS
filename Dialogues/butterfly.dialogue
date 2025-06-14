@@ -1,0 +1,24 @@
+~ start
+Butterfly: ...
+- Uh, hy?
+- ...
+Butterfly: …OH! Hy! Didn’t see you there!...
+Butterfly: OH ITS YOU! I know who you are! You are the [color=red]knight[/color] in shining armour that was sent here to save us!
+- Save you? Save you from what?
+- Me? A knight? Save you?
+Butterfly: Yes yes! To save us from… something, I think. Sorry, I have a hard time remebering.
+- Why is everything gray?
+Butterfly: Why is,,, everything grey? What do you mean? I can only remember it being that way…
+Butterfly: I-I… You’re right. There was color here! I think I remember… green a-and some other villagers?
+~ colorful
+Butterfly: Maybe seeing something [color=#34c6eb]colorful[/color] could help jog my memory
+=> END
+
+~ has_flower
+Butterfly: Oh my! I remember now! The village was attacked a-and.. I’m not sure what happened after that. Are my friends ok?
+Butterfly: How could I forget everything like that? It’s almost like [color=red]I just didn’t want to remember…[/color] 
+Butterfly: Anyway! My friends are also here and I’m sure they all need your help, just like I did ! Please go help them!
+
+~ endloop
+Butterfly: Go be a hero, kid!
+=> END
