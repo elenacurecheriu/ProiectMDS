@@ -1,5 +1,4 @@
-
-[gd_scene load_steps=10 format=4 uid="uid://2eutn4vjrjmd"]
+[gd_scene load_steps=11 format=4 uid="uid://2eutn4vjrjmd"]
 
 [ext_resource type="Texture2D" uid="uid://bnmpyxsqgdarw" path="res://Textures/TileSetFurat/TX Tileset Stone Ground.png" id="1_nn86p"]
 [ext_resource type="Script" uid="uid://ce57yxbqkhsh7" path="res://Scripts/room.gd" id="1_uj218"]

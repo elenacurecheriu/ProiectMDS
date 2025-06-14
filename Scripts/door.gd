@@ -4,8 +4,12 @@ var direction = ""
 var adjacentRooms = ""
 var size_of_door = 100
 var directionName = ""
+
+var is_the_room_cleared = false
+
 func initialize(dir: String) -> void:
 	direction = dir
+	
 
 var dungeon_generators
 var camera
@@ -24,6 +28,13 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	var _roomID = main.get_node("game").currentRoomID
+	var roomInstance = main.get_node("game").roomsWithId[_roomID]
+	is_the_room_cleared = roomInstance.room_cleared
+	if is_the_room_cleared:
+		get_node("Door_texture").texture = load("res://assets/levels_art/Door_Opened.png")
+	else:
+		get_node("Door_texture").texture = load("res://assets/levels_art/Dungeon_Tiles_Door.png")
 	pass
 
 
@@ -81,10 +92,6 @@ func move_camera_and_player():
 		
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.get_class() == "CharacterBody2D":
-		var _roomID = main.get_node("game").currentRoomID
-		var roomInstance = main.get_node("game").roomsWithId[_roomID]
-		var is_the_room_cleared = roomInstance.room_cleared
-		
 		if is_the_room_cleared:
 			print("Debug character touched the " + adjacentRooms + " door!")
 			move_camera_and_player()
