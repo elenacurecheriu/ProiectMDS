@@ -3,12 +3,12 @@ extends Attack
 @export var bulletScene: PackedScene
 @export var bulletSpeed = 10.0
 @export var bulletDistance = 10.0
+@export var bulletSpawnOffset = 50.0  # Distance from player to spawn bullet
 
 @onready var timer: Timer = $Timer
 
 func attackLogic(directionX, directionY, startPosition: Vector2):
 	canAttack = false
-	
 	
 	var bullet = bulletScene.instantiate() as attackBullet
 	bullet.damage = attackDamage
@@ -17,12 +17,17 @@ func attackLogic(directionX, directionY, startPosition: Vector2):
 	bullet.directionX = directionX
 	bullet.directionY = directionY
 	
-	bullet.global_position.x = startPosition.x
-	bullet.global_position.y = startPosition.y
+	# Set the shooter reference to the player (parent of this attack component)
+	bullet.shooter = get_parent()
 	
-	bullet.startPosition = startPosition
+	# Calculate spawn position offset from player
+	var direction = Vector2(directionX, directionY).normalized()
+	var spawn_position = startPosition + (direction * bulletSpawnOffset)
 	
-	get_tree().current_scene.get_parent().add_child(bullet)
+	bullet.global_position = spawn_position
+	bullet.startPosition = spawn_position
+	
+	get_tree().current_scene.add_child(bullet)
 	timer.start()
 
 func _on_timer_timeout() -> void:
