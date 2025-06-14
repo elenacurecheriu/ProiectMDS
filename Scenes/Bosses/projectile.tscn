@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://7x0b3spiyidl"]
+
+[ext_resource type="Texture2D" uid="uid://u46bwbaejqgv" path="res://Textures/Items/fire_resistance.PNG" id="1_6qqv1"]
+[ext_resource type="Script" uid="uid://b74k7qo3c3wfs" path="res://Scripts/Bosses/projectile.gd" id="1_dhaa2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dhaa2"]
+radius = 16.0312
+
+[node name="Projectile" type="Area2D"]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_dhaa2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_dhaa2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1, -6)
+scale = Vector2(2.32895, 2.32895)
+texture = ExtResource("1_6qqv1")

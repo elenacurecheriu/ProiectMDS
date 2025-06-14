@@ -9,6 +9,10 @@ var CanvasLayerScene  = preload("res://Scenes/canvas_layer.tscn")
 
 #var MinimapScene = preload("res://Scenes/minimap.tscn")
  
+#Bosses:
+var bossScene = preload("res://Scenes/Bosses/boss.tscn")
+
+
 #ITEMS:
 var FireResistanceScene = preload("res://Scenes/Interactions_items/fire_resistance.tscn")
 var MushroomScene = preload("res://Scenes/Interactions_items/mushroom.tscn")
@@ -210,7 +214,12 @@ func instantiate_rooms():
 					)
 					cake.position = room_center + random_position
 					add_child(cake)
-					
+				if cell_value  == 7:
+						var boss = bossScene.instantiate()
+						boss.position =  Vector2((y-2) * room_size.x + 200 , -(2-x) * room_size.y)
+						add_child(boss)
+						
+	
 					
 					
 					

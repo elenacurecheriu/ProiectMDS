@@ -1,0 +1,52 @@
+[gd_scene load_steps=5 format=3 uid="uid://bwfmodmvuwen"]
+
+[ext_resource type="Script" uid="uid://djmg4usaefsbc" path="res://Scripts/Bosses/boss.gd" id="1_1j1mm"]
+[ext_resource type="Texture2D" uid="uid://c2pmahrfprbtt" path="res://assets/character_art/original/rob1.png" id="2_kiru6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kiru6"]
+radius = 441.113
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rkmjy"]
+radius = 43.1045
+
+[node name="Boss" type="CharacterBody2D"]
+z_index = 4
+collision_layer = 2
+collision_mask = 3
+motion_mode = 1
+wall_min_slide_angle = 0.0
+script = ExtResource("1_1j1mm")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0.749999, -0.73153)
+scale = Vector2(0.0894128, 0.0894128)
+texture = ExtResource("2_kiru6")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="Attack" type="Node2D" parent="."]
+light_mask = 2
+visibility_layer = 2
+
+[node name="follow" type="Area2D" parent="Attack"]
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Attack/follow"]
+shape = SubResource("CircleShape2D_kiru6")
+
+[node name="AttackTimer" type="Timer" parent="."]
+wait_time = 1.731
+
+[node name="CollisionRayCast" type="RayCast2D" parent="."]
+position = Vector2(16, 24)
+target_position = Vector2(0, 40)
+collide_with_areas = true
+
+[node name="Collider" type="CollisionShape2D" parent="."]
+light_mask = 3
+visibility_layer = 3
+position = Vector2(1, 12)
+shape = SubResource("CircleShape2D_rkmjy")
+
+[connection signal="area_entered" from="Attack/follow" to="." method="_on_follow_area_entered"]
+[connection signal="area_exited" from="Attack/follow" to="." method="_on_follow_area_exited"]
