@@ -1,10 +1,9 @@
-[gd_scene load_steps=16 format=4 uid="uid://bola2tlukuyh5"]
+[gd_scene load_steps=14 format=4 uid="uid://bola2tlukuyh5"]
 
 [ext_resource type="TileSet" uid="uid://be65eo2fvqoya" path="res://Scenes/resources/level.tres" id="1_7n8tl"]
 [ext_resource type="Texture2D" uid="uid://5am2g2u4e3ua" path="res://assets/shaders/particle2.png" id="1_hjghw"]
 [ext_resource type="PackedScene" uid="uid://c0gy6p2pmqu2s" path="res://Scenes/Attack/debug_character.tscn" id="2_7n8tl"]
 [ext_resource type="Script" uid="uid://bwpgb11u05828" path="res://Scripts/transition/to_panda_house.gd" id="5_fmbfy"]
-[ext_resource type="Script" uid="uid://bxlhgsqranto8" path="res://Scripts/to_dungeon.gd" id="5_mm18o"]
 [ext_resource type="Script" uid="uid://eybq05frmtaw" path="res://Scripts/transition/to_cat_house.gd" id="6_fmbfy"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_7n8tl"]
@@ -34,9 +33,6 @@ damping_max = 10.843
 scale_min = 0.1
 color_ramp = SubResource("GradientTexture1D_7cwcg")
 alpha_curve = SubResource("CurveTexture_fmbfy")
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fmbfy"]
-size = Vector2(36.5, 23.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rjess"]
 size = Vector2(32.5, 28)
@@ -133,13 +129,6 @@ tile_set = ExtResource("1_7n8tl")
 position = Vector2(1036.99, 169.344)
 attackScene = null
 
-[node name="to_dungeon" type="Area2D" parent="."]
-script = ExtResource("5_mm18o")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="to_dungeon"]
-position = Vector2(1019, -31)
-shape = SubResource("RectangleShape2D_fmbfy")
-
 [node name="to_panda_house" type="Area2D" parent="."]
 script = ExtResource("5_fmbfy")
 
@@ -155,5 +144,4 @@ script = ExtResource("6_fmbfy")
 position = Vector2(3376, 1544)
 shape = SubResource("RectangleShape2D_7cwcg")
 
-[connection signal="body_entered" from="to_dungeon" to="to_dungeon" method="_on_body_entered"]
 [connection signal="body_entered" from="to_panda_house" to="to_panda_house" method="_on_body_entered"]
