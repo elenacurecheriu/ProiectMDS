@@ -41,7 +41,6 @@ signal finished_typing()
 
 var _already_mutated_indices: PackedInt32Array = []
 
-
 ## The current line of dialogue.
 var dialogue_line:
 	set(next_dialogue_line):

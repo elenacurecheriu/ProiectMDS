@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://inui4hjfcmgt"]
+[gd_scene load_steps=10 format=3 uid="uid://u4fy5c18ckfs"]
 
-[ext_resource type="Script" uid="uid://d1wt4ma6055l8" path="res://addons/dialogue_manager/example_balloon/example_balloon.gd" id="1_36de5"]
+[ext_resource type="Script" uid="uid://701abe5l06eg" path="res://addons/dialogue_manager/balloon.gd" id="1_36de5"]
+[ext_resource type="Script" uid="uid://cel5qwqfep4lm" path="res://addons/dialogue_manager/balloonwithwavy.gd" id="2_6twis"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="2_a8ve6"]
 [ext_resource type="Script" uid="uid://bb52rsfwhkxbn" path="res://addons/dialogue_manager/dialogue_responses_menu.gd" id="3_72ixx"]
 
@@ -76,6 +77,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_qq3yp")
+script = ExtResource("2_6twis")
 
 [node name="MarginContainer" type="MarginContainer" parent="Balloon"]
 layout_mode = 1
