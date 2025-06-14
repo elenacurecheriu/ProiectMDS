@@ -315,11 +315,11 @@ func take_damage(damage: int):
 
 func die():
 	print("Enemy died!")
-	sprite.play("die")
-	# Optional: Add death effects here
-	# - Play death sound
-	# - Spawn particles
-	# - Drop items
-	# - Give player experience/score
-	
+	var room_id = get_meta("room_id", -1)
+	if room_id != -1:
+		var game_nodes = get_tree().get_nodes_in_group("dungeon_generator")
+		if game_nodes.size() > 0:
+			var game = game_nodes[0]
+			game.enemy_counts[room_id] -= 1
+			print("Room ", room_id, " enemies remaining: ", game.enemy_counts[room_id])
 	queue_free()

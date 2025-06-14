@@ -341,11 +341,19 @@ func take_damage(damage: int):
 		die()
 
 func die():
-	print("Ranged enemy died!")
-	# Optional: Add death effects here
-	# - Play death sound
-	# - Spawn particles
-	# - Drop items
-	# - Give player experience/score
+	print("Enemy died!")
+	
+	# Get the room ID stored when the enemy was created
+	var room_id = get_meta("room_id", -1)
+	if room_id != -1:
+		# Get reference to the game node (which is in dungeon_generator group)
+		var game_nodes = get_tree().get_nodes_in_group("dungeon_generator")
+		if game_nodes.size() > 0:
+			var game = game_nodes[0]
+			game.enemy_counts[room_id] -= 1
+			print("Room ", room_id, " enemies remaining: ", game.enemy_counts[room_id])
+			if room_id == game.current_room_id and game.enemy_counts[room_id] == 0:
+				print("Current room cleared!")
+
 	
 	queue_free()
