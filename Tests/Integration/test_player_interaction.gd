@@ -2,7 +2,7 @@ extends GutTest
 
 var player
 var interactable
-var PlayerScene = preload("res://assets/characters/debug_character.tscn")
+var PlayerScene = preload("res://Scenes/Attack/debug_character.tscn")
 var InteractableScene = preload("res://Scenes/Interactions_items/Interactable_items.tscn")
 
 func before_each():
