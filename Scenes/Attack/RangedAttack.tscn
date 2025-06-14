@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bti5kipslql7k"]
+
+[ext_resource type="Script" uid="uid://cifnlaqjmgp1m" path="res://Scenes/Attack/ranged_attack.gd" id="1_oexc2"]
+[ext_resource type="PackedScene" uid="uid://bjpr7fxumnklw" path="res://assets/attack_bullets/basic_bullet.tscn" id="2_d54q7"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_oexc2")
+bulletScene = ExtResource("2_d54q7")
+bulletSpeed = 300.0
+bulletDistance = 300.0
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

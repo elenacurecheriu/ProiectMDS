@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://1xh31yk5rusl" path="res://Scenes/minimap.tscn" id="8_xgouh"]
 [ext_resource type="PackedScene" uid="uid://2eutn4vjrjmd" path="res://Scenes/Room.tscn" id="9_ti70q"]
 [ext_resource type="PackedScene" uid="uid://ksns2k3rn0r5" path="res://Scenes/spikes.tscn" id="10_yjtak"]
-[ext_resource type="PackedScene" uid="uid://c0gy6p2pmqu2s" path="res://assets/characters/debug_character.tscn" id="11_0phpg"]
+[ext_resource type="PackedScene" uid="uid://c0gy6p2pmqu2s" path="res://Scenes/Attack/debug_character.tscn" id="11_0phpg"]
 [ext_resource type="PackedScene" uid="uid://decpvnv7obori" path="res://Scenes/door.tscn" id="12_pvfij"]
 [ext_resource type="PackedScene" uid="uid://dm6b887qcgwbm" path="res://Scenes/Interactions_items/fire_resistance.tscn" id="13_th2u7"]
 

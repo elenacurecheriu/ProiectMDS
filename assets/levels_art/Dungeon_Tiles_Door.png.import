@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dptpgtct2vnoh"
-path="res://.godot/imported/spritesheet.png-44839cd804c0ee68f733c26926ef3eec.ctex"
+uid="uid://cxckd7l4ebdrf"
+path="res://.godot/imported/Dungeon_Tiles_Door.png-f71339b8a24af23c43f4449c13e3bb6e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/levels/spritesheet.png"
-dest_files=["res://.godot/imported/spritesheet.png-44839cd804c0ee68f733c26926ef3eec.ctex"]
+source_file="res://assets/levels_art/Dungeon_Tiles_Door.png"
+dest_files=["res://.godot/imported/Dungeon_Tiles_Door.png-f71339b8a24af23c43f4449c13e3bb6e.ctex"]
 
 [params]
 

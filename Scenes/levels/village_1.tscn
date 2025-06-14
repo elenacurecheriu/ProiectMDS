@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://sg2uu2h7fytj"]
+[gd_scene load_steps=7 format=4 uid="uid://d35xp0t0u6bqi"]
 
-[ext_resource type="PackedScene" uid="uid://bm4fna0qhb4la" path="res://Scenes/levels/start_place.tscn" id="1_lv3y2"]
-[ext_resource type="PackedScene" uid="uid://c0gy6p2pmqu2s" path="res://Scenes/Attack/debug_character.tscn" id="1_x6flg"]
+[ext_resource type="Script" uid="uid://icqgjk73cgh8" path="res://Scenes/levels/village_1.gd" id="1_8el8h"]
+[ext_resource type="PackedScene" uid="uid://bola2tlukuyh5" path="res://Scenes/levels/village.tscn" id="1_41i5b"]
+[ext_resource type="Texture2D" uid="uid://dw7mfqs5aic7i" path="res://assets/character_art/original/mihai_bf.png" id="2_coa6n"]
+[ext_resource type="TileSet" uid="uid://be65eo2fvqoya" path="res://Scenes/resources/level.tres" id="3_coa6n"]
 
-[sub_resource type="Shader" id="Shader_whtuq"]
+[sub_resource type="Shader" id="Shader_hamny"]
 code = "shader_type canvas_item;
 // BLENDING MODES
 vec3 multiply(vec3 base, vec3 blend) {
@@ -224,53 +226,29 @@ void fragment() {
     COLOR = vec4(result, screen_color.a * tint.a);
 }"
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_x6flg"]
-shader = SubResource("Shader_whtuq")
-shader_parameter/tint = Color(0.394205, 0.0320596, 0, 1)
-shader_parameter/opacity = 0.244
-shader_parameter/blend_mode = 8
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hamny"]
+shader = SubResource("Shader_hamny")
+shader_parameter/tint = Color(1, 1, 1, 1)
+shader_parameter/opacity = 1.0
+shader_parameter/blend_mode = 19
 
-[node name="GameManager" type="Node"]
+[node name="Village1" type="Node2D"]
+script = ExtResource("1_8el8h")
 
-[node name="Control" type="Control" parent="."]
+[node name="village" parent="." instance=ExtResource("1_41i5b")]
+position = Vector2(1416.93, 478.908)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+position = Vector2(2698, 1397)
+scale = Vector2(0.379922, 0.379922)
+texture = ExtResource("2_coa6n")
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="Control"]
-texture_filter = 1
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-stretch = true
+[node name="collision barrier" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AABeAFgAAgADABAAAABfAFgAAgADABAAAABfAFkAAgADABAAAABfAFoAAgADABAAAABfAFsAAgADABAAAABgAFsAAgADABAAAABhAFsAAgADABAAAABiAFsAAgADABAAAABiAFwAAgADABAAAABiAF0AAgADABAAAABjAF0AAgADABAAAABjAF4AAgADABAAAABkAF4AAgADABAAAABlAF4AAgADABAAAABmAF4AAgADABAAAABnAF4AAgADABAAAABoAF4AAgADABAAAABpAF4AAgADABAAAABqAF8AAgADABAAAABrAGAAAgADABAAAABsAGAAAgADABAAAABtAGAAAgADABAAAABuAGAAAgADABAAAABvAGAAAgADABAAAABwAGEAAgADABAAAABxAGIAAgADABAAAAByAGMAAgADABAAAABzAGQAAgADABAAAAB0AGQAAgADABAAAAB1AGMAAgADABAAAAB2AGMAAgADABAAAAB3AGMAAgADABAAAAB4AGMAAgADABAAAAB5AGMAAgADABAAAAB6AGMAAgADABAAAAB6AGQAAgADABAAAAB7AGQAAgADABAAAAB7AGUAAgADABAAAAB8AGQAAgADABAAAAB9AGQAAgADABAAAAB+AGQAAgADABAAAAB/AGQAAgADABAAAACAAGUAAgADABAAAACAAGYAAgADABAAAACBAGYAAgADABAAAACCAGYAAgADABAAAACDAGYAAgADABAAAACDAGUAAgADABAAAACEAGUAAgADABAAAACFAGUAAgADABAAAACGAGUAAgADABAAAACGAGYAAgADABAAAACHAGYAAgADABAAAACHAGcAAgADABAAAACIAGcAAgADABAAAACJAGgAAgADABAAAACKAGgAAgADABAAAACKAGcAAgADABAAAACLAGcAAgADABAAAACLAGYAAgADABAAAACMAGYAAgADABAAAACNAGcAAgADABAAAACOAGcAAgADABAAAACPAGgAAgADABAAAACQAGgAAgADABAAAACRAGgAAgADABAAAACSAGgAAgADABAAAACSAGcAAgADABAAAACTAGcAAgADABAAAACUAGcAAgADABAAAACVAGcAAgADABAAAACWAGcAAgADABAAAACXAGcAAgADABAAAACYAGcAAgADABAAAACZAGcAAgADABAAAACaAGYAAgADABAAAACbAGYAAgADABAAAACcAGYAAgADABAAAACcAGcAAgADABAAAACdAGcAAgADABAAAACdAGgAAgADABAAAACeAGgAAgADABAAAACeAGcAAgADABAAAACfAGcAAgADABAAAACgAGYAAgADABAAAAChAGYAAgADABAAAACiAGYAAgADABAAAACjAGYAAgADABAAAACkAGYAAgADABAAAAClAGYAAgADABAAAACmAGYAAgADABAAAACnAGYAAgADABAAAACoAGYAAgADABAAAACpAGYAAgADABAAAACqAGYAAgADABAAAACrAGYAAgADABAAAACsAGYAAgADABAAAACtAGYAAgADABAAAACuAGYAAgADABAAAACvAGUAAgADABAAAACwAGUAAgADABAAAACxAGQAAgADABAAAACyAGQAAgADABAAAACzAGQAAgADABAAAAC0AGQAAgADABAAAAC0AGMAAgADABAAAAC1AGMAAgADABAAAAC2AGMAAgADABAAAAC3AGMAAgADABAAAAC4AGMAAgADABAAAAC5AGIAAgADABAAAAC6AGIAAgADABAAAAC7AGEAAgADABAAAAC8AGIAAgADABAAAAC9AGMAAgADABAAAAC+AGMAAgADABAAAAC+AGIAAgADABAAAAC+AGEAAgADABAAAAC+AGAAAgADABAAAAC+AF8AAgADABAAAAC/AF8AAgADABAAAAC/AGAAAgADABAAAADAAGAAAgADABAAAADBAGAAAgADABAAAADCAGAAAgADABAAAADCAF8AAgADABAAAADDAF8AAgADABAAAADEAF8AAgADABAAAADFAF8AAgADABAAAADFAF4AAgADABAAAADFAF0AAgADABAAAADGAF0AAgADABAAAADGAFwAAgADABAAAADHAFsAAgADABAAAADIAFwAAgADABAAAADJAFwAAgADABAAAADKAFwAAgADABAAAAA=")
+tile_set = ExtResource("3_coa6n")
 
-[node name="SubViewport" type="SubViewport" parent="Control/SubViewportContainer"]
-handle_input_locally = false
-canvas_item_default_texture_filter = 0
-size = Vector2i(1152, 648)
-size_2d_override = Vector2i(1152, 648)
-size_2d_override_stretch = true
-render_target_update_mode = 4
-
-[node name="start_place" parent="Control/SubViewportContainer/SubViewport" instance=ExtResource("1_lv3y2")]
-texture_filter = 1
-
-[node name="Player" parent="Control/SubViewportContainer/SubViewport" instance=ExtResource("1_x6flg")]
-position = Vector2(336, 128)
-
-[node name="Shader" type="ColorRect" parent="Control/SubViewportContainer/SubViewport"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_x6flg")
-clip_contents = true
-offset_right = 688.0
-offset_bottom = 768.0
-color = Color(0, 0, 0, 1)
-
-[node name="Bullets" type="Node" parent="."]
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_hamny")
+offset_right = 5379.0
+offset_bottom = 2520.0
