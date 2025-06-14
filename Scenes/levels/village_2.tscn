@@ -261,11 +261,6 @@ shader_parameter/blend_mode = 0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6dfpp"]
 shader = ExtResource("3_n8n8i")
-
-shader_parameter/tint = Color(0.759444, 0.819082, 0.467292, 1)
-shader_parameter/opacity = 0.625
-shader_parameter/blend_mode = 9
-
 shader_parameter/tint = Color(0.871101, 0.41623, 3.85046e-07, 1)
 shader_parameter/opacity = 0.2
 shader_parameter/blend_mode = 5
@@ -277,7 +272,6 @@ size = Vector2(35.25, 44)
 size = Vector2(807.07, 597.112)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v8fny"]
-
 size = Vector2(41, 65)
 
 [node name="Village2" type="Node2D"]
@@ -329,9 +323,7 @@ shape = SubResource("RectangleShape2D_alql6")
 position = Vector2(-2726.29, -1609.18)
 tile_map_data = PackedByteArray("AAD6AJwAAgADABAAAAD6AJ0AAgADABAAAAD5AJ0AAgADABAAAAAAAdsAAgADABAAAAAAAdwAAgADABAAAAABAdsAAgADABAAAAABAdwAAgADABAAAAAAAdoAAgADABAAAAABAdoAAgADABAAAAD+ANsAAgADABAAAAD+ANwAAgADABAAAAD/ANsAAgADABAAAAD/ANwAAgADABAAAABpAQcBAgADABAAAABpAQgBAgADABAAAABpAQkBAgADABAAAABqAQcBAgADABAAAABqAQgBAgADABAAAABqAQkBAgADABAAAAA=")
 tile_set = ExtResource("3_6dfpp")
-
 metadata/_edit_lock_ = true
-
 
 [node name="ColorRect" type="ColorRect" parent="."]
 visible = false
@@ -358,12 +350,6 @@ color = Color(0, 0, 0, 1)
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 material = SubResource("ShaderMaterial_6dfpp")
-
-offset_left = -4.0
-offset_top = 60.0
-offset_right = 6924.0
-offset_bottom = 5619.0
-
 position = Vector2(-2732, -1605)
 polygon = PackedVector2Array(5931, 3795, 5873, 3802, 5857, 3812, 5673, 3816, 5667, 3833, 5561, 3830, 5547, 3847, 5544, 3863, 5462, 3865, 5458, 3868, 5429, 3883, 5367, 3915, 5306, 3976, 5287, 3991, 5287, 4052, 5272, 4052, 5255, 4082, 5238, 4088, 5238, 4114, 5224, 4124, 5194, 4143, 5193, 4196, 5176, 4199, 5157, 4233, 5141, 4245, 5157, 4279, 5152, 4308, 5132, 4330, 5126, 4349, 5161, 4381, 5182, 4381, 5188, 4406, 5175, 4424, 5189, 4465, 5207, 4504, 5219, 4508, 5267, 4553, 5295, 4580, 5287, 4604, 5479, 4615, 5490, 4603, 5591, 4601, 5595, 4578, 5640, 4576, 5643, 4548, 5700, 4544, 5705, 4526, 5765, 4535, 5900, 4410, 5931, 4405, 6005, 4324, 6014, 4283, 6029, 4262, 6029, 4118, 6046, 4107, 6043, 3958, 6026, 3955, 6025, 3876, 6010, 3874, 6006, 3834, 5991, 3826, 5991, 3800, 5981, 3803, 5971, 3775, 5950, 3780)
 metadata/_edit_lock_ = true
@@ -394,9 +380,7 @@ shape = SubResource("RectangleShape2D_q54q3")
 script = ExtResource("16_q54q3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="to_cat_house"]
-
 position = Vector2(3376, 1544)
-
 shape = SubResource("RectangleShape2D_v8fny")
 
 [node name="Control" type="Control" parent="to_cat_house"]
@@ -420,6 +404,4 @@ offset_bottom = 1548.59
 [connection signal="blackscreen" from="Gate/GateArea" to="." method="_on_gate_area_blackscreen"]
 [connection signal="body_entered" from="Gate/GateArea" to="Gate/GateArea" method="_on_body_entered"]
 [connection signal="body_exited" from="Gate/GateArea" to="Gate/GateArea" method="_on_body_exited"]
-
 [connection signal="body_entered" from="to_cat_house" to="to_cat_house" method="_on_body_entered"]
-

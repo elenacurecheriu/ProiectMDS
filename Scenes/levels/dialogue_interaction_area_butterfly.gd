@@ -44,7 +44,7 @@ func gave_the_flower():
 func _on_body_entered(body: Node2D) -> void:
 	if name == "DialogueInteractionArea":
 		if body.is_in_group("player"):
-
+			
 			player = body
 			in_interaction_area = true
 			
@@ -53,6 +53,7 @@ func _on_dialogue_ended(resource):
 	dialogue_started = false
 	if not finished_first_part:
 		finished_first_part = true
+		get_node("../../../blue_flower").visible = true
 	if has_flower:
 		get_tree().change_scene_to_file("res://Scenes/levels/village_2.tscn")
 

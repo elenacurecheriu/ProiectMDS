@@ -2,7 +2,7 @@
 
 [ext_resource type="TileSet" uid="uid://be65eo2fvqoya" path="res://Scenes/resources/level.tres" id="1_whtuq"]
 [ext_resource type="Script" uid="uid://d1ljk0ubvw0o0" path="res://Scripts/leave_starting.gd" id="2_ktyw1"]
-[ext_resource type="Script" path="res://Scenes/levels/wasd.gd" id="3_jdjbs"]
+[ext_resource type="Script" uid="uid://cjjsnpxwvtu1e" path="res://Scenes/levels/wasd.gd" id="3_jdjbs"]
 [ext_resource type="Script" uid="uid://blfg3r65qmqyf" path="res://Scripts/Tutorial/attack_command.gd" id="4_jgoxy"]
 [ext_resource type="Script" uid="uid://cg6om5803g3hu" path="res://Scripts/Tutorial/collect_command.gd" id="5_mrevx"]
 

@@ -31,7 +31,7 @@ func _find_player(node):
 func _on_interact():
 
 	get_node("../village/butterfly/DialogueInteractionArea").has_flower = true
-
+	
 	var player_node = get_tree().get_first_node_in_group("player")
 	var player = _find_player(player_node)
 		
