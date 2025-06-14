@@ -5,7 +5,7 @@ func _ready() -> void:
 
 	
 	
-	get_node("Player").position = Vector2(2818.191,2486.201)#debug purposese!!!!!!!!!!
+	get_node("Player").position = Vector2(7825.029,1508.59)#debug purposese!!!!!!!!!!
 	
 	
 	

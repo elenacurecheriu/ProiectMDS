@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://cwqocb6oje2v7"]
+[gd_scene load_steps=27 format=4 uid="uid://cwqocb6oje2v7"]
 
 [ext_resource type="PackedScene" uid="uid://bola2tlukuyh5" path="res://Scenes/levels/village.tscn" id="1_4r0el"]
 [ext_resource type="Script" uid="uid://cjjfdahefvq6f" path="res://Scenes/levels/village_2.gd" id="1_upf00"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://d1gruhw3i0i43" path="res://Scenes/levels/panda_house.tscn" id="11_xwnoy"]
 [ext_resource type="Texture2D" uid="uid://degftoy1p1q0l" path="res://assets/levels_art/gateclosed.png" id="14_r8bvs"]
 [ext_resource type="Script" uid="uid://b18tmd8172olm" path="res://Scenes/levels/gate.gd" id="15_cnute"]
+[ext_resource type="Script" uid="uid://eybq05frmtaw" path="res://Scripts/transition/to_cat_house.gd" id="16_q54q3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_upf00"]
 size = Vector2(371.129, 389.553)
@@ -31,7 +32,7 @@ shader_parameter/tint = Color(0.618053, 0.873565, 0.18467, 1)
 shader_parameter/opacity = 0.181
 shader_parameter/blend_mode = 13
 
-[sub_resource type="Shader" id="Shader_upf00"]
+[sub_resource type="Shader" id="Shader_cnute"]
 code = "shader_type canvas_item;
 // BLENDING MODES
 vec3 multiply(vec3 base, vec3 blend) {
@@ -253,7 +254,7 @@ void fragment() {
 }"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tbbhl"]
-shader = SubResource("Shader_upf00")
+shader = SubResource("Shader_cnute")
 shader_parameter/tint = Color(0, 0, 0, 1)
 shader_parameter/opacity = 1.0
 shader_parameter/blend_mode = 0
@@ -269,6 +270,9 @@ size = Vector2(35.25, 44)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q54q3"]
 size = Vector2(807.07, 597.112)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v8fny"]
+size = Vector2(28.5, 46)
 
 [node name="Village2" type="Node2D"]
 script = ExtResource("1_upf00")
@@ -299,7 +303,6 @@ script = ExtResource("6_alql6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="village/lamb/AreaLamb"]
 position = Vector2(-47.6191, -21.0903)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_3rrxf")
 
 [node name="squirrel" type="Sprite2D" parent="village"]
@@ -370,8 +373,22 @@ script = ExtResource("15_cnute")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Gate/GateArea"]
 position = Vector2(-120.607, 71.4429)
 rotation = 0.320571
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_q54q3")
+
+[node name="to_cat_house" type="Area2D" parent="."]
+script = ExtResource("16_q54q3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="to_cat_house"]
+position = Vector2(3376, 1544)
+shape = SubResource("RectangleShape2D_v8fny")
+
+[node name="Control" type="Control" parent="to_cat_house"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 7825.03
+offset_top = 1508.59
+offset_right = 7865.03
+offset_bottom = 1548.59
 
 [connection signal="body_entered" from="village/butterfly/DialogueInteractionArea" to="village/butterfly/DialogueInteractionArea" method="_on_body_entered"]
 [connection signal="body_exited" from="village/butterfly/DialogueInteractionArea" to="village/butterfly/DialogueInteractionArea" method="_on_body_exited"]

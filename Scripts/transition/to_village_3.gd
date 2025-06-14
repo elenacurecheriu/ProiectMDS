@@ -1,5 +1,5 @@
 extends Area2D
-
+var talkedToCat = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -12,5 +12,6 @@ func _process(delta: float) -> void:
 
 
 func _on_body_entered(body: Node2D) -> void:
-	get_tree().change_scene_to_file("res://Scenes/levels/village_3.tscn")
+	if name == "to_village_3" and body.is_in_group("player") and talkedToCat:
+		get_tree().change_scene_to_file("res://Scenes/levels/village_3.tscn")
 	pass # Replace with function body.
