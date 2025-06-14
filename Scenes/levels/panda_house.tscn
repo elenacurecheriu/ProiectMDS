@@ -1,9 +1,13 @@
-[gd_scene load_steps=8 format=4 uid="uid://d1gruhw3i0i43"]
+[gd_scene load_steps=10 format=4 uid="uid://d1gruhw3i0i43"]
 
 [ext_resource type="TileSet" uid="uid://be65eo2fvqoya" path="res://Scenes/resources/level.tres" id="1_07x4b"]
-[ext_resource type="PackedScene" uid="uid://c0gy6p2pmqu2s" path="res://Scenes/Attack/debug_character.tscn" id="2_hvl0c"]
+[ext_resource type="Script" uid="uid://cjn0n0sk7rxny" path="res://Scenes/levels/relay.gd" id="1_hvl0c"]
 [ext_resource type="Texture2D" uid="uid://crlp03dxtmr1n" path="res://assets/character_art/original/darius_bf.png" id="3_0dyl8"]
+[ext_resource type="Script" uid="uid://cfesfw77li0a" path="res://Scenes/levels/panda_area.gd" id="4_0dyl8"]
 [ext_resource type="Script" uid="uid://bek722mktypw5" path="res://Scripts/transition/to_village_2.gd" id="4_hvl0c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hvl0c"]
+size = Vector2(462.359, 341.744)
 
 [sub_resource type="Shader" id="Shader_07x4b"]
 code = "shader_type canvas_item;
@@ -233,9 +237,10 @@ shader_parameter/opacity = 0.27
 shader_parameter/blend_mode = 8
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_07x4b"]
-size = Vector2(25, 21)
+size = Vector2(25, 46)
 
 [node name="PandaHouse" type="Node2D"]
+script = ExtResource("1_hvl0c")
 
 [node name="tiles" type="Node2D" parent="."]
 
@@ -269,9 +274,12 @@ position = Vector2(264, 146)
 scale = Vector2(0.348214, 0.348214)
 texture = ExtResource("3_0dyl8")
 
-[node name="Player" parent="." instance=ExtResource("2_hvl0c")]
-position = Vector2(159, -23)
-attackScene = null
+[node name="InteractionAreaPanda" type="Area2D" parent="Sprite2D"]
+script = ExtResource("4_0dyl8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/InteractionAreaPanda"]
+position = Vector2(-64.6154, -12.9231)
+shape = SubResource("RectangleShape2D_hvl0c")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_hvl0c")
@@ -284,5 +292,11 @@ offset_bottom = 212.0
 script = ExtResource("4_hvl0c")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="to_village_2"]
-position = Vector2(175.5, -34.5)
+position = Vector2(175.5, -22)
 shape = SubResource("RectangleShape2D_07x4b")
+
+[connection signal="body_entered" from="Sprite2D/InteractionAreaPanda" to="Sprite2D/InteractionAreaPanda" method="_on_body_entered"]
+[connection signal="body_exited" from="Sprite2D/InteractionAreaPanda" to="Sprite2D/InteractionAreaPanda" method="_on_body_exited"]
+[connection signal="blackscreen" from="to_village_2" to="." method="_on_to_village_2_blackscreen"]
+[connection signal="body_entered" from="to_village_2" to="to_village_2" method="_on_body_entered"]
+[connection signal="body_exited" from="to_village_2" to="to_village_2" method="_on_body_exited"]

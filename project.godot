@@ -20,6 +20,10 @@ config/icon="res://icon.svg"
 Globals="*res://scripts/core/Globals.cs"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 
+[dialogue_manager]
+
+runtime/balloon_path="uid://73jm5qjy52vq"
+
 [display]
 
 window/stretch/mode="viewport"
@@ -77,7 +81,7 @@ attack={
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://Dialogues/TestDialogue.dialogue")
+locale/translations_pot_files=PackedStringArray("res://Dialogues/TestDialogue.dialogue", "res://Dialogues/butterfly.dialogue", "res://Dialogues/door.dialogue", "res://Dialogues/panda.dialogue", "res://Dialogues/squirrel.dialogue", "res://Dialogues/squirrel_after.dialogue", "res://Dialogues/lamb.dialogue", "res://Dialogues/gate.dialogue")
 
 [layer_names]
 

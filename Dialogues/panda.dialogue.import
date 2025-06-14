@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://o4bq075ac7i5"
+path="res://.godot/imported/panda.dialogue-ec206cc9fb13448711574d5b76698305.tres"
+
+[deps]
+
+source_file="res://Dialogues/panda.dialogue"
+dest_files=["res://.godot/imported/panda.dialogue-ec206cc9fb13448711574d5b76698305.tres"]
+
+[params]
+
+defaults=true

@@ -515,10 +515,12 @@ color = Color(0, 0, 0, 1)
 metadata/_edit_lock_ = true
 
 [node name="ColorRect" type="ColorRect" parent="."]
+
 offset_left = 387.0
 offset_top = -73.0
 offset_right = 706.0
 offset_bottom = 1624.0
+
 color = Color(0, 0, 0, 1)
 metadata/_edit_lock_ = true
 

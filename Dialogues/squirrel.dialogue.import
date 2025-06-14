@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://m3x7o14lhhlv"
+path="res://.godot/imported/squirrel.dialogue-0ba9d4cbc20afc1d430a8f2ad1850e61.tres"
+
+[deps]
+
+source_file="res://Dialogues/squirrel.dialogue"
+dest_files=["res://.godot/imported/squirrel.dialogue-0ba9d4cbc20afc1d430a8f2ad1850e61.tres"]
+
+[params]
+
+defaults=true

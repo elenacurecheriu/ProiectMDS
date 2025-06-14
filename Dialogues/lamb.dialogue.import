@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://b5t8qtry2gwed"
+path="res://.godot/imported/lamb.dialogue-3c2027bada1858531470d15cccc7a671.tres"
+
+[deps]
+
+source_file="res://Dialogues/lamb.dialogue"
+dest_files=["res://.godot/imported/lamb.dialogue-3c2027bada1858531470d15cccc7a671.tres"]
+
+[params]
+
+defaults=true

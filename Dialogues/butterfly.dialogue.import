@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://dv6phbrd24bpk"
+path="res://.godot/imported/butterfly.dialogue-f5e3c8c7baef2e6b6de06a06d15e6515.tres"
+
+[deps]
+
+source_file="res://Dialogues/butterfly.dialogue"
+dest_files=["res://.godot/imported/butterfly.dialogue-f5e3c8c7baef2e6b6de06a06d15e6515.tres"]
+
+[params]
+
+defaults=true
