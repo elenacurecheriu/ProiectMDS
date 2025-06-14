@@ -11,6 +11,10 @@ extends CharacterBody2D
 @export var enemy_repel_force := 150.0
 @export var enemy_detection_radius := 40.0
 
+# Health
+@export var max_health := 50
+var current_health: int
+
 # Shooting
 @export var shoot_range := 250.0
 @export var shoot_cooldown := 2.0
@@ -18,7 +22,7 @@ extends CharacterBody2D
 @export var bullet_speed := 300.0  # Increased for better visibility
 @export var bullet_distance := 400.0
 @export var attack_damage := 10
-@export var bullet_spawn_offset := 20.0  # Distance from enemy center to spawn bullet
+@export var bullet_spawn_offset := 40.0  # Distance from enemy center to spawn bullet
 
 var can_shoot := true
 var shoot_timer := 0.0
@@ -39,11 +43,29 @@ var repel_velocity := Vector2.ZERO
 var is_being_repelled := false
 
 @onready var sprite := $AnimatedSprite2D
+@onready var health_bar := $HealthBar  # Reference to ProgressBar node
 
 func _ready():
 	patrol_origin = global_position
 	last_position = global_position
 	add_to_group("enemy")
+	
+	# Initialize health
+	current_health = max_health
+	
+	# Set collision layers
+	set_collision_layer_value(2, true)  # Enemy layer
+	set_collision_layer_value(3, true)  # Damageable layer
+	
+	# Set collision masks
+	set_collision_mask_value(1, true)  # Can collide with player
+	set_collision_mask_value(3, true)  # Can collide with bullets
+	
+	# Setup health bar if it exists
+	if health_bar:
+		health_bar.max_value = max_health
+		health_bar.value = current_health
+		health_bar.visible = false  # Hide until damaged
 	
 	# Verify bullet scene is set
 	if not bullet_scene:
@@ -152,6 +174,9 @@ func shoot_at_player():
 	bullet.distance = bullet_distance
 	bullet.directionX = direction.x
 	bullet.directionY = direction.y
+	
+	# Set the shooter so bullet ignores collision with us
+	bullet.shooter = self
 	
 	# Spawn bullet slightly in front of enemy
 	var spawn_position = global_position + direction * bullet_spawn_offset
@@ -283,3 +308,44 @@ func _on_detection_area_body_exited(body: Node2D) -> void:
 				player = null
 				player_chase = false
 				patrol_origin = global_position
+
+func take_damage(damage: int):
+	current_health -= damage
+	print("Ranged enemy took ", damage, " damage. Health: ", current_health, "/", max_health)
+	
+	# Update health bar
+	if health_bar:
+		health_bar.visible = true
+		health_bar.value = current_health
+		
+		# Optional: Change health bar color based on health percentage
+		var health_percentage = float(current_health) / float(max_health)
+		var fill_style = health_bar.get_theme_stylebox("fill")
+		if fill_style and fill_style is StyleBoxFlat:
+			if health_percentage > 0.6:
+				fill_style.bg_color = Color.GREEN
+			elif health_percentage > 0.3:
+				fill_style.bg_color = Color.YELLOW
+			else:
+				fill_style.bg_color = Color.RED
+	
+	# Visual feedback - flash red
+	if sprite:
+		sprite.modulate = Color.RED
+		await get_tree().create_timer(0.1).timeout
+		if is_instance_valid(self):  # Check if still exists after wait
+			sprite.modulate = Color.WHITE
+	
+	# Check if dead
+	if current_health <= 0:
+		die()
+
+func die():
+	print("Ranged enemy died!")
+	# Optional: Add death effects here
+	# - Play death sound
+	# - Spawn particles
+	# - Drop items
+	# - Give player experience/score
+	
+	queue_free()

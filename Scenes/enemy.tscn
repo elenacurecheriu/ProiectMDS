@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://c8b1i6cqvdgty"]
+[gd_scene load_steps=23 format=3 uid="uid://c8b1i6cqvdgty"]
 
 [ext_resource type="Script" uid="uid://byw7m7awb7nvr" path="res://Scripts/characters/enemy.gd" id="1_1f0kj"]
 [ext_resource type="Texture2D" uid="uid://chcqq0d2ta713" path="res://assets/character_art/Entities/Mobs/slime.png" id="1_hghv2"]
@@ -132,8 +132,23 @@ radius = 134.034
 [sub_resource type="CircleShape2D" id="CircleShape2D_dhkrs"]
 radius = 19.9249
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1f0kj"]
+bg_color = Color(0.168627, 0.168627, 0.168627, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_afpow"]
+bg_color = Color(0, 1, 0, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
 [node name="enemy" type="CharacterBody2D"]
-collision_layer = 4
+collision_layer = 6
+collision_mask = 5
 script = ExtResource("1_1f0kj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -155,6 +170,23 @@ light_mask = 3
 visibility_layer = 3
 position = Vector2(0, -1)
 shape = SubResource("CircleShape2D_dhkrs")
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -19.0
+offset_top = -32.0
+offset_right = 21.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_1f0kj")
+theme_override_styles/fill = SubResource("StyleBoxFlat_afpow")
+max_value = 20.0
+show_percentage = false
 
 [connection signal="body_entered" from="detection_area" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="detection_area" to="." method="_on_detection_area_body_exited"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cgjgc2d0g444x"]
+[gd_scene load_steps=20 format=3 uid="uid://cgjgc2d0g444x"]
 
 [ext_resource type="Texture2D" uid="uid://b5jj8mw1qqhpi" path="res://assets/character_art/Entities/Mobs/Skeleton Crew/Skeleton - Mage/Idle/Idle-Sheet.png" id="1_5x7gc"]
 [ext_resource type="Script" uid="uid://d4ghp5sr2xs5e" path="res://Scripts/characters/ranged_enemy.gd" id="1_nqq2h"]
@@ -94,6 +94,20 @@ radius = 18.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_1qm41"]
 radius = 108.78
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1qm41"]
+bg_color = Color(0.168627, 0.168627, 0.168627, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f5pa5"]
+bg_color = Color(0, 1, 0, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
 [node name="ranged_enemy" type="CharacterBody2D"]
 light_mask = 5
 visibility_layer = 5
@@ -113,12 +127,29 @@ visibility_layer = 3
 shape = SubResource("CircleShape2D_q737t")
 
 [node name="detection_area" type="Area2D" parent="."]
-collision_layer = 8198
-collision_mask = 513
+collision_layer = 8194
+collision_mask = 515
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="detection_area"]
 shape = SubResource("CircleShape2D_1qm41")
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -28.0
+offset_right = 20.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_1qm41")
+theme_override_styles/fill = SubResource("StyleBoxFlat_f5pa5")
+max_value = 20.0
+show_percentage = false
 
 [connection signal="body_entered" from="detection_area" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="detection_area" to="." method="_on_detection_area_body_exited"]

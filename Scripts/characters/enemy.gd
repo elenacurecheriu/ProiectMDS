@@ -6,7 +6,10 @@ extends CharacterBody2D
 @export var stop_distance := 32.0
 @export var wall_stuck_timeout := 0.5
 @export var chase_range := 200.0  # Maximum chase distance
+@export var max_health := 30
+@export var damage_amount := 10  # Damage dealt to player
 
+var current_health: int
 var player_chase := false
 var player: Node2D = null
 var patrol_origin: Vector2
@@ -21,10 +24,29 @@ var current_patrol_mode := "horizontal"
 var patrol_timer := 0.0
 
 @onready var sprite := $AnimatedSprite2D
+@onready var health_bar := $HealthBar  # Reference to ProgressBar node
 
 func _ready():
 	patrol_origin = global_position
 	last_position = global_position
+	add_to_group("enemy")
+	
+	# Initialize health
+	current_health = max_health
+	
+	# Set collision layers
+	set_collision_layer_value(2, true)  # Enemy layer
+	set_collision_layer_value(3, true)  # Damageable layer
+	
+	# Set collision masks
+	set_collision_mask_value(1, true)  # Can collide with player
+	set_collision_mask_value(3, true)  # Can collide with bullets
+	
+	# Setup health bar if it exists
+	if health_bar:
+		health_bar.max_value = max_health
+		health_bar.value = current_health
+		health_bar.visible = false  # Hide until damaged
 
 func _physics_process(delta: float) -> void:
 	# Check if actually moving (position-based stuck detection)
@@ -211,7 +233,7 @@ func _on_collision_body_entered(body: Node) -> void:
 	if body.is_in_group("player") and can_damage:
 		print("Enemy touching player - dealing damage!")  # Debug print
 		if body.has_method("take_damage"):
-			body.take_damage(10)
+			body.take_damage(damage_amount)
 		can_damage = false
 		# Use a safer timer approach
 		if get_tree():
@@ -226,7 +248,7 @@ func _on_damage_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player") and can_damage:
 		print("Enemy damage area touching player!")  # Debug print
 		if body.has_method("take_damage"):
-			body.take_damage(10)
+			body.take_damage(damage_amount)
 		can_damage = false
 		# Use a safer timer approach
 		if get_tree():
@@ -249,7 +271,7 @@ func check_player_collision():
 		if collider and collider.is_in_group("player"):
 			print("Physics collision with player - dealing damage!")  # Debug print
 			if collider.has_method("take_damage"):
-				collider.take_damage(10)
+				collider.take_damage(damage_amount)
 			can_damage = false
 			# Use a safer timer approach
 			if get_tree():
@@ -259,3 +281,45 @@ func check_player_collision():
 				# Fallback if get_tree() is null
 				can_damage = true
 			break
+
+func take_damage(damage: int):
+	current_health -= damage
+	print("Enemy took ", damage, " damage. Health: ", current_health, "/", max_health)
+	
+	# Update health bar
+	if health_bar:
+		health_bar.visible = true
+		health_bar.value = current_health
+		
+		# Optional: Change health bar color based on health percentage
+		var health_percentage = float(current_health) / float(max_health)
+		var fill_style = health_bar.get_theme_stylebox("fill")
+		if fill_style and fill_style is StyleBoxFlat:
+			if health_percentage > 0.6:
+				fill_style.bg_color = Color.GREEN
+			elif health_percentage > 0.3:
+				fill_style.bg_color = Color.YELLOW
+			else:
+				fill_style.bg_color = Color.RED
+	
+	# Visual feedback - flash red
+	if sprite:
+		sprite.modulate = Color.RED
+		await get_tree().create_timer(0.1).timeout
+		if is_instance_valid(self):  # Check if still exists after wait
+			sprite.modulate = Color.WHITE
+	
+	# Check if dead
+	if current_health <= 0:
+		die()
+
+func die():
+	print("Enemy died!")
+	sprite.play("die")
+	# Optional: Add death effects here
+	# - Play death sound
+	# - Spawn particles
+	# - Drop items
+	# - Give player experience/score
+	
+	queue_free()
