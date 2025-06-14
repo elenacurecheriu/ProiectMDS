@@ -33,6 +33,8 @@ var paused = false
 var pause_menu 
 var camera = CameraScene.instantiate()
 #var minimap = MinimapScene.instantiate()
+
+		
 func get_current_room_coords():
 	return current_room_coords
 	
@@ -52,14 +54,20 @@ func pause_menu_():
 		
 	paused = ! paused	
 	
+func _find_player(node):
+	if node is CharacterBody2D:
+		return node
+	return null
 func _ready()	:
-	
+	var player_node = get_tree().get_first_node_in_group("player")
+	var playerr = _find_player(player_node)
+	if playerr:
+		print("aa")
 	
 	add_child(canvasMinimap)
 	
 	add_to_group("dungeon_generator")
 	add_child(camera)
-	
 	
 	camera.position = Vector2(0,0)
 	camera.zoom.x = 1
@@ -80,11 +88,16 @@ func _ready()	:
 	player.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
 	player.scale.x = 1.64
 	player.scale.y = 1.64
+	
 	add_child(player)
+	var hotbar_delete = $Player/Hotbar
+	if hotbar_delete:
+		hotbar_delete.queue_free()
 	player.position = Vector2 (0,0)
 	player.add_to_group("player")
 	print("Added player in the tree")
 	add_doors()
+	
 	
 	
 	pause_menu = PauseScene.instantiate()
