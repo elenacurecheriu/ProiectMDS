@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://chnfqw7f71k5s"]
+[gd_scene load_steps=20 format=4 uid="uid://chnfqw7f71k5s"]
 
 [ext_resource type="TileSet" uid="uid://be65eo2fvqoya" path="res://Scenes/resources/level.tres" id="1_af7nr"]
 [ext_resource type="Texture2D" uid="uid://5am2g2u4e3ua" path="res://assets/shaders/particle2.png" id="1_lwisy"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c0gy6p2pmqu2s" path="res://Scenes/Attack/debug_character.tscn" id="3_wkhqo"]
 [ext_resource type="Script" uid="uid://ff437aw6r0ax" path="res://Scripts/transition/to_village_3.gd" id="4_2rpj3"]
 [ext_resource type="Texture2D" uid="uid://srp1d0cejnnc" path="res://assets/character_art/original/elena_bf.png" id="6_rf67q"]
+[ext_resource type="Texture2D" uid="uid://dgd0iqdrm4ki3" path="res://assets/character_art/original/mc_af.png" id="7_rf67q"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_wkhqo"]
 light_mode = 1
@@ -582,3 +583,8 @@ texture_filter = 1
 position = Vector2(368, 1522)
 scale = Vector2(0.35119, 0.35119)
 texture = ExtResource("6_rf67q")
+
+[node name="McAf" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(369, 1409)
+texture = ExtResource("7_rf67q")
