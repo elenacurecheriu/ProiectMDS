@@ -85,4 +85,5 @@ locale/translations_pot_files=PackedStringArray("res://Dialogues/TestDialogue.di
 
 [layer_names]
 
-2d_physics/layer_3="damagable"
+2d_physics/layer_3="damageable"
+2d_physics/layer_5="detection"

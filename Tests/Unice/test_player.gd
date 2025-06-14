@@ -1,7 +1,7 @@
 extends GutTest
 
 var player
-var PlayerScene = preload("res://assets/characters/debug_character.tscn")
+var PlayerScene = preload("res://Scenes/Attack/debug_character.tscn")
 
 func before_each():
 	player = PlayerScene.instantiate()
