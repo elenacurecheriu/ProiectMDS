@@ -81,9 +81,11 @@ func heal(amount):
 	health_bar.update_health(current_health)
 
 	
-	
-func die():
-	get_tree().change_scene_to_file("res://Scenes/levels/village.tscn")
+
+func die():	
+	FadeTransition.transition()
+	await FadeTransition.on_transition_finished
+	get_tree().change_scene_to_file("res://Scenes/dieScene.tscn")
 	
 
 func _on_interaction_area_area_entered(area: Area2D) -> void:
