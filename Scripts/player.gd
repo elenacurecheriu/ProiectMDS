@@ -6,7 +6,12 @@ extends CharacterBody2D
 @export var stats = {
 	"fire_resistance": 0,
 	"mushroom": 0,
-	"cake": 0
+	"cake": 0,
+	"pink_glasses": 0,
+	"eye": 0,
+	"beer":0,
+	"blue_flower":0
+	
 }
 var test1 = 0
 var test2 = 0
@@ -32,6 +37,12 @@ func _ready() -> void:
 		attackComponent = attackScene.instantiate()
 		attackComponent
 		add_child(attackComponent)
+	
+	
+	var hotbar = preload("res://Scenes/Interactions_items/Hotbar.tscn").instantiate()
+	add_child(hotbar) 
+	hotbar.position = Vector2(173,-97)
+
 	
 func set_health_component(_health_bar):
 	self.health_bar = _health_bar
