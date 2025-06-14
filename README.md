@@ -44,10 +44,10 @@ Jocul combină explorarea satului cu dialogue-uri și lupte în dungeon-uri gene
 ## Echipa
 
 - [@Darius-Beldi](https://github.com/Darius-Beldi)
+- [@imnofuxkingfun](https://github.com/imnofuxkingfun)
 - [@SirbuRobert](https://github.com/SirbuRobert)
 - [@Ivan-Ovidiu](https://github.com/Ivan-Ovidiu)
 - [@mihaidanaila11](https://github.com/mihaidanaila11)
-- [@imnofuxkingfun](https://github.com/imnofuxkingfun)
 - [@elenacurecheriu](https://github.com/elenacurecheriu)
 
 
