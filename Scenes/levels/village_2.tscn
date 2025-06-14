@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://cwqocb6oje2v7"]
+[gd_scene load_steps=25 format=4 uid="uid://cwqocb6oje2v7"]
 
 [ext_resource type="PackedScene" uid="uid://bola2tlukuyh5" path="res://Scenes/levels/village.tscn" id="1_4r0el"]
 [ext_resource type="Script" uid="uid://cjjfdahefvq6f" path="res://Scenes/levels/village_2.gd" id="1_upf00"]
@@ -8,13 +8,19 @@
 [ext_resource type="Script" uid="uid://blhkka12e11yb" path="res://Scenes/levels/dialogue_interaction_area_village2.gd" id="3_k7tq8"]
 [ext_resource type="Shader" uid="uid://h4mfnmtdpf3h" path="res://assets/shaders/blending_modes.gdshader" id="3_n8n8i"]
 [ext_resource type="Texture2D" uid="uid://dnlnvf8lujknr" path="res://assets/character_art/original/ovidiu_bf.png" id="4_eb6hk"]
+[ext_resource type="Script" uid="uid://bs1teanws8kob" path="res://Scenes/levels/lamb.gd" id="6_alql6"]
 [ext_resource type="Script" uid="uid://cdoa2kd5mow6o" path="res://Scenes/levels/squirrel.gd" id="7_3rrxf"]
 [ext_resource type="PackedScene" uid="uid://c0gy6p2pmqu2s" path="res://Scenes/Attack/debug_character.tscn" id="7_3sm37"]
 [ext_resource type="Script" uid="uid://bwpgb11u05828" path="res://Scripts/transition/to_panda_house.gd" id="10_tbbhl"]
 [ext_resource type="PackedScene" uid="uid://d1gruhw3i0i43" path="res://Scenes/levels/panda_house.tscn" id="11_xwnoy"]
+[ext_resource type="Texture2D" uid="uid://degftoy1p1q0l" path="res://assets/levels_art/gateclosed.png" id="14_r8bvs"]
+[ext_resource type="Script" uid="uid://b18tmd8172olm" path="res://Scenes/levels/gate.gd" id="15_cnute"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_upf00"]
 size = Vector2(371.129, 389.553)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3rrxf"]
+size = Vector2(865.375, 689.449)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_alql6"]
 size = Vector2(397.003, 429.446)
@@ -261,6 +267,9 @@ shader_parameter/blend_mode = 5
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xwnoy"]
 size = Vector2(35.25, 44)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q54q3"]
+size = Vector2(807.07, 597.112)
+
 [node name="Village2" type="Node2D"]
 script = ExtResource("1_upf00")
 
@@ -277,7 +286,6 @@ script = ExtResource("3_k7tq8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="village/butterfly/DialogueInteractionArea"]
 position = Vector2(-0.184242, -0.24213)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_upf00")
 
 [node name="lamb" type="Sprite2D" parent="village"]
@@ -285,6 +293,14 @@ texture_filter = 1
 position = Vector2(3068, 2632)
 scale = Vector2(0.358105, 0.358105)
 texture = ExtResource("3_eb6hk")
+
+[node name="AreaLamb" type="Area2D" parent="village/lamb"]
+script = ExtResource("6_alql6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="village/lamb/AreaLamb"]
+position = Vector2(-47.6191, -21.0903)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_3rrxf")
 
 [node name="squirrel" type="Sprite2D" parent="village"]
 texture_filter = 1
@@ -342,10 +358,31 @@ position = Vector2(-809.375, 1217)
 shape = SubResource("RectangleShape2D_xwnoy")
 one_way_collision_margin = 0.0
 
+[node name="Gate" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(2803.63, 1246.88)
+scale = Vector2(0.164325, 0.170408)
+texture = ExtResource("14_r8bvs")
+
+[node name="GateArea" type="Area2D" parent="Gate"]
+script = ExtResource("15_cnute")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Gate/GateArea"]
+position = Vector2(-120.607, 71.4429)
+rotation = 0.320571
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_q54q3")
+
 [connection signal="body_entered" from="village/butterfly/DialogueInteractionArea" to="village/butterfly/DialogueInteractionArea" method="_on_body_entered"]
 [connection signal="body_exited" from="village/butterfly/DialogueInteractionArea" to="village/butterfly/DialogueInteractionArea" method="_on_body_exited"]
+[connection signal="blackscreen" from="village/lamb/AreaLamb" to="." method="_on_area_lamb_blackscreen"]
+[connection signal="body_entered" from="village/lamb/AreaLamb" to="village/lamb/AreaLamb" method="_on_body_entered"]
+[connection signal="body_exited" from="village/lamb/AreaLamb" to="village/lamb/AreaLamb" method="_on_body_exited"]
 [connection signal="body_entered" from="village/squirrel/SquirrelArea" to="village/squirrel/SquirrelArea" method="_on_body_entered"]
 [connection signal="body_exited" from="village/squirrel/SquirrelArea" to="village/squirrel/SquirrelArea" method="_on_body_exited"]
 [connection signal="blackscreenRelay" from="PandaHouse" to="." method="_on_panda_house_blackscreen_relay"]
 [connection signal="body_entered" from="to_panda_house" to="to_panda_house" method="_on_body_entered"]
 [connection signal="body_exited" from="to_panda_house" to="to_panda_house" method="_on_body_exited"]
+[connection signal="blackscreen" from="Gate/GateArea" to="." method="_on_gate_area_blackscreen"]
+[connection signal="body_entered" from="Gate/GateArea" to="Gate/GateArea" method="_on_body_entered"]
+[connection signal="body_exited" from="Gate/GateArea" to="Gate/GateArea" method="_on_body_exited"]

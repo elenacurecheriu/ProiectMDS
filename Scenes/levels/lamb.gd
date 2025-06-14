@@ -1,11 +1,11 @@
 extends Area2D
 
-var squirrelDialogue = load("res://Dialogues/squirrel.dialogue")
-var squirrelAfter = load("res://Dialogues/squirrel_after.dialogue")
-
+var lambDialogue = load("res://Dialogues/lamb.dialogue")
+signal blackscreen
+var player 
 var in_interaction_area = false
 var dialogue_started = false
-var has_glasses = false
+var has_eye = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -22,34 +22,39 @@ func _process(delta: float) -> void:
 
 func start_dialogue():
 	print("starting dialogue")
-	if not has_glasses:
-		DialogueManager.show_dialogue_balloon(squirrelDialogue, "start")
+	if not has_eye:
+		DialogueManager.show_dialogue_balloon(lambDialogue, "start")
 	else:
-		DialogueManager.show_dialogue_balloon(squirrelAfter, "end_loop")
+		DialogueManager.show_dialogue_balloon(lambDialogue, "end_loop")
 
-var player
+
 func _on_body_entered(body: Node2D) -> void:
-	if name == "SquirrelArea":
+	
+	if name == "AreaLamb":
 		if body.is_in_group("player"):
-			in_interaction_area = true
 			player = body
+			emit_signal("blackscreen")
+			body.dialogue_active = true
+			body.position = Vector2(2926,2655)
+			dialogue_started = true
+			start_dialogue()
+			in_interaction_area = true
 
-
+#
 func _on_dialogue_ended(resource):
-	if resource == squirrelDialogue:
+	if resource == lambDialogue:
 		dialogue_started = false
-		if not has_glasses:
+		if not has_eye:
 			#functia de adaugat ochelarii
-			get_node("../").texture = load("res://assets/character_art/original/ovidiu_af.png")
-			DialogueManager.show_dialogue_balloon(squirrelAfter, "after_transformation")
-			has_glasses = true
-			player.has_glasses = true
-	if resource == squirrelAfter:
-		dialogue_started = false
-		pass
+			
+			
+			DialogueManager.show_dialogue_balloon(lambDialogue, "end_loop")
+			has_eye = true
+			player.has_eye = true
+		player.dialogue_active = false
 		
 func _on_body_exited(body: Node2D) -> void:
-	if name == "SquirrelArea":
+	if name == "AreaLamb":
 		if body.is_in_group("player"):
 			in_interaction_area = false
-	
+			get_node("../").texture = load("res://assets/character_art/original/luca_af.png")

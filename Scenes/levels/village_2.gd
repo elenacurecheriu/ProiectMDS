@@ -5,7 +5,7 @@ func _ready() -> void:
 
 	
 	
-	get_node("Player").position = Vector2(1634, 1796)#debug purposese!!!!!!!!!!
+	get_node("Player").position = Vector2(2818.191,2486.201)#debug purposese!!!!!!!!!!
 	
 	
 	
@@ -23,14 +23,21 @@ func fadingBlack():
 		await get_tree().process_frame
 
 
-
-
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
 
 
 func _on_panda_house_blackscreen_relay() -> void:
+	fadingBlack()
+	pass # Replace with function body.
+
+
+func _on_area_lamb_blackscreen() -> void:
+	fadingBlack()
+	pass # Replace with function body.
+
+
+func _on_gate_area_blackscreen() -> void:
 	fadingBlack()
 	pass # Replace with function body.

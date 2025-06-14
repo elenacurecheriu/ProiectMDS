@@ -25,11 +25,12 @@ func start_dialogue():
 	else:
 		DialogueManager.show_dialogue_balloon(pandaDialogue, "end_loop")
 
-
+var player 
 func _on_body_entered(body: Node2D) -> void:
 	if name == "InteractionAreaPanda":
 		if body.is_in_group("player"):
 			in_interaction_area = true
+			player = body
 
 
 func _on_dialogue_ended(resource):
@@ -39,6 +40,7 @@ func _on_dialogue_ended(resource):
 			#functia de adaugat bere
 			get_node("../").texture = load("res://assets/character_art/original/darius_af.png")
 			has_beer = true
+			player.has_beer = true
 
 func _on_body_exited(body: Node2D) -> void:
 	if name == "InteractionAreaPanda":

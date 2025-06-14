@@ -279,7 +279,6 @@ script = ExtResource("4_0dyl8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/InteractionAreaPanda"]
 position = Vector2(-64.6154, -12.9231)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_hvl0c")
 
 [node name="ColorRect" type="ColorRect" parent="."]
