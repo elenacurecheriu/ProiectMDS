@@ -46,7 +46,9 @@ func _on_dialogue_ended(resource):
 		dialogue_started = false
 		if not has_eye:
 			#functia de adaugat ochelarii
+
 			player.increase_stat("eye")
+
 			
 			DialogueManager.show_dialogue_balloon(lambDialogue, "end_loop")
 			has_eye = true

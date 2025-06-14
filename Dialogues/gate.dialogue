@@ -1,0 +1,7 @@
+~ not_pleased
+[wave][color=red]The creature inside doesn’t seem pleased by your inventory yet[/color][/wave]
+=> END
+
+~ pleased
+- Enter
+=> END

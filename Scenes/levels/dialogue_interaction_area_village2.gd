@@ -22,6 +22,7 @@ func _process(delta: float) -> void:
 func start_dialogue():
 	DialogueManager.show_dialogue_balloon(firstDialogue, "endloop")
 
+
 func gave_the_flower():
 	print("change scene")
 	

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://w28u5x1yqaxg" path="res://Scenes/Interactions_items/hotbar.gd" id="1_ynj8w"]
 
-[node name="GridContainer" type="GridContainer"]
+[node name="Hotbar" type="GridContainer"]
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_ynj8w")

@@ -9,7 +9,9 @@ radius = 45.0111
 [node name="pink_glasses" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+
 texture_filter = 1
+
 texture = ExtResource("1_1ypyi")
 
 [node name="Interactable" parent="." instance=ExtResource("2_3p3wo")]

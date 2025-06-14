@@ -40,7 +40,9 @@ func _on_dialogue_ended(resource):
 		dialogue_started = false
 		if not has_glasses:
 			#functia de adaugat ochelarii
+
 			player.increase_stat("pink_glasses")
+
 			get_node("../").texture = load("res://assets/character_art/original/ovidiu_af.png")
 			DialogueManager.show_dialogue_balloon(squirrelAfter, "after_transformation")
 			has_glasses = true

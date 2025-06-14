@@ -11,7 +11,9 @@ radius = 45.0111
 script = ExtResource("1_g04uo")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+
 texture_filter = 1
+
 texture = ExtResource("1_62h3j")
 
 [node name="Interactable" parent="." instance=ExtResource("2_g04uo")]

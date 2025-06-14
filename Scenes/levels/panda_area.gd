@@ -37,7 +37,9 @@ func _on_dialogue_ended(resource):
 	if resource == pandaDialogue:
 		dialogue_started = false
 		if not has_beer:
+
 			player.increase_stat("beer")
+
 			get_node("../").texture = load("res://assets/character_art/original/darius_af.png")
 			has_beer = true
 			player.has_beer = true

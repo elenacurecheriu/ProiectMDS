@@ -1,7 +1,9 @@
 extends Area2D
 
 var firstDialogue = load("res://Dialogues/butterfly.dialogue")
+
 var player
+
 var in_interaction_area = false
 var dialogue_started = false
 var finished_first_part = false
@@ -23,7 +25,9 @@ func start_dialogue():
 	print("starting dialogue")
 	if not finished_first_part:
 		DialogueManager.show_dialogue_balloon(firstDialogue, "start")
+
 		get_node("../../../blue_flower").visible = true
+
 		return
 	if finished_first_part and not has_flower:
 		DialogueManager.show_dialogue_balloon(firstDialogue, "colorful")
@@ -40,18 +44,15 @@ func gave_the_flower():
 func _on_body_entered(body: Node2D) -> void:
 	if name == "DialogueInteractionArea":
 		if body.is_in_group("player"):
+
 			player = body
 			in_interaction_area = true
 			
-			#if player has flower:
-			#has_flower = true
 
-#player.increase_stat("blue_flower")
 func _on_dialogue_ended(resource):
 	dialogue_started = false
 	if not finished_first_part:
 		finished_first_part = true
-		
 	if has_flower:
 		get_tree().change_scene_to_file("res://Scenes/levels/village_2.tscn")
 
