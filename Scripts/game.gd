@@ -1,4 +1,6 @@
 extends Node2D
+
+
 var RoomScene = preload("res://Scenes/Room.tscn")
 var DoorScene = preload("res://Scenes/door.tscn")
 var CameraScene = preload("res://Scenes/camera.tscn")
@@ -6,8 +8,6 @@ var CharacterScene = preload("res://Scenes/Attack/debug_character.tscn")
 var SpikesScene = preload("res://Scenes/spikes.tscn")
 var PauseScene = preload("res://Menus/pause_menu.tscn")
 var CanvasLayerScene  = preload("res://Scenes/canvas_layer.tscn")
-
-#var MinimapScene = preload("res://Scenes/minimap.tscn")
  
 #ITEMS:
 var FireResistanceScene = preload("res://Scenes/Interactions_items/fire_resistance.tscn")
@@ -19,23 +19,23 @@ var GUIScene = preload("res://Scenes/Gui.tscn")
 var canvas = CanvasLayerScene.instantiate()
 var canvasMinimap = CanvasLayerScene.instantiate()
 var gui = GUIScene.instantiate()
+var camera = CameraScene.instantiate()
+
 const M_SIZE = 5
 const MAX_CAMERE = 7
 var current_room_coords = Vector2(0, 0)  # Starting room
+var currentRoomID = 1
+var matrix = generate_dungeon()
+var room_size = Vector2(1150, 650)
+var paused = false
 
 var minimap
 
-var currentRoomID = 1
-
-var matrix = generate_dungeon()
-var room_size = Vector2(1150, 650)
-var rooms = {}
+var rooms = {} # dictionarul e de forma: [PositionInMatrix, RoomdID] : RoomInstance, unde key-ul este o lista cu  pozitie in matrice de forma (2,0) si roomID care e un int
 var doors = {}
-var roomsWithId = {}
-var paused = false
 var pause_menu 
-var camera = CameraScene.instantiate()
-#var minimap = MinimapScene.instantiate()
+
+
 func get_current_room_coords():
 	return current_room_coords
 	
@@ -44,7 +44,6 @@ func set_current_room_coords(pos: Vector2):
 
 func get_camera():
 	return camera
-	
 	
 func pause_menu_():
 	print("PAUSE MENU SELECTED")
@@ -56,67 +55,48 @@ func pause_menu_():
 	paused = ! paused	
 	
 func _ready()	:
-	
-	
 	add_child(canvasMinimap)
 	
 	add_to_group("dungeon_generator")
-	add_child(camera)
 	
-	
+	#Set-up Camera2D
 	camera.position = Vector2(0,0)
 	camera.zoom.x = 1
 	camera.zoom.y = 1
 	camera.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS
-	#debug purposes
-	#camera.zoom.x = 0.7
-	#camera.zoom.y = 0.7
+	add_child(camera)
 	
-	
+	#Set-up Dungeon
 	instantiate_rooms()
+	add_doors()
 	
-	canvas.add_child(gui)
-
+	print(rooms)
+	
+	#Set-up Player
 	var player = CharacterScene.instantiate()
-	
 	player.set_health_component(gui.get_node("HealthBar"))
 	player.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
 	player.scale.x = 1.64
 	player.scale.y = 1.64
-	add_child(player)
 	player.position = Vector2 (0,0)
 	player.add_to_group("player")
 	print("Added player in the tree")
-	add_doors()
-	
-	
+	add_child(player)
+
+	canvas.add_child(gui)
+	#Set-up PauseMenu
 	pause_menu = PauseScene.instantiate()
 	camera.add_child(canvas)
 	canvas.add_child(pause_menu)
-	
 	pause_menu.set_script(load("res://Scripts/pause_menu.gd"))
 	
-	#Adaug hotbarul in GUI
+	#Set-up Hotbar
 	var hotbar = preload("res://Scenes/Interactions_items/Hotbar.tscn").instantiate()
 	gui.add_child(hotbar) 
-	 
 	
-	
-	
-	#minimap.generateMinimap(matrix)
+	#Setup Minimap
 	minimap = get_node("Camera2D/CanvasLayer/Gui/AspectRatioContainer/Minimap")
 	minimap.generateMinimap(matrix)
-	#canvas.add_child(minimap)
-	#minimap.scale = Vector2(0.5,0.5)wa
-	#minimap.position += Vector2(1025,75)
-	
-
-	
-	#print_tree_pretty()
-
-	var fireResistance = FireResistanceScene.instantiate()
-	fireResistance.position = Vector2(250, 150)
-	add_child(fireResistance)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -126,7 +106,7 @@ func _process(delta: float) -> void:
 	
 func instantiate_rooms():
 	
-	
+	#Print the dungeon layout
 	print_matrix(matrix)
 		
 	for x in range(matrix.size()):
@@ -134,20 +114,19 @@ func instantiate_rooms():
 			var cell_value = matrix[x][y]
 			# Instantiate rooms for non-zero values (1s and 2s)
 			if cell_value > 0:
+				#Create a room
 				var room = RoomScene.instantiate()
 				room.setRoomID(cell_value)
-				add_child(room)
-				
-				roomsWithId[cell_value] = room
 				#(y-2) * room_size.x , (2-x) * room_size.y
 				# Position the room based on its coordinates in the matrix
 				room.position = Vector2((y-2) * room_size.x , -(2-x) * room_size.y)
-				
+				print(room.position)
+				add_child(room)
 				#the position is the center of the room
 				
 				
 				# Store the room in the dictionary for easy access later
-				rooms[Vector2(x, y)] = room
+				rooms[[Vector2(x, y),cell_value]] = room
 				
 				# 1 -> starting_room
 				# 2 -> spike_room
@@ -227,36 +206,32 @@ func add_doors():
 	var direction_names = ["west", "east", "north", "south"]
 
 	for room_pos in rooms.keys():
-		var x = int(room_pos.x)
-		var y = int(room_pos.y)
-		var cell_value_current = matrix[x][y]
+		var x = int(room_pos[0].x)
+		var y = int(room_pos[0].y)
+		var roomID = room_pos[1]
 		for i in range(directions.size()):
 			# Only create doors in one direction (e.g., east and south)
 			if direction_names[i] in ["east", "south"]:
 				var dir = directions[i]
 				var neighbor_pos = Vector2(x + dir.x, y + dir.y)
-				#debug purposes !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+				
 				if not is_valid_position(neighbor_pos):
 					continue
-				var cell_value_neighbour =  matrix[neighbor_pos.x][neighbor_pos.y]
-				if is_valid_position(neighbor_pos) and cell_value_neighbour > 0:
+				var roomID_neighbour =  matrix[neighbor_pos.x][neighbor_pos.y]
+				if is_valid_position(neighbor_pos) and roomID_neighbour > 0:
 					var door = DoorScene.instantiate()
 					#door.setAdjacentRooms(str(cell_value_current) + " " + str(cell_value_neighbour))
-					door.name = "Door " + (str(cell_value_current) + " -> " + str(cell_value_neighbour))
-					doors[door] = [cell_value_current, cell_value_neighbour]
+					door.name = "Door " + (str(roomID) + " -> " + str(roomID_neighbour))
+					doors[door] = [roomID, roomID_neighbour]
 					door.direction = dir
 					door.directionName = direction_names[i]
 					add_child(door)
 					#in x si y sunt pozitiile din matrice, ex (2.0, 1.0)
-					var current_room_pos = Vector2(rooms[room_pos].position)
-					var neighbor_room_pos = Vector2(rooms[neighbor_pos].position)
+					var current_room_pos = Vector2(rooms[[room_pos[0], roomID]].position)
+					var neighbor_room_pos = Vector2(rooms[[neighbor_pos, roomID_neighbour]].position)
 					var door_position = current_room_pos.lerp(neighbor_room_pos, 0.5)
 					door.position = door_position
 
-					#if dir.x != 0:
-						#door.rotation_degrees = 0
-					#else:
-						#door.rotation_degrees = 90
 func changeRoomOnMinimap(_roomID):
 	minimap.changeRoom(_roomID)
 	

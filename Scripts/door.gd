@@ -26,10 +26,21 @@ func _ready() -> void:
 	if dungeon_generators.size() > 0:
 		camera = dungeon_generators[0].get_camera()
 
+
+func _find_room_instance(_roomID):
+	var rooms = main.get_node("game").rooms
+	for room_key in rooms:
+		if room_key[1] == _roomID:  # room_key[1] is the room_id
+			return rooms[room_key]
+	return null
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
+@onready var _roomID = main.get_node("game").currentRoomID
+@onready var roomInstance = _find_room_instance(_roomID)
+
 func _process(delta: float) -> void:
-	var _roomID = main.get_node("game").currentRoomID
-	var roomInstance = main.get_node("game").roomsWithId[_roomID]
+	_roomID = main.get_node("game").currentRoomID
+	roomInstance = _find_room_instance(_roomID)
 	is_the_room_cleared = roomInstance.room_cleared
 	if is_the_room_cleared:
 		get_node("Door_texture").texture = load("res://assets/levels_art/Door_Opened.png")
@@ -91,7 +102,7 @@ func move_camera_and_player():
 		
 		
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body.get_class() == "CharacterBody2D":
+	if body.is_in_group("player"):
 		if is_the_room_cleared:
 			print("Debug character touched the " + adjacentRooms + " door!")
 			move_camera_and_player()
