@@ -29,12 +29,12 @@ func _find_player(node):
 	return null
 
 func _on_interact():
+	get_node("../village/butterfly/DialogueInteractionArea").has_flower = true
 	var player_node = get_tree().get_first_node_in_group("player")
 	var player = _find_player(player_node)
 		
-	player.increase_stat("cake")
-	var new_value = player.get_stat("cake")
-	print("Gained 1 cake. New cake: " + str(new_value))
+	player.increase_stat("blue_flower")
+	var new_value = player.get_stat("blue_flower")
 	
 	#opresc colisiunile ca sa nu mai detecteze itemul
 	interactable.monitoring = false
@@ -68,10 +68,6 @@ func animate_to_player(delta: float):
 	#Regula sa nu se micsoreze mai mult decat limita
 	if scale.x < min_scale:
 		scale = Vector2(min_scale, min_scale)
-<<<<<<< Updated upstream
 	await get_tree().create_timer(1.5).timeout
-=======
-	await get_tree().create_timer(1.0).timeout
->>>>>>> Stashed changes
 	hide()	
 	

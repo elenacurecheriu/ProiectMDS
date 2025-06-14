@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://dwsra7tu3ixgs"]
+
+[ext_resource type="Script" uid="uid://dkvjo6ruivfis" path="res://Scenes/Interactions_items/blue_flower.gd" id="1_8io4c"]
+[ext_resource type="PackedScene" uid="uid://d0vep7tqd81ct" path="res://Scenes/Interactions_items/Interactable_items.tscn" id="2_8io4c"]
+[ext_resource type="Texture2D" uid="uid://bfufpchb7gsxk" path="res://Textures/Items/blue_flower.png" id="2_nm4mt"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x4dys"]
+radius = 45.0111
+
+[node name="blue_flower" type="Node2D"]
+script = ExtResource("1_8io4c")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_nm4mt")
+
+[node name="Interactable" parent="." instance=ExtResource("2_8io4c")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_x4dys")

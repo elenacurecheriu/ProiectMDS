@@ -1,9 +1,21 @@
+<<<<<<< Updated upstream
 [gd_scene load_steps=7 format=4 uid="uid://d35xp0t0u6bqi"]
+=======
+[gd_scene load_steps=10 format=4 uid="uid://d35xp0t0u6bqi"]
+>>>>>>> Stashed changes
 
 [ext_resource type="Script" uid="uid://icqgjk73cgh8" path="res://Scenes/levels/village_1.gd" id="1_8el8h"]
 [ext_resource type="PackedScene" uid="uid://bola2tlukuyh5" path="res://Scenes/levels/village.tscn" id="1_41i5b"]
 [ext_resource type="Texture2D" uid="uid://dw7mfqs5aic7i" path="res://assets/character_art/original/mihai_bf.png" id="2_coa6n"]
 [ext_resource type="TileSet" uid="uid://be65eo2fvqoya" path="res://Scenes/resources/level.tres" id="3_coa6n"]
+<<<<<<< Updated upstream
+=======
+[ext_resource type="PackedScene" uid="uid://c0gy6p2pmqu2s" path="res://Scenes/Attack/debug_character.tscn" id="5_hamny"]
+[ext_resource type="PackedScene" uid="uid://dwsra7tu3ixgs" path="res://Scenes/Interactions_items/blue_flower.tscn" id="6_2kwrj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hamny"]
+size = Vector2(371.129, 389.553)
+>>>>>>> Stashed changes
 
 [sub_resource type="Shader" id="Shader_hamny"]
 code = "shader_type canvas_item;
@@ -250,5 +262,21 @@ tile_set = ExtResource("3_coa6n")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_hamny")
+<<<<<<< Updated upstream
 offset_right = 5379.0
 offset_bottom = 2520.0
+=======
+offset_left = -1414.0
+offset_top = -776.0
+offset_right = 3965.0
+offset_bottom = 1744.0
+metadata/_edit_lock_ = true
+
+[node name="blue_flower" parent="." instance=ExtResource("6_2kwrj")]
+visible = false
+texture_filter = 1
+position = Vector2(1178, 40)
+
+[connection signal="body_entered" from="village/butterfly/DialogueInteractionArea" to="village/butterfly/DialogueInteractionArea" method="_on_body_entered"]
+[connection signal="body_exited" from="village/butterfly/DialogueInteractionArea" to="village/butterfly/DialogueInteractionArea" method="_on_body_exited"]
+>>>>>>> Stashed changes
