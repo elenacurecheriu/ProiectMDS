@@ -104,7 +104,7 @@ func heal(amount):
 	
 	
 func die():
-	get_tree().change_scene_to_file("res://Scenes/levels/village.tscn")
+	get_tree().change_scene_to_file("res://Scenes/levels/village_3.tscn")
 	
 
 func _on_interaction_area_area_entered(area: Area2D) -> void:
