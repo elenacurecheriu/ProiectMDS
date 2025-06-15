@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bola2tlukuyh5" path="res://Scenes/levels/village.tscn" id="1_3lypn"]
 [ext_resource type="Shader" uid="uid://h4mfnmtdpf3h" path="res://assets/shaders/blending_modes.gdshader" id="2_b5cp8"]
 [ext_resource type="TileSet" uid="uid://be65eo2fvqoya" path="res://Scenes/resources/level.tres" id="2_qjhno"]
-[ext_resource type="Script" path="res://Scenes/levels/to_dungeon.gd" id="3_4swfj"]
+[ext_resource type="Script" uid="uid://shmquuj5qfj3" path="res://Scenes/levels/to_dungeon.gd" id="3_4swfj"]
 [ext_resource type="Texture2D" uid="uid://5am2g2u4e3ua" path="res://assets/shaders/particle2.png" id="3_qjhno"]
 [ext_resource type="PackedScene" uid="uid://c0gy6p2pmqu2s" path="res://Scenes/Attack/debug_character.tscn" id="6_3vy07"]
 
