@@ -269,6 +269,7 @@ position = Vector2(336, 128)
 texture_filter = 1
 material = SubResource("ShaderMaterial_x6flg")
 clip_contents = true
+offset_top = -69.0
 offset_right = 688.0
 offset_bottom = 768.0
 color = Color(0, 0, 0, 1)
