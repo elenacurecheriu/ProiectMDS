@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://b752yh06fy31q"
+path="res://.godot/imported/boss.dialogue-124127f9880c275ed539192755d2f6d9.tres"
+
+[deps]
+
+source_file="res://Dialogues/boss.dialogue"
+dest_files=["res://.godot/imported/boss.dialogue-124127f9880c275ed539192755d2f6d9.tres"]
+
+[params]
+
+defaults=true

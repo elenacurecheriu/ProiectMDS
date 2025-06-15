@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://swyeffvagq8r" path="res://assets/character_art/original/rob_bf.png" id="2_kiru6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kiru6"]
-radius = 441.113
+radius = 1111.03
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_x38wd"]
 radius = 108.674

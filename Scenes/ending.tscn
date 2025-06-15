@@ -1,0 +1,65 @@
+[gd_scene load_steps=9 format=3 uid="uid://degcpg8cl35vr"]
+
+[ext_resource type="Texture2D" uid="uid://5am2g2u4e3ua" path="res://assets/shaders/particle2.png" id="1_5jm55"]
+[ext_resource type="Script" uid="uid://iv4gwyj2yim" path="res://Scenes/ending.gd" id="1_kg0jb"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_kg0jb"]
+light_mode = 1
+
+[sub_resource type="Curve" id="Curve_6u0w7"]
+_data = [Vector2(0.203488, 0.101124), 0.0, 0.0, 0, 0, Vector2(0.331395, 1), 0.0, 0.0, 0, 0, Vector2(0.848837, 1), 0.0, 0.0, 0, 0, Vector2(0.953488, 0.52809), 0.0, 0.0, 0, 0, Vector2(1, 0.0561798), 0.0, 0.0, 0, 0]
+point_count = 5
+
+[sub_resource type="CurveTexture" id="CurveTexture_fmbfy"]
+curve = SubResource("Curve_6u0w7")
+
+[sub_resource type="Gradient" id="Gradient_bxiex"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_7cwcg"]
+gradient = SubResource("Gradient_bxiex")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ib4ol"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(2600, 1800, 1)
+spread = 89.554
+initial_velocity_min = 5.0
+initial_velocity_max = 10.0
+gravity = Vector3(0, 0, 0)
+damping_max = 10.843
+scale_min = 0.1
+color_ramp = SubResource("GradientTexture1D_7cwcg")
+alpha_curve = SubResource("CurveTexture_fmbfy")
+
+[node name="Ending" type="Node2D"]
+script = ExtResource("1_kg0jb")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -300
+offset_left = -171.0
+offset_top = -77.0
+offset_right = 1368.0
+offset_bottom = 812.0
+color = Color(0, 0, 0, 1)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+z_index = -1
+material = SubResource("CanvasItemMaterial_kg0jb")
+position = Vector2(1329.41, 1498.94)
+amount = 1013
+texture = ExtResource("1_5jm55")
+lifetime = 6.0
+randomness = 0.45
+visibility_rect = Rect2(-2000, -2000, 3500, 2000)
+process_material = SubResource("ParticleProcessMaterial_ib4ol")
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="."]
+z_index = -1
+material = SubResource("CanvasItemMaterial_kg0jb")
+position = Vector2(1329.41, 1498.94)
+amount = 1013
+texture = ExtResource("1_5jm55")
+lifetime = 6.0
+randomness = 0.45
+visibility_rect = Rect2(-2000, -2000, 3500, 2000)
+process_material = SubResource("ParticleProcessMaterial_ib4ol")

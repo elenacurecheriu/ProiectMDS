@@ -10,12 +10,12 @@ light_mode = 1
 _data = [Vector2(0.203488, 0.101124), 0.0, 0.0, 0, 0, Vector2(0.331395, 1), 0.0, 0.0, 0, 0, Vector2(0.848837, 1), 0.0, 0.0, 0, 0, Vector2(0.953488, 0.52809), 0.0, 0.0, 0, 0, Vector2(1, 0.0561798), 0.0, 0.0, 0, 0]
 point_count = 5
 
-[sub_resource type="CurveTexture" id="CurveTexture_fmbfy"]
+[sub_resource type="CurveTexture" id="CurveTexture_5vd3g"]
 curve = SubResource("Curve_v82ea")
 
 [sub_resource type="Gradient" id="Gradient_6gxf0"]
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_7cwcg"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_4xstj"]
 gradient = SubResource("Gradient_6gxf0")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_hjghw"]
@@ -28,8 +28,8 @@ initial_velocity_max = 10.0
 gravity = Vector3(0, 0, 0)
 damping_max = 10.843
 scale_min = 0.1
-color_ramp = SubResource("GradientTexture1D_7cwcg")
-alpha_curve = SubResource("CurveTexture_fmbfy")
+color_ramp = SubResource("GradientTexture1D_4xstj")
+alpha_curve = SubResource("CurveTexture_5vd3g")
 
 [node name="village" type="Node2D"]
 
