@@ -17,9 +17,9 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Globals="res://scripts/core/Globals.cs"
+Globals="*res://scripts/core/Globals.cs"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
-FadeTransition="*res://Scenes/Transitions/FadeTransition.tscn"
+Fade_Transition="*res://Scenes/Transitions/FadeTransition.tscn"
 
 [dialogue_manager]
 

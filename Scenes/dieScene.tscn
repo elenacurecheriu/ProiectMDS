@@ -1,10 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://bnfeji2ted4wn"]
+[gd_scene load_steps=3 format=3 uid="uid://cs2p5nbb3rhc"]
 
-[ext_resource type="Script" uid="uid://ipaqutsypk6t" path="res://Scenes/die.gd" id="1_cv3b7"]
-[ext_resource type="FontFile" uid="uid://3ouse7y00yvl" path="res://Fonts/Glitchdemo-lxgGq.ttf" id="1_jfeu1"]
+[ext_resource type="Script" uid="uid://ipaqutsypk6t" path="res://Scenes/dieScene.gd" id="1_kbprw"]
+[ext_resource type="FontFile" uid="uid://3ouse7y00yvl" path="res://Fonts/Glitchdemo-lxgGq.ttf" id="2_u3nu6"]
 
 [node name="Node2D" type="Node2D"]
-script = ExtResource("1_cv3b7")
+script = ExtResource("1_kbprw")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
@@ -21,7 +21,7 @@ offset_bottom = 109.858
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.701961, 0.207843, 0.0784314, 1)
-theme_override_fonts/font = ExtResource("1_jfeu1")
+theme_override_fonts/font = ExtResource("2_u3nu6")
 theme_override_font_sizes/font_size = 191
 text = "You Died"
 

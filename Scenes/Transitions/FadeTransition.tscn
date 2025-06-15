@@ -72,5 +72,3 @@ color = Color(0.0196078, 0.0117647, 0.0509804, 1)
 libraries = {
 &"": SubResource("AnimationLibrary_37suh")
 }
-
-[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
