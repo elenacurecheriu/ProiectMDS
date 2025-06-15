@@ -1,6 +1,6 @@
 extends Iteractable
 
-@export var heal_amount = 10
+@export var heal_amount = 50
 @export var dialogueScript: DialogueResource
 
 func ActivateInteraction(player) -> void:

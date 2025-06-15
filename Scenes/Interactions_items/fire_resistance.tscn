@@ -47,6 +47,7 @@ radius = 71.007
 script = ExtResource("1_nkbf7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
 position = Vector2(1.90735e-06, 2)
 scale = Vector2(3.99023, 3.99023)
 sprite_frames = SubResource("SpriteFrames_v4h3h")
