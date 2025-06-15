@@ -1,10 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://bwfmodmvuwen"]
+[gd_scene load_steps=6 format=3 uid="uid://bwfmodmvuwen"]
 
 [ext_resource type="Script" uid="uid://djmg4usaefsbc" path="res://Scripts/Bosses/boss.gd" id="1_1j1mm"]
 [ext_resource type="Texture2D" uid="uid://c2pmahrfprbtt" path="res://assets/character_art/original/rob1.png" id="2_kiru6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kiru6"]
 radius = 441.113
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x38wd"]
+radius = 108.674
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rkmjy"]
 radius = 43.1045
@@ -34,6 +37,12 @@ collision_mask = 3
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Attack/follow"]
 shape = SubResource("CircleShape2D_kiru6")
 
+[node name="melee" type="Area2D" parent="Attack"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Attack/melee"]
+position = Vector2(2, 11)
+shape = SubResource("CircleShape2D_x38wd")
+
 [node name="AttackTimer" type="Timer" parent="."]
 wait_time = 1.731
 
@@ -48,5 +57,10 @@ visibility_layer = 3
 position = Vector2(1, 12)
 shape = SubResource("CircleShape2D_rkmjy")
 
+[node name="MeleeTimer" type="Timer" parent="."]
+wait_time = 0.578
+
 [connection signal="area_entered" from="Attack/follow" to="." method="_on_follow_area_entered"]
 [connection signal="area_exited" from="Attack/follow" to="." method="_on_follow_area_exited"]
+[connection signal="area_entered" from="Attack/melee" to="." method="_on_melee_area_entered"]
+[connection signal="area_exited" from="Attack/melee" to="." method="_on_melee_area_exited"]
