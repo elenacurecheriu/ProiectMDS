@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://c0jujlo4ko7ue"]
+[gd_scene load_steps=16 format=4 uid="uid://c0jujlo4ko7ue"]
 
 [ext_resource type="PackedScene" uid="uid://bola2tlukuyh5" path="res://Scenes/levels/village.tscn" id="1_3lypn"]
 [ext_resource type="Shader" uid="uid://h4mfnmtdpf3h" path="res://assets/shaders/blending_modes.gdshader" id="2_b5cp8"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://shmquuj5qfj3" path="res://Scenes/levels/to_dungeon.gd" id="3_4swfj"]
 [ext_resource type="Texture2D" uid="uid://5am2g2u4e3ua" path="res://assets/shaders/particle2.png" id="3_qjhno"]
 [ext_resource type="PackedScene" uid="uid://c0gy6p2pmqu2s" path="res://Scenes/Attack/debug_character.tscn" id="6_3vy07"]
+[ext_resource type="AudioStream" uid="uid://c865tm76rk0b3" path="res://assets/music/scary_track_halftime.mp3" id="7_by76n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3vy07"]
 size = Vector2(43, 59)
@@ -93,5 +94,9 @@ metadata/_edit_lock_ = true
 
 [node name="Player" parent="." instance=ExtResource("6_3vy07")]
 position = Vector2(3423, 1582)
+
+[node name="ScaryTrackHalftime" type="AudioStreamPlayer" parent="Player"]
+stream = ExtResource("7_by76n")
+autoplay = true
 
 [connection signal="body_entered" from="village/to_dungeon" to="village/to_dungeon" method="_on_body_entered"]

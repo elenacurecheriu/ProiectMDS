@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bjpr7fxumnklw"]
 
 [ext_resource type="Script" uid="uid://buh3jc68w8gq1" path="res://assets/attack_bullets/bullet.gd" id="1_ihham"]
-[ext_resource type="Texture2D" uid="uid://cr6lpwlqefwlv" path="res://assets/attack_bullets/FireBullet.png" id="2_f23fh"]
+[ext_resource type="Texture2D" uid="uid://dlaopt5jpkm6q" path="res://assets/attack_bullets/racheta.png" id="2_7iafr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2clfd"]
 radius = 9.0
@@ -16,7 +16,7 @@ script = ExtResource("1_ihham")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
 scale = Vector2(1.5, 1.5)
-texture = ExtResource("2_f23fh")
+texture = ExtResource("2_7iafr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_2clfd")
