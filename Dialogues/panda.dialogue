@@ -1,0 +1,42 @@
+
+~ inside
+Panda: Its so [wave][color=orange]hot[/color][/wave] these days. Close the door, don’t let the [wave][color=orange]heat[/color][/wave] in. Who are you, anyway?
+- I’m the knight who will help fix all your problems!
+- I was sent here, to help you?
+Panda: Help me? I don’t need your help
+Panda: What bothers me is something that can’t really be helped
+- Well… what is bothering you?
+- Maybe I can’t help, but I can listen.
+Panda: I-uh….
+Panda: Sorry, Im not big on talking. Give me a moment
+- It’s ok. Take your time
+- I’m not going anywhere
+Panda: Right. Sorry, I guess the [wave][color=orange]heat[/color][/wave] is getting to me. I haven’t been outside in so long. I just sit at home all day, [wave][color=orange]melting[/color][/wave], waisting my life away. 
+Panda: And I feel so bad for doing it, but I can’t get myself to do anything else.
+Panda: Its stupid, isnt it? Of course I could get out of bed. I’m just lazy…
+- I don’t think its stupid
+- Anybody can ‘do’ anything. Doesn’t mean they should .
+Panda: ...
+- Are you aware it’s actually quite cold outside?
+- Why are you melting anyway? Its snowing out there
+Panda: So what? Are you saying its all in my head?
+- Not exactly. I’m saying your perception of life seems a bit different than the rest.
+Panda: Then, if you see things so differently, tell me:
+Panda: Do you think I’m a bad person?
+Panda: Do you think I didn’t deserve to [color=red]survive[/color]?
+- Well, I don’t think I can be a judge of that. Only you can.
+Panda: Oh, I think [color=red]YOU[/color] can definitely be a judge of that.
+- …I just want you to be happy
+Panda: I don’t think I can be happy. Everytime I think of [color=red]them[/color]… everytime I remember, I drown in a paralyzing wave of sadness. 
+Panda: I feel so sad. [color=red]Don’t you feel sad too?[/color] You should be.
+- … Then I hope you live to see the day where you find yourself content.
+Panda: That’s nice of you to say. I think’s that’s more realistic.
+- …Do you feel better?
+Panda: ...
+Panda: Not really. But I won’t get ‘cured’ with a 5 minute conversation. And that’s ok.
+Panda: Still, thank you for talking to me. You can have [color=red]this[/color]. As a token of my appreciation.
+=> END
+
+~ end_loop
+Panda: …seems I’ve cooled down a bit. Still, close the door when you walk out. Maybe you don’t feel the [wave][color=orange]heat[/color][/wave], but to me, it’s still burning.
+=> END

@@ -6,14 +6,24 @@ extends CharacterBody2D
 @export var stats = {
 	"fire_resistance": 0,
 	"mushroom": 0,
-	"cake": 0
+	"cake": 0,
+	"pink_glasses": 0,
+	"eye": 0,
+	"beer":0,
+	"blue_flower":0
+	
 }
 var test1 = 0
 var test2 = 0
 var max_health = 374
 var current_health = 100
-
+var dialogue_active = false
 var health_bar
+
+
+var has_beer = false
+var has_eye = false
+var has_glasses = false
 
 var attackComponent
 
@@ -27,6 +37,12 @@ func _ready() -> void:
 		attackComponent = attackScene.instantiate()
 		attackComponent
 		add_child(attackComponent)
+	
+	
+	var hotbar = preload("res://Scenes/Interactions_items/Hotbar.tscn").instantiate()
+	add_child(hotbar) 
+	hotbar.position = Vector2(173,-97)
+
 	
 func set_health_component(_health_bar):
 	self.health_bar = _health_bar
@@ -53,9 +69,14 @@ func get_input():
 	velocity = input_direction * speed
 
 func _physics_process(delta):
-	get_input()
-	move_and_slide()
-	update_animation()
+	if not dialogue_active:
+		get_input()
+		move_and_slide()
+		update_animation()
+	else:
+		velocity = Vector2.ZERO
+		move_and_slide()
+		update_animation()
 
 	if Input.is_action_just_pressed("Interact"):
 		handleInteractions()

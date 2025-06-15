@@ -1,29 +1,409 @@
-[gd_scene load_steps=5 format=3 uid="uid://cwqocb6oje2v7"]
+[gd_scene load_steps=27 format=4 uid="uid://cwqocb6oje2v7"]
 
 [ext_resource type="PackedScene" uid="uid://bola2tlukuyh5" path="res://Scenes/levels/village.tscn" id="1_4r0el"]
+[ext_resource type="Script" path="res://Scenes/levels/village_2.gd" id="1_upf00"]
 [ext_resource type="Texture2D" uid="uid://c6t8qi8o8pv3a" path="res://assets/character_art/original/mihai_af.png" id="2_w70xs"]
+[ext_resource type="TileSet" uid="uid://be65eo2fvqoya" path="res://Scenes/resources/level.tres" id="3_6dfpp"]
+[ext_resource type="Texture2D" uid="uid://cgvmccw3h57q0" path="res://assets/character_art/original/luca_bf.png" id="3_eb6hk"]
+[ext_resource type="Script" path="res://Scenes/levels/dialogue_interaction_area_village2.gd" id="3_k7tq8"]
 [ext_resource type="Shader" uid="uid://h4mfnmtdpf3h" path="res://assets/shaders/blending_modes.gdshader" id="3_n8n8i"]
+[ext_resource type="Texture2D" uid="uid://dnlnvf8lujknr" path="res://assets/character_art/original/ovidiu_bf.png" id="4_eb6hk"]
+[ext_resource type="Script" path="res://Scenes/levels/lamb.gd" id="6_alql6"]
+[ext_resource type="Script" path="res://Scenes/levels/squirrel.gd" id="7_3rrxf"]
+[ext_resource type="PackedScene" uid="uid://c0gy6p2pmqu2s" path="res://Scenes/Attack/debug_character.tscn" id="7_3sm37"]
+[ext_resource type="Script" uid="uid://bwpgb11u05828" path="res://Scripts/transition/to_panda_house.gd" id="10_tbbhl"]
+[ext_resource type="PackedScene" uid="uid://d1gruhw3i0i43" path="res://Scenes/levels/panda_house.tscn" id="11_xwnoy"]
+[ext_resource type="Texture2D" uid="uid://degftoy1p1q0l" path="res://assets/levels_art/gateclosed.png" id="14_r8bvs"]
+[ext_resource type="Script" path="res://Scenes/levels/gate.gd" id="15_cnute"]
+[ext_resource type="Script" uid="uid://eybq05frmtaw" path="res://Scripts/transition/to_cat_house.gd" id="16_q54q3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_upf00"]
+size = Vector2(371.129, 389.553)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3rrxf"]
+size = Vector2(642.123, 520.65)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_alql6"]
+size = Vector2(397.003, 429.446)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n8n8i"]
+shader = ExtResource("3_n8n8i")
+shader_parameter/tint = Color(0.618053, 0.873565, 0.18467, 1)
+shader_parameter/opacity = 0.181
+shader_parameter/blend_mode = 13
+
+[sub_resource type="Shader" id="Shader_cnute"]
+code = "shader_type canvas_item;
+// BLENDING MODES
+vec3 multiply(vec3 base, vec3 blend) {
+    return base * blend;
+}
+vec3 screen(vec3 base, vec3 blend) {
+    return 1.0 - (1.0 - base) * (1.0 - blend);
+}
+vec3 darken(vec3 base, vec3 blend) {
+    return min(base, blend);
+}
+vec3 lighten(vec3 base, vec3 blend) {
+    return max(base, blend);
+}
+vec3 difference(vec3 base, vec3 blend) {
+    return abs(base - blend);
+}
+vec3 exclusion(vec3 base, vec3 blend) {
+    return base + blend - 2.0 * base * blend;
+}
+vec3 overlay(vec3 base, vec3 blend) {
+    vec3 limit = step(0.5, base);
+    return mix(2.0 * base * blend, 1.0 - 2.0 * (1.0 - base) * (1.0 - blend), limit);
+}
+vec3 hard_light(vec3 base, vec3 blend) {
+    vec3 limit = step(0.5, blend);
+    return mix(2.0 * base * blend, 1.0 - 2.0 * (1.0 - base) * (1.0 - blend), limit);
+}
+vec3 soft_light(vec3 base, vec3 blend) {
+    vec3 limit = step(0.5, blend);
+    return mix(2.0 * base * blend + base * base * (1.0 - 2.0 * blend), sqrt(base) * (2.0 * blend - 1.0) + (2.0 * base) * (1.0 - blend), limit);
+}
+vec3 color_dodge(vec3 base, vec3 blend) {
+    return base / (1.0 - blend);
+}
+vec3 linear_dodge(vec3 base, vec3 blend) {
+    return base + blend;
+}
+vec3 color_burn(vec3 base, vec3 blend) {
+    return 1.0 - (1.0 - base) / blend;
+}
+vec3 linear_burn(vec3 base, vec3 blend) {
+    return base + blend - 1.0;
+}
+
+//thank u claude pentru photoshop math functions
+
+// Converts RGB to HSL
+vec3 rgb_to_hsl(vec3 color) {
+    float maxColor = max(max(color.r, color.g), color.b);
+    float minColor = min(min(color.r, color.g), color.b);
+    float delta = maxColor - minColor;
+    
+    float h = 0.0;
+    float s = 0.0;
+    float l = (maxColor + minColor) / 2.0;
+    
+    if (delta > 0.0) {
+        s = l < 0.5 ? delta / (maxColor + minColor) : delta / (2.0 - maxColor - minColor);
+        
+        if (maxColor == color.r) {
+            h = (color.g - color.b) / delta + (color.g < color.b ? 6.0 : 0.0);
+        } else if (maxColor == color.g) {
+            h = (color.b - color.r) / delta + 2.0;
+        } else {
+            h = (color.r - color.g) / delta + 4.0;
+        }
+        h /= 6.0;
+    }
+    
+    return vec3(h, s, l);
+}
+
+// Function to help with HSL to RGB conversion
+float hue_to_rgb(float p, float q, float t) {
+    if (t < 0.0) t += 1.0;
+    if (t > 1.0) t -= 1.0;
+    if (t < 1.0/6.0) return p + (q - p) * 6.0 * t;
+    if (t < 1.0/2.0) return q;
+    if (t < 2.0/3.0) return p + (q - p) * (2.0/3.0 - t) * 6.0;
+    return p;
+}
+
+// Converts HSL to RGB
+vec3 hsl_to_rgb(vec3 hsl) {
+    float h = hsl.x;
+    float s = hsl.y;
+    float l = hsl.z;
+    
+    float r, g, b;
+    
+    if (s == 0.0) {
+        r = g = b = l; // Achromatic
+    } else {
+        float q = l < 0.5 ? l * (1.0 + s) : l + s - l * s;
+        float p = 2.0 * l - q;
+        r = hue_to_rgb(p, q, h + 1.0/3.0);
+        g = hue_to_rgb(p, q, h);
+        b = hue_to_rgb(p, q, h - 1.0/3.0);
+    }
+    
+    return vec3(r, g, b);
+}
+
+// Photoshop/Krita Color mode - takes hue and saturation from blend layer, luminance from base layer
+vec3 ps_color(vec3 base, vec3 blend) {
+    vec3 base_hsl = rgb_to_hsl(base);
+    vec3 blend_hsl = rgb_to_hsl(blend);
+    
+    // Take hue and saturation from blend, luminance from base
+    return hsl_to_rgb(vec3(blend_hsl.x, blend_hsl.y, base_hsl.z));
+}
+
+// Hue mode - takes hue from blend layer, saturation and luminance from base
+vec3 ps_hue(vec3 base, vec3 blend) {
+    vec3 base_hsl = rgb_to_hsl(base);
+    vec3 blend_hsl = rgb_to_hsl(blend);
+    
+    // Take hue from blend, saturation and luminance from base
+    return hsl_to_rgb(vec3(blend_hsl.x, base_hsl.y, base_hsl.z));
+}
+
+// Saturation mode - takes saturation from blend layer, hue and luminance from base
+vec3 ps_saturation(vec3 base, vec3 blend) {
+    vec3 base_hsl = rgb_to_hsl(base);
+    vec3 blend_hsl = rgb_to_hsl(blend);
+    
+    // Take saturation from blend, hue and luminance from base
+    return hsl_to_rgb(vec3(base_hsl.x, blend_hsl.y, base_hsl.z));
+}
+
+// Luminosity mode - takes luminance from blend layer, hue and saturation from base
+vec3 ps_luminosity(vec3 base, vec3 blend) {
+    vec3 base_hsl = rgb_to_hsl(base);
+    vec3 blend_hsl = rgb_to_hsl(blend);
+    
+    // Take luminance from blend, hue and saturation from base
+    return hsl_to_rgb(vec3(base_hsl.x, base_hsl.y, blend_hsl.z));
+}
+
+// Grayscale/Black and White conversion - different methods available
+vec3 grayscale_average(vec3 color) {
+    float gray = (color.r + color.g + color.b) / 3.0;
+    return vec3(gray);
+}
+
+vec3 grayscale_luminance(vec3 color) {
+    // Human eye perceives green as brighter than red, and red as brighter than blue
+    float gray = dot(color, vec3(0.299, 0.587, 0.114));
+    return vec3(gray);
+}
+
+vec3 grayscale_lightness(vec3 color) {
+    float gray = (max(max(color.r, color.g), color.b) + min(min(color.r, color.g), color.b)) / 2.0;
+    return vec3(gray);
+}
+
+uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear_mipmap;
+uniform vec4 tint : source_color = vec4(1.0, 1.0, 1.0, 1.0);
+uniform float opacity : hint_range(0.0, 1.0) = 1.0;
+uniform int blend_mode : hint_enum(\"Normal\", \"Multiply\", \"Screen\", \"Darken\", \"Lighten\", \"Difference\", \"Exclusion\", \"Overlay\", \"Hard Light\", \"Soft Light\", \"Color Dodge\", \"Linear Dodge\", \"Color Burn\", \"Linear Burn\",
+							\"Color\", \"Hue\", \"Saturation\", \"Luminosity\", \"Grayscale avg\", \"Grayscale Luminance\", \"Grayscale Lightness\") = 0;
+
+void fragment() {
+    // Get the color behind our ColorRect (the base layer)
+    vec4 screen_color = texture(SCREEN_TEXTURE, SCREEN_UV);
+    
+    // Our blend layer is the ColorRect with the tint applied
+    vec3 blend_color = tint.rgb;
+    
+    // Apply the selected blending mode
+    vec3 result;
+    
+    if (blend_mode == 0) {
+        result = mix(screen_color.rgb, blend_color, opacity);
+    } else if (blend_mode == 1) {
+        result = mix(screen_color.rgb, multiply(screen_color.rgb, blend_color), opacity);
+    } else if (blend_mode == 2) {
+        result = mix(screen_color.rgb, screen(screen_color.rgb, blend_color), opacity);
+    } else if (blend_mode == 3) {
+        result = mix(screen_color.rgb, darken(screen_color.rgb, blend_color), opacity);
+    } else if (blend_mode == 4) {
+        result = mix(screen_color.rgb, lighten(screen_color.rgb, blend_color), opacity);
+    } else if (blend_mode == 5) {
+        result = mix(screen_color.rgb, difference(screen_color.rgb, blend_color), opacity);
+    } else if (blend_mode == 6) {
+        result = mix(screen_color.rgb, exclusion(screen_color.rgb, blend_color), opacity);
+    } else if (blend_mode == 7) {
+        result = mix(screen_color.rgb, overlay(screen_color.rgb, blend_color), opacity);
+    } else if (blend_mode == 8) {
+        result = mix(screen_color.rgb, hard_light(screen_color.rgb, blend_color), opacity);
+    } else if (blend_mode == 9) {
+        result = mix(screen_color.rgb, soft_light(screen_color.rgb, blend_color), opacity);
+    } else if (blend_mode == 10) {
+        result = mix(screen_color.rgb, color_dodge(screen_color.rgb, blend_color), opacity);
+    } else if (blend_mode == 11) {
+        result = mix(screen_color.rgb, linear_dodge(screen_color.rgb, blend_color), opacity);
+    } else if (blend_mode == 12) {
+        result = mix(screen_color.rgb, color_burn(screen_color.rgb, blend_color), opacity);
+    } else if (blend_mode == 13) {
+		result = mix(screen_color.rgb, ps_color(screen_color.rgb, blend_color), opacity);
+    }else if (blend_mode == 14) {
+		result = mix(screen_color.rgb, ps_hue(screen_color.rgb, blend_color), opacity);
+	}else if (blend_mode == 15) {
+		result = mix(screen_color.rgb, ps_saturation(screen_color.rgb, blend_color), opacity);
+	}
+	else if (blend_mode == 16) {
+		result = mix(screen_color.rgb, ps_luminosity(screen_color.rgb, blend_color), opacity);
+	}else if (blend_mode == 17) {
+		result = grayscale_average(screen_color.rgb);
+	}else if (blend_mode == 18) {
+		result = grayscale_luminance(screen_color.rgb);
+	}else if (blend_mode == 19) {
+		result = grayscale_lightness(screen_color.rgb);
+	}
+    
+    // Final output
+    COLOR = vec4(result, screen_color.a * tint.a);
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tbbhl"]
+shader = SubResource("Shader_cnute")
+shader_parameter/tint = Color(0, 0, 0, 1)
+shader_parameter/opacity = 1.0
+shader_parameter/blend_mode = 0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6dfpp"]
 shader = ExtResource("3_n8n8i")
-shader_parameter/tint = Color(0.759444, 0.819082, 0.467292, 1)
-shader_parameter/opacity = 0.625
-shader_parameter/blend_mode = 9
+shader_parameter/tint = Color(0.871101, 0.41623, 3.85046e-07, 1)
+shader_parameter/opacity = 0.2
+shader_parameter/blend_mode = 5
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xwnoy"]
+size = Vector2(35.25, 44)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q54q3"]
+size = Vector2(807.07, 597.112)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v8fny"]
+size = Vector2(41, 65)
 
 [node name="Village2" type="Node2D"]
+script = ExtResource("1_upf00")
 
 [node name="village" parent="." instance=ExtResource("1_4r0el")]
-position = Vector2(2726.29, 1609.18)
 
-[node name="mihai" type="Sprite2D" parent="village"]
+[node name="butterfly" type="Sprite2D" parent="village"]
 texture_filter = 1
 position = Vector2(1277, 916)
 scale = Vector2(0.379922, 0.379922)
 texture = ExtResource("2_w70xs")
 
+[node name="DialogueInteractionArea" type="Area2D" parent="village/butterfly"]
+script = ExtResource("3_k7tq8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="village/butterfly/DialogueInteractionArea"]
+position = Vector2(-0.184242, -0.24213)
+shape = SubResource("RectangleShape2D_upf00")
+
+[node name="lamb" type="Sprite2D" parent="village"]
+texture_filter = 1
+position = Vector2(3068, 2632)
+scale = Vector2(0.358105, 0.358105)
+texture = ExtResource("3_eb6hk")
+
+[node name="AreaLamb" type="Area2D" parent="village/lamb"]
+position = Vector2(22.3398, -50.2646)
+script = ExtResource("6_alql6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="village/lamb/AreaLamb"]
+position = Vector2(-97.7368, -8.3776)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_3rrxf")
+
+[node name="squirrel" type="Sprite2D" parent="village"]
+texture_filter = 1
+position = Vector2(1368, 1927)
+scale = Vector2(0.393836, 0.393836)
+texture = ExtResource("4_eb6hk")
+
+[node name="SquirrelArea" type="Area2D" parent="village/squirrel"]
+script = ExtResource("7_3rrxf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="village/squirrel/SquirrelArea"]
+position = Vector2(46.1755, -23.1079)
+rotation = -0.00427692
+shape = SubResource("RectangleShape2D_alql6")
+
+[node name="collision" type="TileMapLayer" parent="village"]
+position = Vector2(-2726.29, -1609.18)
+tile_map_data = PackedByteArray("AAD6AJwAAgADABAAAAD6AJ0AAgADABAAAAD5AJ0AAgADABAAAAAAAdsAAgADABAAAAAAAdwAAgADABAAAAABAdsAAgADABAAAAABAdwAAgADABAAAAAAAdoAAgADABAAAAABAdoAAgADABAAAAD+ANsAAgADABAAAAD+ANwAAgADABAAAAD/ANsAAgADABAAAAD/ANwAAgADABAAAABpAQcBAgADABAAAABpAQgBAgADABAAAABpAQkBAgADABAAAABqAQcBAgADABAAAABqAQgBAgADABAAAABqAQkBAgADABAAAAA=")
+tile_set = ExtResource("3_6dfpp")
+metadata/_edit_lock_ = true
+
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_n8n8i")
+offset_left = -2054.0
+offset_top = -1713.0
+offset_right = 4874.0
+offset_bottom = 3846.0
+metadata/_edit_lock_ = true
+
+[node name="PandaHouse" parent="." instance=ExtResource("11_xwnoy")]
+position = Vector2(-2785, 1177)
+
+[node name="Player" parent="." instance=ExtResource("7_3sm37")]
+position = Vector2(1178, 891)
+
+[node name="blackscreen" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_tbbhl")
+offset_left = 550.0
+offset_top = 525.0
+offset_right = 1661.0
+offset_bottom = 1195.0
+color = Color(0, 0, 0, 1)
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
 material = SubResource("ShaderMaterial_6dfpp")
-offset_left = -4.0
-offset_top = 60.0
-offset_right = 6924.0
-offset_bottom = 5619.0
+position = Vector2(-2732, -1605)
+polygon = PackedVector2Array(5931, 3795, 5873, 3802, 5857, 3812, 5673, 3816, 5667, 3833, 5561, 3830, 5547, 3847, 5544, 3863, 5462, 3865, 5458, 3868, 5429, 3883, 5367, 3915, 5306, 3976, 5287, 3991, 5287, 4052, 5272, 4052, 5255, 4082, 5238, 4088, 5238, 4114, 5224, 4124, 5194, 4143, 5193, 4196, 5176, 4199, 5157, 4233, 5141, 4245, 5157, 4279, 5152, 4308, 5132, 4330, 5126, 4349, 5161, 4381, 5182, 4381, 5188, 4406, 5175, 4424, 5189, 4465, 5207, 4504, 5219, 4508, 5267, 4553, 5295, 4580, 5287, 4604, 5479, 4615, 5490, 4603, 5591, 4601, 5595, 4578, 5640, 4576, 5643, 4548, 5700, 4544, 5705, 4526, 5765, 4535, 5900, 4410, 5931, 4405, 6005, 4324, 6014, 4283, 6029, 4262, 6029, 4118, 6046, 4107, 6043, 3958, 6026, 3955, 6025, 3876, 6010, 3874, 6006, 3834, 5991, 3826, 5991, 3800, 5981, 3803, 5971, 3775, 5950, 3780)
+metadata/_edit_lock_ = true
+
+[node name="to_panda_house" type="Area2D" parent="."]
+script = ExtResource("10_tbbhl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="to_panda_house"]
+position = Vector2(-809.375, 1217)
+shape = SubResource("RectangleShape2D_xwnoy")
+one_way_collision_margin = 0.0
+
+[node name="Gate" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(2803.63, 1246.88)
+scale = Vector2(0.164325, 0.170408)
+texture = ExtResource("14_r8bvs")
+
+[node name="GateArea" type="Area2D" parent="Gate"]
+script = ExtResource("15_cnute")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Gate/GateArea"]
+position = Vector2(-120.607, 71.4429)
+rotation = 0.320571
+shape = SubResource("RectangleShape2D_q54q3")
+
+[node name="to_cat_house" type="Area2D" parent="."]
+script = ExtResource("16_q54q3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="to_cat_house"]
+position = Vector2(3376, 1544)
+shape = SubResource("RectangleShape2D_v8fny")
+
+[node name="Control" type="Control" parent="to_cat_house"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 7825.03
+offset_top = 1508.59
+offset_right = 7865.03
+offset_bottom = 1548.59
+
+[connection signal="body_entered" from="village/butterfly/DialogueInteractionArea" to="village/butterfly/DialogueInteractionArea" method="_on_body_entered"]
+[connection signal="body_exited" from="village/butterfly/DialogueInteractionArea" to="village/butterfly/DialogueInteractionArea" method="_on_body_exited"]
+[connection signal="blackscreen" from="village/lamb/AreaLamb" to="." method="_on_area_lamb_blackscreen"]
+[connection signal="body_entered" from="village/lamb/AreaLamb" to="village/lamb/AreaLamb" method="_on_body_entered"]
+[connection signal="body_exited" from="village/lamb/AreaLamb" to="village/lamb/AreaLamb" method="_on_body_exited"]
+[connection signal="body_entered" from="village/squirrel/SquirrelArea" to="village/squirrel/SquirrelArea" method="_on_body_entered"]
+[connection signal="body_exited" from="village/squirrel/SquirrelArea" to="village/squirrel/SquirrelArea" method="_on_body_exited"]
+[connection signal="blackscreenRelay" from="PandaHouse" to="." method="_on_panda_house_blackscreen_relay"]
+[connection signal="body_entered" from="to_panda_house" to="to_panda_house" method="_on_body_entered"]
+[connection signal="body_exited" from="to_panda_house" to="to_panda_house" method="_on_body_exited"]
+[connection signal="blackscreen" from="Gate/GateArea" to="." method="_on_gate_area_blackscreen"]
+[connection signal="body_entered" from="Gate/GateArea" to="Gate/GateArea" method="_on_body_entered"]
+[connection signal="body_exited" from="Gate/GateArea" to="Gate/GateArea" method="_on_body_exited"]
+[connection signal="body_entered" from="to_cat_house" to="to_cat_house" method="_on_body_entered"]

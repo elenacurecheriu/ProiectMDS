@@ -40,6 +40,11 @@ var paused = false
 var pause_menu 
 var camera = CameraScene.instantiate()
 #var minimap = MinimapScene.instantiate()
+
+
+var enemy_counts = [] #enemy_counts[i] == cati inamici sunt in camera cu roomID == i
+var current_room_id = 1
+
 func get_current_room_coords():
 	return current_room_coords
 	
@@ -60,13 +65,13 @@ func pause_menu_():
 	paused = ! paused	
 	
 func _ready()	:
+	var player_node = get_tree().get_first_node_in_group("player")
 	
 	
 	add_child(canvasMinimap)
 	
 	add_to_group("dungeon_generator")
 	add_child(camera)
-	
 	
 	camera.position = Vector2(0,0)
 	camera.zoom.x = 1
@@ -76,7 +81,9 @@ func _ready()	:
 	#camera.zoom.x = 0.7
 	#camera.zoom.y = 0.7
 	
-	
+	for i in range(MAX_CAMERE + 1):
+		enemy_counts.append(0) # cate camere am atatea elemente sa aiba vectorul
+		
 	instantiate_rooms()
 	
 	canvas.add_child(gui)
@@ -87,11 +94,17 @@ func _ready()	:
 	player.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
 	player.scale.x = 1.64
 	player.scale.y = 1.64
+	player.z_index = 1
+	
 	add_child(player)
+	var hotbar_delete = $Player/Hotbar
+	if hotbar_delete:
+		hotbar_delete.queue_free()
 	player.position = Vector2 (0,0)
 	player.add_to_group("player")
 	print("Added player in the tree")
 	add_doors()
+	
 	
 	
 	pause_menu = PauseScene.instantiate()
@@ -217,19 +230,66 @@ func instantiate_rooms():
 				if cell_value  == 7:
 					#DIALOGUE SPRITE
 					
+
 					#BOSS FIGHT ITSELF	
 					var boss = bossScene.instantiate()
 					boss.position =  Vector2((y-2) * room_size.x + 200 , -(2-x) * room_size.y)
 					add_child(boss)
 					
 	
+
+				if cell_value != 1 and cell_value != 2 and cell_value != 7:
+					var total_enemies = 0
+
 					
-					
-					
-					
-					
-					
+					# spawn melee enemies
+					var num_enemies = randi() % 5 + 1  # spawn 1 to 5 enemies
+					for i in range(num_enemies):
+						var enemy = preload("res://Scenes/enemy.tscn").instantiate()
+						var spawn_offset = Vector2(
+							randf_range(-room_size.x * 0.3, room_size.x * 0.3),
+							randf_range(-room_size.y * 0.3, room_size.y * 0.3)
+						)
+						var spawn_pos = Vector2(centerx, centery) + spawn_offset
+						enemy.global_position = spawn_pos
 						
+						enemy.patrol_distance = randf_range(200, 400)
+						enemy.speed = randf_range(100, 200)
+						enemy.patrol_switch_time = randf_range(2.0, 5.0)
+						
+						# store reference to the room this enemy belongs to
+						enemy.set_meta("room_id", cell_value)
+						
+						add_child(enemy)
+						
+						enemy_counts[cell_value] += 1
+					
+					# spawn ranged enemies
+					var num_ranged_enemies = randi() % 3 + 1  # spawn 1 to 3 enemies
+					for i in range(num_ranged_enemies):
+						var ranged_enemy = preload("res://Scenes/ranged_enemy.tscn").instantiate()
+						var spawn_offset = Vector2(
+							randf_range(-room_size.x * 0.3, room_size.x * 0.3),
+							randf_range(-room_size.y * 0.3, room_size.y * 0.3)
+						)
+						var spawn_pos = Vector2(centerx, centery) + spawn_offset
+						ranged_enemy.global_position = spawn_pos
+						
+						ranged_enemy.patrol_distance = randf_range(200, 400)
+						ranged_enemy.speed = randf_range(100, 200)
+						ranged_enemy.patrol_switch_time = randf_range(2.0, 5.0)
+						
+						# store reference to the room this enemy belongs to
+						ranged_enemy.set_meta("room_id", cell_value)
+						
+						add_child(ranged_enemy)
+						
+						# Increment enemy count for this room
+						enemy_counts[cell_value] += 1
+					
+				for i in range(MAX_CAMERE + 1):
+					print("Inamici in camera " + str(i) + ": " + str(enemy_counts[i]))
+						 
 					# If your Room has properties like is_starting_room, you can set them here
 	
 
@@ -269,9 +329,14 @@ func add_doors():
 						#door.rotation_degrees = 0
 					#else:
 						#door.rotation_degrees = 90
+
+func set_current_room(room_id: int):
+	current_room_id = room_id
+	print("Entered room ", room_id, " with ", enemy_counts[room_id], " enemies")
+	
 func changeRoomOnMinimap(_roomID):
 	minimap.changeRoom(_roomID)
-	
+	set_current_room(_roomID)
 				
 # Helper function to check if a position is within the matrix bounds
 func is_valid_position(pos):
@@ -320,3 +385,6 @@ func print_matrix(_matrix):
 		for j in range(M_SIZE):
 			row += str(_matrix[i][j]) + " "
 		print(row)
+
+func is_the_room_clear(roomID) -> bool:
+	return enemy_counts[roomID] == 0

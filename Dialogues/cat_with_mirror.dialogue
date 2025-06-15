@@ -1,0 +1,8 @@
+~ start
+Cat: You’re no hero. You’re just a kid
+- ...I think I need to leave now
+- You’re lying! I’m leaving!
+Cat: Do as you wish. But [color=red]you can’t escape us[/color]. Go be a knight, I guess.
+~ end_loop
+Cat: The [color=red]dungeons[/color] are waiting. Time is running out, so hurry along now!
+=> END

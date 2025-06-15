@@ -68,6 +68,7 @@ func animate_to_player(delta: float):
 	#Regula sa nu se micsoreze mai mult decat limita
 	if scale.x < min_scale:
 		scale = Vector2(min_scale, min_scale)
-	await get_tree().create_timer(1.5).timeout
+	await get_tree().create_timer(1.0).timeout
+
 	hide()	
 	
