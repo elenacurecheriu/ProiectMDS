@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://boc86jhmkpo4l"
+path="res://.godot/imported/redpanda.dialogue-a5334958e13b3414506b6e1a560e30aa.tres"
+
+[deps]
+
+source_file="res://Dialogues/redpanda.dialogue"
+dest_files=["res://.godot/imported/redpanda.dialogue-a5334958e13b3414506b6e1a560e30aa.tres"]
+
+[params]
+
+defaults=true

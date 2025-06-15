@@ -24,6 +24,7 @@ var health_bar
 var has_beer = false
 var has_eye = false
 var has_glasses = false
+var start_boss = false
 
 var attackComponent
 

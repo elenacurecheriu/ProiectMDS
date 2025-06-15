@@ -3,7 +3,7 @@ extends CharacterBody2D
 @export var speed: float = 100.0
 @export var detection_radius: float = 200.0
 @export var attack_distance: float = 10
-@export var melee_attack_damage: float = 100
+@export var melee_attack_damage: int = 100
 @export var melee_radius: float = 50.0
 @export var melee_cooldown: float = 2.0
 
@@ -22,6 +22,8 @@ var is_attacking: bool = false
 var can_melee_attack: bool = true
 var players_in_melee_range: Array[Node2D] = []
 
+var bossDialogue = load("res://Dialogues/boss.dialogue")
+
 #Machine state boss
 enum EnemyState {
 	IDLE,
@@ -33,6 +35,8 @@ enum EnemyState {
 var current_state: EnemyState = EnemyState.IDLE
 
 func _ready():
+	DialogueManager.dialogue_ended.connect(_on_dialogue_ended)
+	DialogueManager.show_dialogue_balloon(bossDialogue, "start")
 	if attack_timer:
 		attack_timer.timeout.connect(_throw_projectile)
 	
@@ -73,7 +77,7 @@ func _create_melee_area():
 
 func _on_follow_area_entered(body: Node2D):
 	#verific daca e player ul
-	if body.name == "Player" or body.is_in_group("player") or body.get_class() == "CharacterBody2D":
+	if body.name == "Player" or body.is_in_group("player"):
 		player = body
 		is_following = true
 		current_state = EnemyState.FOLLOWING
@@ -269,3 +273,7 @@ func get_current_state() -> String:
 			return "MELEE"
 		_:
 			return "UNKNOWN"
+			
+func _on_dialogue_ended(resource):
+	if resource == bossDialogue:
+		get_tree().change_scene_to_file("res://Scenes/ending.tscn")

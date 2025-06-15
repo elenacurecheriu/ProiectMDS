@@ -8,9 +8,14 @@ var PauseScene = preload("res://Menus/pause_menu.tscn")
 var CanvasLayerScene  = preload("res://Scenes/canvas_layer.tscn")
 
 #var MinimapScene = preload("res://Scenes/minimap.tscn")
+
+var player = CharacterScene.instantiate()
+
  
 #Bosses:
 var bossScene = preload("res://Scenes/Bosses/boss.tscn")
+var redPandaScene = preload("res://Scenes/Bosses/redPanda.tscn")
+var boss
 
 
 #ITEMS:
@@ -68,7 +73,7 @@ func pause_menu_():
 func _ready()	:
 	var player_node = get_tree().get_first_node_in_group("player")
 	
-	
+	player.add_to_group("player")
 	add_child(canvasMinimap)
 	
 	add_to_group("dungeon_generator")
@@ -89,7 +94,7 @@ func _ready()	:
 	
 	canvas.add_child(gui)
 
-	var player = CharacterScene.instantiate()
+	#var player = CharacterScene.instantiate() !!
 	
 	player.set_health_component(gui.get_node("HealthBar"))
 	player.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
@@ -110,7 +115,7 @@ func _ready()	:
 	if hotbar_delete:
 		hotbar_delete.queue_free()
 	player.position = Vector2 (0,0)
-	player.add_to_group("player")
+	
 	print("Added player in the tree")
 	add_doors()
 	
@@ -244,13 +249,12 @@ func instantiate_rooms():
 					add_child(cake)
 				if cell_value  == 7:
 					#DIALOGUE SPRITE
-					
-
-					#BOSS FIGHT ITSELF	
-					var boss = bossScene.instantiate()
+					var red_panda = redPandaScene.instantiate()
+					red_panda.position = Vector2((y-2) * room_size.x + 200 , -(2-x) * room_size.y)
+					add_child(red_panda)
+					red_panda.startBossRelay.connect(_on_red_panda_startBossRelay)
+					boss = bossScene.instantiate()
 					boss.position =  Vector2((y-2) * room_size.x + 200 , -(2-x) * room_size.y)
-					add_child(boss)
-					
 	
 
 				if cell_value != 1 and cell_value != 2 and cell_value != 7:
@@ -307,7 +311,11 @@ func instantiate_rooms():
 						 
 					# If your Room has properties like is_starting_room, you can set them here
 	
-
+func _on_red_panda_startBossRelay() -> void:
+	get_node("RedPanda").queue_free()
+	#BOSS FIGHT ITSELF	
+	add_child(boss)
+					
 
 func add_doors():
 	var directions = [Vector2(-1, 0), Vector2(1, 0), Vector2(0, -1), Vector2(0, 1)]
@@ -401,26 +409,3 @@ func print_matrix(_matrix):
 			row += str(_matrix[i][j]) + " "
 		print(row)
 
-func is_the_room_clear(roomID) -> bool:
-	if roomID != 7:
-		return enemy_counts[roomID] == 0
-	return false
-
-
-#var validAdjacentRoomsToBossRoom = []
-#
-#func getvalidAdjacentRoomsToBossRoom():
-	#for i in range(M_SIZE):
-		#for j in range(M_SIZE):
-			#if matrix[i][j] == 7:
-				#if matrix[i-1][j] != 0:
-					#validAdjacentRoomsToBossRoom.append(matrix[i-1][j])
-				#if matrix[i+1][j] != 0:
-					#validAdjacentRoomsToBossRoom.append(matrix[i+1][j])
-				#if matrix[i][j+1] != 0:
-					#validAdjacentRoomsToBossRoom.append(matrix[i][j+1])
-				#if matrix[i][j+1] != 0:
-					#validAdjacentRoomsToBossRoom.append(matrix[i][j-1])
-				#break
-					#
-					
