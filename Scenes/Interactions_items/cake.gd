@@ -4,6 +4,14 @@ extends Node2D
 @onready var interactable: Area2D = $Interactable
 @onready var sprite: CharacterBody2D = $CharacterBody2D
 
+
+#levitare:
+var levitate_speed = 2.0  
+var levitate_amount = 20.0  
+var start_y  
+var time = 0.0
+
+
 var is_moving_to_player: bool = false
 var original_scale: Vector2
 var move_speed: float = 300.0
@@ -11,13 +19,15 @@ var shrink_speed: float = 3.0
 var min_scale: float = 0.1
 
 func _ready() -> void:
+	start_y = position.y
 	interactable.interact = _on_interact
 	original_scale = scale
 	
 func _process(delta: float) -> void:
 	if is_moving_to_player:				#cand playerul interactioneaza cu itemul acesta incepe procesul de animatie catre el
 		animate_to_player(delta)	
-	
+	time += delta
+	position.y = start_y + sin(time * levitate_speed) * levitate_amount
 		
 		
 func _find_player(node):
@@ -34,7 +44,7 @@ func _on_interact():
 		
 	player.increase_stat("cake")
 	var new_value = player.get_stat("cake")
-	print("Gained 1 cake. New cake: " + str(new_value))
+	player.speed = 600
 	
 	#opresc colisiunile ca sa nu mai detecteze itemul
 	interactable.monitoring = false

@@ -44,19 +44,18 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 
 #Code handling the button to open the room
 
-@onready var button = $Button
-var pressedButton = load("res://assets/button/pressed_button.png")
-var notPressedButton = load("res://assets/button/button.png")
-
-func buttonPressedbyPlayer(body: Node2D) -> void:
-	
-	get_node("Button/ButtonTexture").texture = pressedButton
-	room_cleared = true
-	
-	
-
-
-func leftButtonPlayer(body: Node2D) -> void:
-	pass
-	#await get_tree().create_timer(0.5).timeout
-	#get_node("Button/ButtonTexture").texture = notPressedButton
+#@onready var button = $Button
+#var pressedButton = load("res://assets/button/pressed_button.png")
+#var notPressedButton = load("res://assets/button/button.png")
+#
+#func buttonPressedbyPlayer(body: Node2D) -> void:
+	#
+	#get_node("Button/ButtonTexture").texture = pressedButton
+	#room_cleared = true
+	#
+#
+#
+#func leftButtonPlayer(body: Node2D) -> void:
+	#pass
+	##await get_tree().create_timer(0.5).timeout
+	##get_node("Button/ButtonTexture").texture = notPressedButton

@@ -80,7 +80,8 @@ func _physics_process(delta):
 		update_animation()
 
 	if Input.is_action_just_pressed("Interact"):
-		handleInteractions()
+		#handleInteractions()
+		pass
 		
 	if Input.is_action_just_pressed("attack"):
 		if attackComponent:
@@ -105,7 +106,9 @@ func heal(amount):
 	
 	
 func die():
-	get_tree().change_scene_to_file("res://Scenes/levels/village_3.tscn")
+	Fade_Transition.transition()
+	await Fade_Transition.on_transition_finished
+	get_tree().change_scene_to_file("res://Scenes/dieScene.tscn")
 	
 
 func _on_interaction_area_area_entered(area: Area2D) -> void:

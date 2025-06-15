@@ -18,6 +18,7 @@ position = Vector2(0, 1)
 shape = SubResource("CircleShape2D_5w82x")
 
 [node name="StrawberryCake" type="Sprite2D" parent="."]
-position = Vector2(4.76837e-07, -3)
-scale = Vector2(1.61667, 1.61667)
+texture_filter = 1
+position = Vector2(1.26247, -5.12502)
+scale = Vector2(1.20834, 1.20834)
 texture = ExtResource("2_5w82x")

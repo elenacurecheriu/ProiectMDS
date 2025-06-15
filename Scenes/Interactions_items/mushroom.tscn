@@ -33,7 +33,9 @@ radius = 77.0584
 script = ExtResource("1_ea8de")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(2.25, 2.25)
+texture_filter = 1
+position = Vector2(-9.53674e-07, 0.999999)
+scale = Vector2(1.5625, 1.5625)
 sprite_frames = SubResource("SpriteFrames_2r1e8")
 animation = &"Idle"
 frame_progress = 0.11163
