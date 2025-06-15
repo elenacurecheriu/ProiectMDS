@@ -387,4 +387,25 @@ func print_matrix(_matrix):
 		print(row)
 
 func is_the_room_clear(roomID) -> bool:
-	return enemy_counts[roomID] == 0
+	if roomID != 7:
+		return enemy_counts[roomID] == 0
+	return false
+
+
+#var validAdjacentRoomsToBossRoom = []
+#
+#func getvalidAdjacentRoomsToBossRoom():
+	#for i in range(M_SIZE):
+		#for j in range(M_SIZE):
+			#if matrix[i][j] == 7:
+				#if matrix[i-1][j] != 0:
+					#validAdjacentRoomsToBossRoom.append(matrix[i-1][j])
+				#if matrix[i+1][j] != 0:
+					#validAdjacentRoomsToBossRoom.append(matrix[i+1][j])
+				#if matrix[i][j+1] != 0:
+					#validAdjacentRoomsToBossRoom.append(matrix[i][j+1])
+				#if matrix[i][j+1] != 0:
+					#validAdjacentRoomsToBossRoom.append(matrix[i][j-1])
+				#break
+					#
+					
