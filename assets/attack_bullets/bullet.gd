@@ -20,6 +20,8 @@ var startPosition: Vector2
 # Cine a lansat bulletul
 var shooter: Node2D = null
 
+@onready var sprite: Sprite2D = $Sprite2D
+
 func _ready():
 	if not body_entered.is_connected(_on_body_entered):
 		body_entered.connect(_on_body_entered)

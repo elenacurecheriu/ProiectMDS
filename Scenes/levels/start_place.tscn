@@ -1,10 +1,12 @@
-[gd_scene load_steps=16 format=4 uid="uid://bm4fna0qhb4la"]
+[gd_scene load_steps=18 format=4 uid="uid://bm4fna0qhb4la"]
 
 [ext_resource type="TileSet" uid="uid://be65eo2fvqoya" path="res://Scenes/resources/level.tres" id="1_whtuq"]
 [ext_resource type="Script" uid="uid://d1ljk0ubvw0o0" path="res://Scripts/leave_starting.gd" id="2_ktyw1"]
-[ext_resource type="Script" path="res://Scenes/levels/wasd.gd" id="3_jdjbs"]
+[ext_resource type="Script" uid="uid://cjjsnpxwvtu1e" path="res://Scenes/levels/wasd.gd" id="3_jdjbs"]
 [ext_resource type="Script" uid="uid://blfg3r65qmqyf" path="res://Scripts/Tutorial/attack_command.gd" id="4_jgoxy"]
 [ext_resource type="Script" uid="uid://cg6om5803g3hu" path="res://Scripts/Tutorial/collect_command.gd" id="5_mrevx"]
+[ext_resource type="AudioStream" uid="uid://dndmj1biaukfg" path="res://assets/music/scary_track.mp3" id="6_8je82"]
+[ext_resource type="PackedScene" uid="uid://c6y6ds2cj4owt" path="res://Scenes/musicPlayer.tscn" id="6_w726a"]
 
 [sub_resource type="Gradient" id="Gradient_u4dev"]
 colors = PackedColorArray(0, 0, 0, 1, 0.865445, 0.607827, 0.0167252, 1)
@@ -342,6 +344,10 @@ script = ExtResource("5_mrevx")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collect"]
 position = Vector2(352, 315.75)
 shape = SubResource("RectangleShape2D_8je82")
+
+[node name="Node2D" parent="." instance=ExtResource("6_w726a")]
+position = Vector2(352, 317)
+sound = ExtResource("6_8je82")
 
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
 [connection signal="area_entered" from="WASD" to="Area2D" method="_on_wasd_area_entered"]

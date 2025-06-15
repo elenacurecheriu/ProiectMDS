@@ -28,6 +28,14 @@ func attackLogic(directionX, directionY, startPosition: Vector2):
 	bullet.startPosition = spawn_position
 	
 	get_tree().current_scene.add_child(bullet)
+	if directionX < 0:
+		bullet.sprite.flip_h = true
+		
+	if directionY < 0:
+		bullet.sprite.rotate(-PI/2)
+
+	elif directionY > 0:
+		bullet.sprite.rotate(PI/2)
 	timer.start()
 
 func _on_timer_timeout() -> void:
