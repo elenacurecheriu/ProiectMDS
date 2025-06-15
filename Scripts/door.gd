@@ -30,8 +30,8 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	var _roomID = main.get_node("game").currentRoomID
 	var roomInstance = main.get_node("game").roomsWithId[_roomID]
-	is_the_room_cleared = roomInstance.room_cleared
-	if is_the_room_cleared:
+	is_the_room_cleared = main.get_node("game").is_the_room_clear(_roomID)
+	if is_the_room_cleared && _roomID != 7:
 		get_node("Door_texture").texture = load("res://assets/levels_art/Door_Opened.png")
 	else:
 		get_node("Door_texture").texture = load("res://assets/levels_art/Dungeon_Tiles_Door.png")

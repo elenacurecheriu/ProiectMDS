@@ -50,5 +50,7 @@ Jocul combină explorarea satului cu dialogue-uri și lupte în dungeon-uri gene
 - [@mihaidanaila11](https://github.com/mihaidanaila11)
 - [@elenacurecheriu](https://github.com/elenacurecheriu)
 
+## [Documentatie](https://docs.google.com/document/d/1BvZfoq-Oj51DWbKP618NLFQe2fS-72rLWBm_zT9Aj84/edit?tab=t.0)
+
 
 # [Assets](https://drive.google.com/drive/folders/1uw6KGl9DCcsgoNFjHLXfY_HOtzUkLvVX?usp=sharing)

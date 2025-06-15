@@ -9,6 +9,10 @@ var CanvasLayerScene  = preload("res://Scenes/canvas_layer.tscn")
 
 #var MinimapScene = preload("res://Scenes/minimap.tscn")
  
+#Bosses:
+var bossScene = preload("res://Scenes/Bosses/boss.tscn")
+
+
 #ITEMS:
 var FireResistanceScene = preload("res://Scenes/Interactions_items/fire_resistance.tscn")
 var MushroomScene = preload("res://Scenes/Interactions_items/mushroom.tscn")
@@ -61,15 +65,9 @@ func pause_menu_():
 		
 	paused = ! paused	
 	
-func _find_player(node):
-	if node is CharacterBody2D:
-		return node
-	return null
 func _ready()	:
 	var player_node = get_tree().get_first_node_in_group("player")
-	var playerr = _find_player(player_node)
-	if playerr:
-		print("aa")
+	
 	
 	add_child(canvasMinimap)
 	
@@ -97,6 +95,7 @@ func _ready()	:
 	player.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
 	player.scale.x = 1.64
 	player.scale.y = 1.64
+	player.z_index = 1
 	
 	add_child(player)
 	var hotbar_delete = $Player/Hotbar
@@ -227,8 +226,28 @@ func instantiate_rooms():
 					mushroom.position = room_center 
 					add_child(mushroom)
 						
+					#Cake
+					var cake = CakeScene.instantiate()
+					random_position = Vector2(
+						randf() * room_size_inside.x - room_size_inside.x / 2,
+						randf() * room_size_inside.y - room_size_inside.y / 2
+					)
+					cake.position = room_center + random_position
+					add_child(cake)
+				if cell_value  == 7:
+					#DIALOGUE SPRITE
+					
+
+					#BOSS FIGHT ITSELF	
+					var boss = bossScene.instantiate()
+					boss.position =  Vector2((y-2) * room_size.x + 200 , -(2-x) * room_size.y)
+					add_child(boss)
+					
+	
+
 				if cell_value != 1 and cell_value != 2 and cell_value != 7:
 					var total_enemies = 0
+
 					
 					# spawn melee enemies
 					var num_enemies = randi() % 5 + 1  # spawn 1 to 5 enemies
@@ -375,4 +394,25 @@ func print_matrix(_matrix):
 		print(row)
 
 func is_the_room_clear(roomID) -> bool:
-	return enemy_counts[roomID] == 0
+	if roomID != 7:
+		return enemy_counts[roomID] == 0
+	return false
+
+
+#var validAdjacentRoomsToBossRoom = []
+#
+#func getvalidAdjacentRoomsToBossRoom():
+	#for i in range(M_SIZE):
+		#for j in range(M_SIZE):
+			#if matrix[i][j] == 7:
+				#if matrix[i-1][j] != 0:
+					#validAdjacentRoomsToBossRoom.append(matrix[i-1][j])
+				#if matrix[i+1][j] != 0:
+					#validAdjacentRoomsToBossRoom.append(matrix[i+1][j])
+				#if matrix[i][j+1] != 0:
+					#validAdjacentRoomsToBossRoom.append(matrix[i][j+1])
+				#if matrix[i][j+1] != 0:
+					#validAdjacentRoomsToBossRoom.append(matrix[i][j-1])
+				#break
+					#
+					

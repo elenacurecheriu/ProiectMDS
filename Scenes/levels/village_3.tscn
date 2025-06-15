@@ -70,6 +70,7 @@ position = Vector2(1017, -32)
 shape = SubResource("RectangleShape2D_3vy07")
 
 [node name="ColorRect2" type="ColorRect" parent="."]
+z_index = 2
 material = SubResource("ShaderMaterial_4swfj")
 offset_left = -1162.0
 offset_top = -317.0

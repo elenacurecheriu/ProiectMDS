@@ -36,6 +36,7 @@ func start_dialogue():
 		DialogueManager.show_dialogue_balloon(firstDialogue, "has_flower")
 		return
 	DialogueManager.show_dialogue_balloon(firstDialogue, "end_loop")
+	
 
 func gave_the_flower():
 	print("change scene")
@@ -61,5 +62,5 @@ func _on_body_exited(body: Node2D) -> void:
 	if name == "DialogueInteractionArea":
 		if body.is_in_group("player"):
 			in_interaction_area = false
-			has_flower = true
+
 	
