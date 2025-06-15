@@ -236,7 +236,7 @@ func instantiate_rooms():
 						
 					#Cake
 					var cake = CakeScene.instantiate()
-					random_position = Vector2(
+					var random_position = Vector2(
 						randf() * room_size_inside.x - room_size_inside.x / 2,
 						randf() * room_size_inside.y - room_size_inside.y / 2
 					)
