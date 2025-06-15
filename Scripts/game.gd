@@ -17,6 +17,7 @@ var bossScene = preload("res://Scenes/Bosses/boss.tscn")
 var FireResistanceScene = preload("res://Scenes/Interactions_items/fire_resistance.tscn")
 var MushroomScene = preload("res://Scenes/Interactions_items/mushroom.tscn")
 var CakeScene = preload("res://Scenes/Interactions_items/cake.tscn")
+var pedestal = preload("res://Scenes/Interactions_items/pedestal.tscn")
 
 var GUIScene = preload("res://Scenes/Gui.tscn")
 #test
@@ -139,9 +140,7 @@ func _ready()	:
 	
 	#print_tree_pretty()
 
-	var fireResistance = FireResistanceScene.instantiate()
-	fireResistance.position = Vector2(250, 150)
-	add_child(fireResistance)
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -181,6 +180,10 @@ func instantiate_rooms():
 				var centerx = (y-2) * room_size.x
 				var centery =  -(2-x) * room_size.y
 				
+				var room_size_inside = Vector2(1150, 650)
+				var room_center = Vector2((y - 2) * room_size_inside.x, -(2 - x) * room_size_inside.y)
+				var piedestal_position =  Vector2((y - 2) * room_size_inside.x, -(2 - x) * room_size_inside.y+48)
+				
 				if cell_value == 2:
 					#TEST OF A SPIKE ROOM, NOT FINAL
 					# Center of the room: room.position = Vector2((y-2) * room_size.x , -(2-x) * room_size.y)
@@ -202,31 +205,35 @@ func instantiate_rooms():
 						offsetGrid += Vector2(0, 2 * spikesSize.y)
 					pass
 					
+			
+					
 				if cell_value == 3:
-					#!TEST! of an item room , where you can see and collect all the items that exist in the game
-					var room_size_inside = Vector2(1000, 500)
-					var random_position = Vector2(0,0)
-					var room_center = Vector2((y - 2) * room_size_inside.x, -(2 - x) * room_size_inside.y)
-
-					#MUSHROOM:
-					var mushroom = MushroomScene.instantiate()
+					var cake = CakeScene.instantiate()
+					var pedestal = pedestal.instantiate()
+					pedestal.position = piedestal_position
+					add_child(pedestal)
+					cake.position = room_center 
+					add_child(cake)		
 					
-					random_position = Vector2(
-						randf() * room_size_inside.x - room_size_inside.x / 2,
-						randf() * room_size_inside.y - room_size_inside.y / 2
-					)
-					mushroom.position = room_center + random_position
-					add_child(mushroom)
 					
+				if cell_value == 4:
 					#FIRE RESISTANCE
 					var fireResistance = FireResistanceScene.instantiate()
-					random_position = Vector2(
-						randf() * room_size_inside.x - room_size_inside.x / 2,
-						randf() * room_size_inside.y - room_size_inside.y / 2
-					)
-					fireResistance.position = room_center + random_position
+					var pedestal = pedestal.instantiate()
+					pedestal.position = piedestal_position
+					add_child(pedestal)
+					fireResistance.position = room_center 
 					add_child(fireResistance)
 					
+				if cell_value == 5:		
+					#MUSHROOM:
+					var mushroom = MushroomScene.instantiate()
+					var pedestal = pedestal.instantiate()
+					pedestal.position = piedestal_position
+					add_child(pedestal)
+					mushroom.position = room_center 
+					add_child(mushroom)
+						
 					#Cake
 					var cake = CakeScene.instantiate()
 					random_position = Vector2(
@@ -395,4 +402,25 @@ func print_matrix(_matrix):
 		print(row)
 
 func is_the_room_clear(roomID) -> bool:
-	return enemy_counts[roomID] == 0
+	if roomID != 7:
+		return enemy_counts[roomID] == 0
+	return false
+
+
+#var validAdjacentRoomsToBossRoom = []
+#
+#func getvalidAdjacentRoomsToBossRoom():
+	#for i in range(M_SIZE):
+		#for j in range(M_SIZE):
+			#if matrix[i][j] == 7:
+				#if matrix[i-1][j] != 0:
+					#validAdjacentRoomsToBossRoom.append(matrix[i-1][j])
+				#if matrix[i+1][j] != 0:
+					#validAdjacentRoomsToBossRoom.append(matrix[i+1][j])
+				#if matrix[i][j+1] != 0:
+					#validAdjacentRoomsToBossRoom.append(matrix[i][j+1])
+				#if matrix[i][j+1] != 0:
+					#validAdjacentRoomsToBossRoom.append(matrix[i][j-1])
+				#break
+					#
+					

@@ -5,7 +5,7 @@
 [ext_resource type="Shader" uid="uid://h4mfnmtdpf3h" path="res://assets/shaders/blending_modes.gdshader" id="3_e21xk"]
 [ext_resource type="PackedScene" uid="uid://c0gy6p2pmqu2s" path="res://Scenes/Attack/debug_character.tscn" id="3_wkhqo"]
 [ext_resource type="Script" uid="uid://ff437aw6r0ax" path="res://Scripts/transition/to_village_3.gd" id="4_2rpj3"]
-[ext_resource type="Script" path="res://Scenes/levels/cat.gd" id="5_a4imh"]
+[ext_resource type="Script" uid="uid://dfsyaunjcuir1" path="res://Scenes/levels/cat.gd" id="5_a4imh"]
 [ext_resource type="Texture2D" uid="uid://srp1d0cejnnc" path="res://assets/character_art/original/elena_bf.png" id="6_rf67q"]
 [ext_resource type="Texture2D" uid="uid://dgd0iqdrm4ki3" path="res://assets/character_art/original/mc_af.png" id="7_rf67q"]
 
