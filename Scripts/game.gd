@@ -408,4 +408,3 @@ func print_matrix(_matrix):
 		for j in range(M_SIZE):
 			row += str(_matrix[i][j]) + " "
 		print(row)
-

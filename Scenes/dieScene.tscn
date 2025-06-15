@@ -1,10 +1,69 @@
-[gd_scene load_steps=3 format=3 uid="uid://cs2p5nbb3rhc"]
+[gd_scene load_steps=10 format=3 uid="uid://cs2p5nbb3rhc"]
 
-[ext_resource type="Script" uid="uid://ipaqutsypk6t" path="res://Scenes/dieScene.gd" id="1_kbprw"]
+[ext_resource type="Script" path="res://Scenes/dieScene.gd" id="1_kbprw"]
 [ext_resource type="FontFile" uid="uid://3ouse7y00yvl" path="res://Fonts/Glitchdemo-lxgGq.ttf" id="2_u3nu6"]
+[ext_resource type="Texture2D" uid="uid://5am2g2u4e3ua" path="res://assets/shaders/particle2.png" id="2_visui"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ymaeo"]
+light_mode = 1
+
+[sub_resource type="Curve" id="Curve_30w3u"]
+_data = [Vector2(0.203488, 0.101124), 0.0, 0.0, 0, 0, Vector2(0.331395, 1), 0.0, 0.0, 0, 0, Vector2(0.848837, 1), 0.0, 0.0, 0, 0, Vector2(0.953488, 0.52809), 0.0, 0.0, 0, 0, Vector2(1, 0.0561798), 0.0, 0.0, 0, 0]
+point_count = 5
+
+[sub_resource type="CurveTexture" id="CurveTexture_fmbfy"]
+curve = SubResource("Curve_30w3u")
+
+[sub_resource type="Gradient" id="Gradient_8r01p"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_7cwcg"]
+gradient = SubResource("Gradient_8r01p")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_axvck"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(2600, 1800, 1)
+spread = 89.554
+initial_velocity_min = 5.0
+initial_velocity_max = 10.0
+gravity = Vector3(0, 0, 0)
+damping_max = 10.843
+scale_min = 0.1
+color_ramp = SubResource("GradientTexture1D_7cwcg")
+alpha_curve = SubResource("CurveTexture_fmbfy")
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_kbprw")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -300
+offset_left = -743.0
+offset_top = -383.0
+offset_right = 796.0
+offset_bottom = 506.0
+color = Color(0, 0, 0, 1)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+z_index = -1
+material = SubResource("CanvasItemMaterial_ymaeo")
+position = Vector2(1329.41, 1498.94)
+amount = 1013
+texture = ExtResource("2_visui")
+lifetime = 6.0
+randomness = 0.45
+visibility_rect = Rect2(-2000, -2000, 3500, 2000)
+process_material = SubResource("ParticleProcessMaterial_axvck")
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="."]
+z_index = -1
+material = SubResource("CanvasItemMaterial_ymaeo")
+position = Vector2(1329.41, 1498.94)
+amount = 1013
+texture = ExtResource("2_visui")
+lifetime = 6.0
+randomness = 0.45
+visibility_rect = Rect2(-2000, -2000, 3500, 2000)
+process_material = SubResource("ParticleProcessMaterial_axvck")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 

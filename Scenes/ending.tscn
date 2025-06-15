@@ -10,12 +10,12 @@ light_mode = 1
 _data = [Vector2(0.203488, 0.101124), 0.0, 0.0, 0, 0, Vector2(0.331395, 1), 0.0, 0.0, 0, 0, Vector2(0.848837, 1), 0.0, 0.0, 0, 0, Vector2(0.953488, 0.52809), 0.0, 0.0, 0, 0, Vector2(1, 0.0561798), 0.0, 0.0, 0, 0]
 point_count = 5
 
-[sub_resource type="CurveTexture" id="CurveTexture_fmbfy"]
+[sub_resource type="CurveTexture" id="CurveTexture_kg0jb"]
 curve = SubResource("Curve_6u0w7")
 
 [sub_resource type="Gradient" id="Gradient_bxiex"]
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_7cwcg"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_6u0w7"]
 gradient = SubResource("Gradient_bxiex")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ib4ol"]
@@ -28,8 +28,8 @@ initial_velocity_max = 10.0
 gravity = Vector3(0, 0, 0)
 damping_max = 10.843
 scale_min = 0.1
-color_ramp = SubResource("GradientTexture1D_7cwcg")
-alpha_curve = SubResource("CurveTexture_fmbfy")
+color_ramp = SubResource("GradientTexture1D_6u0w7")
+alpha_curve = SubResource("CurveTexture_kg0jb")
 
 [node name="Ending" type="Node2D"]
 script = ExtResource("1_kg0jb")

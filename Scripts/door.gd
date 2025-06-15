@@ -30,7 +30,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	var _roomID = main.get_node("game").currentRoomID
 	var roomInstance = main.get_node("game").roomsWithId[_roomID]
-	is_the_room_cleared = main.get_node("game").is_the_room_clear(_roomID)
+	#is_the_room_cleared = main.get_node("game").is_the_room_clear(_roomID)
 	if is_the_room_cleared && _roomID != 7:
 		get_node("Door_texture").texture = load("res://assets/levels_art/Door_Opened.png")
 	else:
@@ -92,6 +92,7 @@ func move_camera_and_player():
 		
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.get_class() == "CharacterBody2D":
-		if is_the_room_cleared:
+		#if is_the_room_cleared:
+		if true:
 			print("Debug character touched the " + adjacentRooms + " door!")
 			move_camera_and_player()
