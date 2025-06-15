@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://d35xp0t0u6bqi"]
+[gd_scene load_steps=12 format=4 uid="uid://d35xp0t0u6bqi"]
 
 [ext_resource type="Script" uid="uid://icqgjk73cgh8" path="res://Scenes/levels/village_1.gd" id="1_2kwrj"]
 [ext_resource type="PackedScene" uid="uid://bola2tlukuyh5" path="res://Scenes/levels/village.tscn" id="1_41i5b"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://d16o4wyaeklsb" path="res://Scenes/levels/dialogue_interaction_area_butterfly.gd" id="3_8el8h"]
 [ext_resource type="TileSet" uid="uid://be65eo2fvqoya" path="res://Scenes/resources/level.tres" id="3_coa6n"]
 [ext_resource type="PackedScene" uid="uid://c0gy6p2pmqu2s" path="res://Scenes/Attack/debug_character.tscn" id="5_hamny"]
+[ext_resource type="AudioStream" uid="uid://c865tm76rk0b3" path="res://assets/music/scary_track_halftime.mp3" id="7_a6jko"]
 [ext_resource type="PackedScene" uid="uid://dwsra7tu3ixgs" path="res://Scenes/Interactions_items/blue_flower.tscn" id="7_qkxtr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hamny"]
@@ -265,6 +266,10 @@ metadata/_edit_lock_ = true
 
 [node name="Player" parent="village" instance=ExtResource("5_hamny")]
 position = Vector2(1030, 16)
+
+[node name="ScaryTrackHalftime" type="AudioStreamPlayer" parent="village/Player"]
+stream = ExtResource("7_a6jko")
+autoplay = true
 
 [node name="ColorRect2" type="ColorRect" parent="village"]
 material = SubResource("ShaderMaterial_hamny")

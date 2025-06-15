@@ -96,6 +96,14 @@ func _ready()	:
 	player.scale.y = 1.64
 	player.z_index = 1
 	
+	var streamPlayer: AudioStreamPlayer =  AudioStreamPlayer.new()
+	var music: AudioStreamMP3 = load("res://assets/music/Azteca - EUL 4 (Official Visualizer) [music].mp3")
+	
+	streamPlayer.stream = music
+	streamPlayer.autoplay = true
+	
+	player.add_child(streamPlayer)
+	
 	add_child(player)
 	var hotbar_delete = $Player/Hotbar
 	if hotbar_delete:
