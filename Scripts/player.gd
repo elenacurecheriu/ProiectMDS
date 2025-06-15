@@ -105,6 +105,8 @@ func heal(amount):
 	
 	
 func die():
+	#FadeTransition.transition()
+	#await FadeTransition.on_transition_finished
 	get_tree().change_scene_to_file("res://Scenes/levels/village_3.tscn")
 	
 
