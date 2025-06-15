@@ -215,10 +215,13 @@ func instantiate_rooms():
 					cake.position = room_center + random_position
 					add_child(cake)
 				if cell_value  == 7:
-						var boss = bossScene.instantiate()
-						boss.position =  Vector2((y-2) * room_size.x + 200 , -(2-x) * room_size.y)
-						add_child(boss)
-						
+					#DIALOGUE SPRITE
+					
+					#BOSS FIGHT ITSELF	
+					var boss = bossScene.instantiate()
+					boss.position =  Vector2((y-2) * room_size.x + 200 , -(2-x) * room_size.y)
+					add_child(boss)
+					
 	
 					
 					

@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bwfmodmvuwen"]
 
 [ext_resource type="Script" uid="uid://djmg4usaefsbc" path="res://Scripts/Bosses/boss.gd" id="1_1j1mm"]
-[ext_resource type="Texture2D" uid="uid://c2pmahrfprbtt" path="res://assets/character_art/original/rob1.png" id="2_kiru6"]
+[ext_resource type="Texture2D" uid="uid://swyeffvagq8r" path="res://assets/character_art/original/rob_bf.png" id="2_kiru6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kiru6"]
 radius = 441.113
@@ -21,9 +21,11 @@ wall_min_slide_angle = 0.0
 script = ExtResource("1_1j1mm")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0.749999, -0.73153)
-scale = Vector2(0.0894128, 0.0894128)
+texture_filter = 1
+position = Vector2(32, 48)
+scale = Vector2(0.454331, 0.454331)
 texture = ExtResource("2_kiru6")
+offset = Vector2(-80.0875, -93.5349)
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 
