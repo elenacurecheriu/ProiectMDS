@@ -60,15 +60,9 @@ func pause_menu_():
 		
 	paused = ! paused	
 	
-func _find_player(node):
-	if node is CharacterBody2D:
-		return node
-	return null
 func _ready()	:
 	var player_node = get_tree().get_first_node_in_group("player")
-	var playerr = _find_player(player_node)
-	if playerr:
-		print("aa")
+	
 	
 	add_child(canvasMinimap)
 	
@@ -96,6 +90,7 @@ func _ready()	:
 	player.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
 	player.scale.x = 1.64
 	player.scale.y = 1.64
+	player.z_index = 1
 	
 	add_child(player)
 	var hotbar_delete = $Player/Hotbar

@@ -2,14 +2,21 @@
 
 [ext_resource type="Script" uid="uid://lqpk5b8htvva" path="res://Scripts/game.gd" id="1_ebmjs"]
 [ext_resource type="PackedScene" uid="uid://c3ujclm7w6a6f" path="res://Scenes/InteractChar.tscn" id="2_qxrlw"]
-[ext_resource type="PackedScene" uid="uid://b0ar2bx510n77" path="res://Scenes/DialogueChar.tscn" id="3_wrm1d"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qxrlw"]
+radius = 177.07
 
 [node name="game" type="Node2D"]
 texture_filter = 1
 script = ExtResource("1_ebmjs")
 
-[node name="Sprite2D" parent="." instance=ExtResource("2_qxrlw")]
-position = Vector2(-171, -125)
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 
-[node name="Sprite2D2" parent="." instance=ExtResource("3_wrm1d")]
-position = Vector2(291, -139)
+[node name="Sprite2D" parent="CharacterBody2D" instance=ExtResource("2_qxrlw")]
+position = Vector2(-134, -93)
+rotation = -4.46638e-06
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(-134, -93)
+scale = Vector2(0.24948, 0.24948)
+shape = SubResource("CircleShape2D_qxrlw")

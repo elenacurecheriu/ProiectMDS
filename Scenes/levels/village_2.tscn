@@ -1,27 +1,27 @@
 [gd_scene load_steps=27 format=4 uid="uid://cwqocb6oje2v7"]
 
 [ext_resource type="PackedScene" uid="uid://bola2tlukuyh5" path="res://Scenes/levels/village.tscn" id="1_4r0el"]
-[ext_resource type="Script" uid="uid://cjjfdahefvq6f" path="res://Scenes/levels/village_2.gd" id="1_upf00"]
+[ext_resource type="Script" path="res://Scenes/levels/village_2.gd" id="1_upf00"]
 [ext_resource type="Texture2D" uid="uid://c6t8qi8o8pv3a" path="res://assets/character_art/original/mihai_af.png" id="2_w70xs"]
 [ext_resource type="TileSet" uid="uid://be65eo2fvqoya" path="res://Scenes/resources/level.tres" id="3_6dfpp"]
 [ext_resource type="Texture2D" uid="uid://cgvmccw3h57q0" path="res://assets/character_art/original/luca_bf.png" id="3_eb6hk"]
-[ext_resource type="Script" uid="uid://blhkka12e11yb" path="res://Scenes/levels/dialogue_interaction_area_village2.gd" id="3_k7tq8"]
+[ext_resource type="Script" path="res://Scenes/levels/dialogue_interaction_area_village2.gd" id="3_k7tq8"]
 [ext_resource type="Shader" uid="uid://h4mfnmtdpf3h" path="res://assets/shaders/blending_modes.gdshader" id="3_n8n8i"]
 [ext_resource type="Texture2D" uid="uid://dnlnvf8lujknr" path="res://assets/character_art/original/ovidiu_bf.png" id="4_eb6hk"]
-[ext_resource type="Script" uid="uid://bs1teanws8kob" path="res://Scenes/levels/lamb.gd" id="6_alql6"]
-[ext_resource type="Script" uid="uid://cdoa2kd5mow6o" path="res://Scenes/levels/squirrel.gd" id="7_3rrxf"]
+[ext_resource type="Script" path="res://Scenes/levels/lamb.gd" id="6_alql6"]
+[ext_resource type="Script" path="res://Scenes/levels/squirrel.gd" id="7_3rrxf"]
 [ext_resource type="PackedScene" uid="uid://c0gy6p2pmqu2s" path="res://Scenes/Attack/debug_character.tscn" id="7_3sm37"]
 [ext_resource type="Script" uid="uid://bwpgb11u05828" path="res://Scripts/transition/to_panda_house.gd" id="10_tbbhl"]
 [ext_resource type="PackedScene" uid="uid://d1gruhw3i0i43" path="res://Scenes/levels/panda_house.tscn" id="11_xwnoy"]
 [ext_resource type="Texture2D" uid="uid://degftoy1p1q0l" path="res://assets/levels_art/gateclosed.png" id="14_r8bvs"]
-[ext_resource type="Script" uid="uid://b18tmd8172olm" path="res://Scenes/levels/gate.gd" id="15_cnute"]
+[ext_resource type="Script" path="res://Scenes/levels/gate.gd" id="15_cnute"]
 [ext_resource type="Script" uid="uid://eybq05frmtaw" path="res://Scripts/transition/to_cat_house.gd" id="16_q54q3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_upf00"]
 size = Vector2(371.129, 389.553)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3rrxf"]
-size = Vector2(865.375, 689.449)
+size = Vector2(642.123, 520.65)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_alql6"]
 size = Vector2(397.003, 429.446)
@@ -299,10 +299,12 @@ scale = Vector2(0.358105, 0.358105)
 texture = ExtResource("3_eb6hk")
 
 [node name="AreaLamb" type="Area2D" parent="village/lamb"]
+position = Vector2(22.3398, -50.2646)
 script = ExtResource("6_alql6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="village/lamb/AreaLamb"]
-position = Vector2(-47.6191, -21.0903)
+position = Vector2(-97.7368, -8.3776)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_3rrxf")
 
 [node name="squirrel" type="Sprite2D" parent="village"]
@@ -342,10 +344,10 @@ position = Vector2(1178, 891)
 
 [node name="blackscreen" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_tbbhl")
-offset_left = 935.0
-offset_top = 757.0
-offset_right = 1464.0
-offset_bottom = 1076.0
+offset_left = 550.0
+offset_top = 525.0
+offset_right = 1661.0
+offset_bottom = 1195.0
 color = Color(0, 0, 0, 1)
 
 [node name="Polygon2D" type="Polygon2D" parent="."]

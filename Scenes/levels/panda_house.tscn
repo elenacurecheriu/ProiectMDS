@@ -1,9 +1,9 @@
 [gd_scene load_steps=10 format=4 uid="uid://d1gruhw3i0i43"]
 
 [ext_resource type="TileSet" uid="uid://be65eo2fvqoya" path="res://Scenes/resources/level.tres" id="1_07x4b"]
-[ext_resource type="Script" uid="uid://cjn0n0sk7rxny" path="res://Scenes/levels/relay.gd" id="1_hvl0c"]
+[ext_resource type="Script" path="res://Scenes/levels/relay.gd" id="1_hvl0c"]
 [ext_resource type="Texture2D" uid="uid://crlp03dxtmr1n" path="res://assets/character_art/original/darius_bf.png" id="3_0dyl8"]
-[ext_resource type="Script" uid="uid://cfesfw77li0a" path="res://Scenes/levels/panda_area.gd" id="4_0dyl8"]
+[ext_resource type="Script" path="res://Scenes/levels/panda_area.gd" id="4_0dyl8"]
 [ext_resource type="Script" uid="uid://bek722mktypw5" path="res://Scripts/transition/to_village_2.gd" id="4_hvl0c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hvl0c"]
