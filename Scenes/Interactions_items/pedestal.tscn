@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://cq1p4kgwmq3il"]
+
+[ext_resource type="Texture2D" uid="uid://ce4ysxuxdihyx" path="res://Textures/piedestal.png" id="1_psfsf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_psfsf"]
+radius = 24.0208
+
+[node name="pedestal" type="Node2D"]
+light_mask = 7
+visibility_layer = 7
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-1, 14)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_psfsf")
+
+[node name="Pedestal_collision" type="Area2D" parent="."]
+collision_layer = 7
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pedestal_collision"]
+light_mask = 3
+visibility_layer = 3
+position = Vector2(0, 26)
+shape = SubResource("CircleShape2D_psfsf")
