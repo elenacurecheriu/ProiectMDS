@@ -20,6 +20,8 @@ var startPosition: Vector2
 # Who shot this bullet - we'll ignore collisions with them
 var shooter: Node2D = null
 
+@onready var sprite: Sprite2D = $Sprite2D
+
 func _ready():
 	# Connect the body_entered signal if not already connected in the scene
 	if not body_entered.is_connected(_on_body_entered):
