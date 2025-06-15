@@ -73,7 +73,7 @@ func _create_melee_area():
 
 func _on_follow_area_entered(body: Node2D):
 	#verific daca e player ul
-	if body.name == "Player" or body.is_in_group("player") or body.get_class() == "CharacterBody2D":
+	if body.name == "Player" or body.is_in_group("player"):
 		player = body
 		is_following = true
 		current_state = EnemyState.FOLLOWING

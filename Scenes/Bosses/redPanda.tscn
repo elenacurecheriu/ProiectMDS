@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://boq216db2ua4i"]
+
+[ext_resource type="Texture2D" uid="uid://ckg5y8yvwnvt1" path="res://assets/character_art/original/rob_af.png" id="1_rruh4"]
+[ext_resource type="Script" uid="uid://dfh2kv5gf3p8l" path="res://Scenes/Bosses/red_panda.gd" id="1_xp3xd"]
+[ext_resource type="Script" uid="uid://w8r25efnp2ap" path="res://Scenes/Bosses/red_panda_area.gd" id="2_p175d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_52583"]
+size = Vector2(453.889, 437.222)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dlhob"]
+size = Vector2(92.2222, 178.333)
+
+[node name="RedPanda" type="CharacterBody2D"]
+script = ExtResource("1_xp3xd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(0.45, 0.45)
+texture = ExtResource("1_rruh4")
+
+[node name="redPandaArea" type="Area2D" parent="Sprite2D"]
+script = ExtResource("2_p175d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/redPandaArea"]
+position = Vector2(0, 6.66667)
+shape = SubResource("RectangleShape2D_52583")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, -1.875)
+scale = Vector2(0.45, 0.45)
+shape = SubResource("RectangleShape2D_dlhob")
+
+[connection signal="body_entered" from="Sprite2D/redPandaArea" to="Sprite2D/redPandaArea" method="_on_body_entered"]
+[connection signal="body_exited" from="Sprite2D/redPandaArea" to="Sprite2D/redPandaArea" method="_on_body_exited"]
+[connection signal="startboss" from="Sprite2D/redPandaArea" to="." method="_on_red_panda_area_startboss"]
